@@ -9,6 +9,7 @@
     "@supabase/auth-helpers-nextjs": "latest",
     "@supabase/supabase-js": "latest",
     "autoprefixer": "10.4.15",
+    "mapbox-gl": "^2.15.0",
     "next": "latest",
     "next-sanity": "^5.5.5",
     "postcss": "8.4.29",
