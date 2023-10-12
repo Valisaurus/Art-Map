@@ -1,13 +1,15 @@
 "use client";
+import "mapbox-gl/dist/mapbox-gl.css";
 import { useEffect } from "react";
 import mapboxgl from "mapbox-gl";
+
 const AccessToken: string = process.env.NEXT_PUBLIC_ACCESS_TOKEN || "";
 mapboxgl.accessToken = AccessToken;
 
 // Define your Map component
 const Map = () => {
   useEffect(() => {
-    // Create a new map instance
+    // Create a new map instance`
     const map = new mapboxgl.Map({
       container: "map-container", // container ID
       style: "mapbox://styles/mapbox/streets-v12", // style URL
@@ -16,7 +18,15 @@ const Map = () => {
     });
 
     const navigationControl = new mapboxgl.NavigationControl();
-    map.addControl(navigationControl, "top-left");
+    map.addControl(navigationControl, "bottom-right");
+
+    const geolocateControl = new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true,
+      },
+      trackUserLocation: true,
+    });
+    map.addControl(geolocateControl, "top-left");
 
     // Add a map load event
     map.on("load", () => {});
@@ -29,8 +39,8 @@ const Map = () => {
 
   return (
     <div
-      className="p-4 m-4"
       id="map-container"
+      className="mapboxgl-map map-container"
       style={{ width: "50%", height: "400px" }}
     ></div>
   );
