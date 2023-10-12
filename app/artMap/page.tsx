@@ -1,5 +1,5 @@
-import MapBox from "../../components/MapBox";
+import Map from "../../components/Map";
 
 export default function ArtMap() {
-  return <MapBox />;
+  return <Map />;
 }
