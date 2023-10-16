@@ -1,16 +1,16 @@
 const form = {
   name: "form",
-  type: "document",
   title: "Form",
+  type: "document",
   fields: [
     {
       name: "name",
-      type: "string",
       title: "Name",
+      type: "string",
     },
     {
-      title: "Address",
       name: "address",
+      title: "Address",
       type: "object",
       fields: [
         { name: "street", type: "string", title: "Street name" },
@@ -20,8 +20,8 @@ const form = {
     },
     {
       name: "about",
-      type: "text",
       title: "About",
+      type: "text",
     },
   ],
 };

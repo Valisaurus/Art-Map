@@ -17,17 +17,15 @@ export default async function handler(
     case "POST":
       //this JSON arrives as a string,
       //so we turn it into a JS object with JSON.parse()
-      const newTodo = await JSON.parse(req.body);
+      const newForm = await JSON.parse(req.body);
       //then use the Sanity client to create a new todo doc
       try {
         await client
           .create({
             _type: "form",
-            text: newTodo.text,
-            isCompleted: false,
-            createdAt: new Date().toISOString(),
-            dueDate: newTodo.dueDate,
-            userEmail: newTodo.user,
+            name: newForm.name,
+            adress: newForm.adress,
+            about: newForm.about
           })
           .then((res) => {
             console.log(`Todo was created, document ID is ${res._id}`);

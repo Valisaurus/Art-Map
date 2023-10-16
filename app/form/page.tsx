@@ -4,8 +4,11 @@ import { SetStateAction, useState } from "react";
 export default function Form() {
   //create a state to store new  for todos
   const [form, setForm] = useState([]);
+
   //create a state for the text in the todo input form
-  const [userInput, setUserInput] = useState("");
+  const [name, setName] = useState("");
+  const [adress, setAdress]  = useState("");
+  const [about, setAbout]  = useState("");
 
   //set an error message if either input is missing
   const [errMessage, setErrMessage] = useState("");
@@ -17,7 +20,7 @@ export default function Form() {
     target: { value: SetStateAction<string> };
   }) => {
     e.preventDefault();
-    setUserInput(e.target.value);
+    setName(e.target.value);
   };
 
   //FOR THE SUBMIT BUTTON:
@@ -25,21 +28,23 @@ export default function Form() {
     e.preventDefault();
     //if either part of the form isn't filled out
     //set an error message and exit
-    if (userInput.length == 0) {
-      setErrMessage("Form text must be filled out.");
+    if (setName.length == 0) {
+      setErrMessage("Name must be filled out");
     } else {
       //otherwise send the todo to our api
       // (we'll make this next!)
       await fetch("./api", {
         method: "POST",
         body: JSON.stringify({
-          text: userInput,
+          name: name,
+          adress: adress,
+          about:about
         }),
       });
       // await fetchForm(); //(we'll add this later)
       // Clear all inputs after the todo is sent to Sanity
-      setUserInput("");
-      setErrMessage("");
+      // setUserInput("");
+      // setErrMessage("");
     }
   };
   return (
