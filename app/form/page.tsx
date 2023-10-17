@@ -7,15 +7,17 @@ export default function Form() {
 
   //create a state for the text in the todo input form
   const [name, setName] = useState("");
-  const [adress, setAdress]  = useState("");
-  const [about, setAbout]  = useState("");
+  const [streetName, setStreetName] = useState("");
+  const [streetNumber, setStreetNumber] = useState("");
+  const [city, setCity] = useState("");
+  const [about, setAbout] = useState("");
 
   //set an error message if either input is missing
   const [errMessage, setErrMessage] = useState("");
   // src/pages/todos.js
 
-  //FOR THE INPUT FORM:
-  const handleChange = (e: {
+  //Handle Name input:
+  const handleNameChange = (e: {
     preventDefault: () => void;
     target: { value: SetStateAction<string> };
   }) => {
@@ -23,12 +25,44 @@ export default function Form() {
     setName(e.target.value);
   };
 
+  //Handle Adress input:
+  const handleStreetNameChange = (e: {
+    preventDefault: () => void;
+    target: { value: SetStateAction<string> };
+  }) => {
+    e.preventDefault();
+    setStreetName(e.target.value);
+  };
+  const handleStreetNumberChange = (e: {
+    preventDefault: () => void;
+    target: { value: SetStateAction<string> };
+  }) => {
+    e.preventDefault();
+    setStreetNumber(e.target.value);
+  };
+  const handleCityChange = (e: {
+    preventDefault: () => void;
+    target: { value: SetStateAction<string> };
+  }) => {
+    e.preventDefault();
+    setCity(e.target.value);
+  };
+
+  //Handle About input:
+  const handleAboutChange = (e: {
+    preventDefault: () => void;
+    target: { value: SetStateAction<string> };
+  }) => {
+    e.preventDefault();
+    setAbout(e.target.value);
+  };
+
   //FOR THE SUBMIT BUTTON:
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     //if either part of the form isn't filled out
     //set an error message and exit
-    if (setName.length == 0) {
+    if (name.length == 0) {
       setErrMessage("Name must be filled out");
     } else {
       //otherwise send the todo to our api
@@ -37,14 +71,14 @@ export default function Form() {
         method: "POST",
         body: JSON.stringify({
           name: name,
-          adress: adress,
-          about:about
+          adress: {
+            street: streetName,
+            streetNo: streetNumber,
+            city: city,
+          },
+          about: about,
         }),
       });
-      // await fetchForm(); //(we'll add this later)
-      // Clear all inputs after the todo is sent to Sanity
-      // setUserInput("");
-      // setErrMessage("");
     }
   };
   return (
@@ -61,10 +95,10 @@ export default function Form() {
               className="w-72 h-12 border p-4 border-blue-100"
               type="text"
               //our state
-              value={userInput}
+              value={name}
               placeholder="Name"
               //our function
-              onChange={handleChange}
+              onChange={handleNameChange}
             />
 
             <label htmlFor="street-name">Street Name</label>
@@ -72,10 +106,10 @@ export default function Form() {
               className="w-72 h-12 border p-4 border-blue-100"
               type="text"
               //our state
-              value={userInput}
+              value={streetName}
               placeholder="street name"
               //our function
-              onChange={handleChange}
+              onChange={handleStreetNameChange}
             />
 
             <label htmlFor="street-no">Street Number</label>
@@ -83,10 +117,10 @@ export default function Form() {
               className="w-72 h-12 border p-4 border-blue-100"
               type="text"
               //our state
-              value={userInput}
+              value={streetNumber}
               placeholder="street no"
               //our function
-              onChange={handleChange}
+              onChange={handleStreetNumberChange}
             />
 
             <label htmlFor="city">City</label>
@@ -94,12 +128,12 @@ export default function Form() {
               className="w-72 h-12 border p-4 border-blue-100"
               type="text"
               //our state
-              value={userInput}
+              value={city}
               placeholder="city"
               //our function
-              onChange={handleChange}
+              onChange={handleCityChange}
             />
-          </div>{" "}
+          </div>
           <button
             className="focus:outline-none focus:ring focus:border-blue-800
         px-6 py-2 rounded-xl bg-blue-500 text-blue-50 hover:bg-blue-800 
@@ -112,7 +146,6 @@ export default function Form() {
           {/*error set in handleSubmit*/}
           <p>{errMessage}</p>
         </form>
-        {/*...*/}
       </main>
     </div>
   );

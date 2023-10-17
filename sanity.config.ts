@@ -1,7 +1,6 @@
 import { defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
 import schemas from "./sanity/schemas";
-import sanityClient from "@sanity/client";
 import { createClient } from "next-sanity";
 
 const config = defineConfig({

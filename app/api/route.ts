@@ -1,4 +1,5 @@
-// src/pages/api/todo.js
+
+"use client";
 
 import { client } from "@/sanity.config";
 
@@ -28,11 +29,11 @@ export default async function handler(
             about: newForm.about
           })
           .then((res) => {
-            console.log(`Todo was created, document ID is ${res._id}`);
+            console.log(`Form was created, document ID is ${res._id}`);
           });
         res
           .status(200)
-          .json({ msg: `Todo was created, document ID is ${res._id}` });
+          .json({ msg: `Form was created, document ID is ${res._id}` });
       } catch (err) {
         console.error(err);
         res.status(500).json({ msg: "Error, check console" });
