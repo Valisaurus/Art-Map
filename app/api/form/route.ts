@@ -20,7 +20,7 @@ export default async function handler(
 
     // Create a new document in Sanity
     const submission = await client.create({
-      _type: "ContactSubmission", // Use the document type you defined
+      _type: "Form", // Use the document type you defined
       name,
       address,
       about,
