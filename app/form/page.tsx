@@ -64,7 +64,7 @@ export default function Form() {
     } else {
       //otherwise send the todo to our api
       // (we'll make this next!)
-      await fetch("/api", {
+      await fetch("/api/form", {
         method: "POST",
         body: JSON.stringify({
           name: name,

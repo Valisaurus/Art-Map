@@ -13,5 +13,6 @@ const config = defineConfig({
   plugins: [deskTool()],
   schema: { types: schemas },
 });
+
 const client = createClient(config);
 export { config, client };
