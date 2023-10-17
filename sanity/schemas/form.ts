@@ -1,4 +1,4 @@
-const form = {
+export default {
   name: "form",
   title: "Form",
   type: "document",
@@ -25,4 +25,3 @@ const form = {
     },
   ],
 };
-export default form;
