@@ -1,5 +1,5 @@
 "use client";
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 
 export default function Form() {
   const [name, setName] = useState("");
@@ -9,7 +9,7 @@ export default function Form() {
   const [about, setAbout] = useState("");
 
   //set an error message if either input is missing
-  const [errMessage, setErrMessage] = useState("");
+
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -32,7 +32,7 @@ export default function Form() {
     if (response.ok) {
       console.log("this is the response", response);
     } else {
-      console.log("this is error", errMessage);
+      console.log("this is error");
       // Handle errors (e.g., show an error message)
     }
   };
@@ -100,6 +100,18 @@ export default function Form() {
               //our function
               onChange={(e) => setCity(e.target.value)}
             />
+        
+            <label htmlFor="city">About</label>
+            <input
+              className="w-72 h-12 border p-4 border-blue-100"
+              type="text"
+              id="about"
+              //our state
+              value={about}
+              placeholder="about"
+              //our function
+              onChange={(e) => setAbout(e.target.value)}
+            />
           </div>
           <button
             type="submit"
@@ -111,7 +123,7 @@ export default function Form() {
             Submit
           </button>
           {/*error set in handleSubmit*/}
-          <p>{errMessage}</p>
+          <p></p>
         </form>
       </main>
     </div>
