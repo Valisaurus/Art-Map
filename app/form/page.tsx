@@ -2,10 +2,7 @@
 import { SetStateAction, useState } from "react";
 
 export default function Form() {
-  //create a state to store new  for todos
-  const [form, setForm] = useState([]);
 
-  //create a state for the text in the todo input form
   const [name, setName] = useState("");
   const [streetName, setStreetName] = useState("");
   const [streetNumber, setStreetNumber] = useState("");
@@ -67,7 +64,7 @@ export default function Form() {
     } else {
       //otherwise send the todo to our api
       // (we'll make this next!)
-      await fetch("./api", {
+      await fetch("/api", {
         method: "POST",
         body: JSON.stringify({
           name: name,
@@ -79,6 +76,14 @@ export default function Form() {
           about: about,
         }),
       });
+            // await fetchTodos(); //(we'll add this later)
+      // Clear the input fields and error message
+      setName("");
+      setStreetName("");
+      setStreetNumber("");
+      setCity("");
+      setAbout("");
+      setErrMessage("");
     }
   };
   return (
