@@ -29,9 +29,9 @@ export default function Form() {
     });
 
     if (response.ok) {
-      console.log("this is the response", response);
+      console.log("this is the response", response.ok);
     } else {
-      console.log("this is error");
+      console.log("this is error", response);
       // Handle errors (e.g., show an error message)
     }
   };
@@ -50,7 +50,7 @@ export default function Form() {
           <h1 className="text-4xl font-bold tracking-tight ">Form</h1>
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} method="POST" action="/api/form">
           <div className="flex flex-col justify-center items-center">
             <label htmlFor="name">Name</label>
             <input
