@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-//import { client } from '@/sanity.config';
+//import { client } from "@/sanity.config";
 import { createClient } from "@sanity/client";
 
 export default async function handler(
@@ -17,7 +17,7 @@ export default async function handler(
       token: process.env.NEXT_PUBLIC_SANITY_API_TOKEN,
       useCdn: false,
     });
-
+    console.log("req method", req.method);
     // Create a new document in Sanity
     const submission = await client.create({
       _type: "Form", // Use the document type you defined
@@ -30,7 +30,7 @@ export default async function handler(
       .status(200)
       .json({ message: "Form data submitted successfully" });
   } else {
-    return res.status(405).end();
+    return res.status(406).end();
   }
 }
 

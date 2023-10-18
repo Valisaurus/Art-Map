@@ -10,7 +10,6 @@ export default function Form() {
 
   //set an error message if either input is missing
 
-
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
@@ -28,7 +27,7 @@ export default function Form() {
         about: about,
       }),
     });
-    console.log("this is response", response);
+
     if (response.ok) {
       console.log("this is the response", response);
     } else {
@@ -100,7 +99,7 @@ export default function Form() {
               //our function
               onChange={(e) => setCity(e.target.value)}
             />
-        
+
             <label htmlFor="city">About</label>
             <input
               className="w-72 h-12 border p-4 border-blue-100"
