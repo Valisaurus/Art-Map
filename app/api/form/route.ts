@@ -1,38 +1,33 @@
 import { NextApiRequest, NextApiResponse } from "next";
-//import { client } from "@/sanity.config";
 import { createClient } from "@sanity/client";
 
-export default async function post(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  if (req.method === "POST") {
-    // Parse form data from the request body
-    const { name, address, about } = req.body;
+// Initialize the Sanity client
+const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_ID || "",
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "",
+  apiVersion: "2023-10-10",
+  token: process.env.NEXT_PUBLIC_SANITY_API_TOKEN,
+  useCdn: false,
+});
 
-    // Initialize the Sanity client
-    const client = createClient({
-      projectId: process.env.NEXT_PUBLIC_SANITY_ID || "",
-      dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "",
-      token: process.env.NEXT_PUBLIC_SANITY_API_TOKEN,
-      useCdn: false,
-    });
-    console.log("req method", req.method);
+export async function POST(req: NextApiRequest, res: NextApiResponse) {
+  // Parse form data from the request body
+  const { name, address, about } = req.body;
+  try {
     // Create a new document in Sanity
-    const submission = await client.create({
+    await client.create({
       _type: "form", // Use the document type you defined
       name,
       address,
       about,
     });
-
-    return res
-      .status(200)
-      .json({ message: "Form data submitted successfully" });
-  } else {
-    return res.status(406).end();
+    console.log("response=", res)
+  } catch (err) {
+    res.status(500).json({ message: "Couldn't submit form," })
   }
+  return res.status(200).json({ message: "Form data submitted successfully" });
 }
+
 
 //   switch (req.method) {
 //     case "POST":

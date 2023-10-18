@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 
+
 export default function Form() {
   const [name, setName] = useState("");
   const [streetName, setStreetName] = useState("");
@@ -29,19 +30,18 @@ export default function Form() {
     });
 
     if (response.ok) {
-      console.log("this is the response", response);
+      console.log("Form data submitted successfully");
+      // Reset the form fields
+      setName("");
+      setStreetName("");
+      setStreetNumber("");
+      setCity("");
+      setAbout("");
     } else {
-      console.log("this is error");
+      console.error("Failed to submit form data");
       // Handle errors (e.g., show an error message)
     }
   };
-
-  //   setName("");
-  //   setStreetName("");
-  //   setStreetNumber("");
-  //   setCity("");
-  //   setAbout("");
-  //   setErrMessage("");
 
   return (
     <div className="max-w-4xl mx-auto ">
@@ -101,14 +101,11 @@ export default function Form() {
             />
 
             <label htmlFor="city">About</label>
-            <input
-              className="w-72 h-12 border p-4 border-blue-100"
-              type="text"
+            <textarea
+              className="w-72 h-32 border p-4 border-blue-100"
               id="about"
-              //our state
               value={about}
-              placeholder="about"
-              //our function
+              placeholder="About"
               onChange={(e) => setAbout(e.target.value)}
             />
           </div>
