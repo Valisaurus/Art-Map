@@ -50,7 +50,7 @@ export default function Form() {
           <h1 className="text-4xl font-bold tracking-tight ">Form</h1>
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} method="POST" action="/api/form">
           <div className="flex flex-col justify-center items-center">
             <label htmlFor="name">Name</label>
             <input
