@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 //import { client } from "@/sanity.config";
 import { createClient } from "@sanity/client";
 
-export default async function handler(
+export default async function post(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -20,7 +20,7 @@ export default async function handler(
     console.log("req method", req.method);
     // Create a new document in Sanity
     const submission = await client.create({
-      _type: "Form", // Use the document type you defined
+      _type: "form", // Use the document type you defined
       name,
       address,
       about,
