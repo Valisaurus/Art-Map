@@ -1,4 +1,5 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest } from "next";
+import { NextResponse } from "next/server";
 import { createClient } from "@sanity/client";
 
 // Initialize the Sanity client
@@ -10,7 +11,8 @@ const client = createClient({
   useCdn: false,
 });
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
+export async function POST(req: NextApiRequest) {
+  console.log("this is req body", req.body);
   // Parse form data from the request body
   const { name, address, about } = req.body;
   try {
@@ -21,13 +23,11 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
       address,
       about,
     });
-    console.log("response=", res)
   } catch (err) {
-    res.status(500).json({ message: "Couldn't submit form," })
+    return NextResponse.json({ message: "hej" }, { status: 500 });
   }
-  return res.status(200).json({ message: "Form data submitted successfully" });
+  return NextResponse.json({ message: "JA" }, { status: 200 });
 }
-
 
 //   switch (req.method) {
 //     case "POST":
