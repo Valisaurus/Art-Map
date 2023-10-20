@@ -1,8 +1,7 @@
 "use client";
 import { useState } from "react";
 
-
-export default function Form() {
+export default function Form({ _id }) {
   const [name, setName] = useState("");
   const [streetName, setStreetName] = useState("");
   const [streetNumber, setStreetNumber] = useState("");
@@ -50,7 +49,7 @@ export default function Form() {
           <h1 className="text-4xl font-bold tracking-tight ">Form</h1>
         </div>
 
-        <form onSubmit={handleSubmit} method="POST" action="/api/form">
+        <form onSubmit={handleSubmit} id="">
           <div className="flex flex-col justify-center items-center">
             <label htmlFor="name">Name</label>
             <input
