@@ -12,21 +12,28 @@ const client = createClient({
 });
 
 export async function POST(req: NextApiRequest) {
-  console.log("this is req body", req.body);
-  // Parse form data from the request body
-  const { name, address, about } = req.body;
+  const { name, streetName, streetNo, city, about } = req.body;
+  console.log("req", req.body);
   try {
     // Create a new document in Sanity
-    await client.create({
+ const response =  await client.create({
       _type: "form", // Use the document type you defined
       name,
-      address,
+      address: {
+        street: streetName,
+        streetNo,
+        city,
+      },
       about,
     });
+    console.log("res", response);
   } catch (err) {
-    return NextResponse.json({ message: "hej" }, { status: 500 });
+    return NextResponse.json(
+      { message: "Form could not be submitted" },
+      { status: 500 }
+    );
   }
-  return NextResponse.json({ message: "JA" }, { status: 200 });
+  return NextResponse.json({ message: "Form was submitted" }, { status: 200 });
 }
 
 //   switch (req.method) {

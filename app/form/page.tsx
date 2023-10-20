@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-export default function Form({ _id }) {
+export default function Form() {
   const [name, setName] = useState("");
   const [streetName, setStreetName] = useState("");
   const [streetNumber, setStreetNumber] = useState("");
