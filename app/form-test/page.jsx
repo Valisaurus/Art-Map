@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-export default function DebtAddForm() {
+export default function Form({ _id }) {
   const [formData, setFormData] = useState();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -13,14 +13,14 @@ export default function DebtAddForm() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (_data_) => {
+  const onSubmit = async data => {
     setIsSubmitting(true);
-    let response;
-    setFormData(_data_);
+    setFormData(data);
+   
     try {
-      response = await fetch("/api/form", {
+      await fetch("/api/form", {
         method: "POST",
-        body: JSON.stringify(_data_),
+        body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json",
         },
@@ -52,6 +52,7 @@ export default function DebtAddForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <input {...register("_id")} type="hidden" name="_id" value={_id} />
       <div>
         <label className="text-xl block">Name</label>
         <input
@@ -67,19 +68,48 @@ export default function DebtAddForm() {
         </span>
       </div>
       <div>
-        <label className="text-xl block">Address</label>
+        <label className="text-xl block">Street Name</label>
         <input
           className={`mb-3 px-3 py-2 w-full border-2 border-gray-300 rounded shadow-sm ${
-            errors.address ? "ring-2 ring-red-500" : ""
+            errors.street ? "ring-2 ring-red-500" : ""
           }`}
           type="text"
-          name="about"
-          {...register("address", { required: true })}
+          name="StreetName"
+          {...register("streetName", { required: true })}
         />
         <span className="text-red-400 text-sm py-2">
-          {errors?.address?.message}
+          {errors?.street?.message}
         </span>
       </div>
+      <div>
+        <label className="text-xl block">Street Number</label>
+        <input
+          className={`mb-3 px-3 py-2 w-full border-2 border-gray-300 rounded shadow-sm ${
+            errors.streetNo ? "ring-2 ring-red-500" : ""
+          }`}
+          type="text"
+          name="StreetNo"
+          {...register("streetNo", { required: true })}
+        />
+        <span className="text-red-400 text-sm py-2">
+          {errors?.streetNo?.message}
+        </span>
+      </div>
+      <div>
+        <label className="text-xl block">City</label>
+        <input
+          className={`mb-3 px-3 py-2 w-full border-2 border-gray-300 rounded shadow-sm ${
+            errors.city ? "ring-2 ring-red-500" : ""
+          }`}
+          type="text"
+          name="city"
+          {...register("city", { required: true })}
+        />
+        <span className="text-red-400 text-sm py-2">
+          {errors?.city?.message}
+        </span>
+      </div>
+
       <div>
         <label className="text-xl block">About</label>
         <textarea
