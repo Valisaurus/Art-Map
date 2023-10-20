@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-export default function Form({ _id }) {
+export default function Form() {
   const [name, setName] = useState("");
   const [streetName, setStreetName] = useState("");
   const [streetNumber, setStreetNumber] = useState("");
@@ -49,7 +49,7 @@ export default function Form({ _id }) {
           <h1 className="text-4xl font-bold tracking-tight ">Form</h1>
         </div>
 
-        <form onSubmit={handleSubmit} id="">
+        <form onSubmit={handleSubmit}>
           <div className="flex flex-col justify-center items-center">
             <label htmlFor="name">Name</label>
             <input

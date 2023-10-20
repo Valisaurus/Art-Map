@@ -18,15 +18,22 @@ export async function POST(req: NextApiRequest) {
   try {
     // Create a new document in Sanity
     await client.create({
-      _type: "form", // Use the document type you defined
+      _type: "form",
       name,
       address,
       about,
     });
   } catch (err) {
-    return NextResponse.json({ message: "hej" }, { status: 500 });
+    console.error("Error while creating document:", err);
+    return NextResponse.json(
+      { message: "Failed to create document" },
+      { status: 500 }
+    );
   }
-  return NextResponse.json({ message: "JA" }, { status: 200 });
+  return NextResponse.json(
+    { message: "Form data submitted successfully" },
+    { status: 200 }
+  );
 }
 
 //   switch (req.method) {
