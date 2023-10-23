@@ -12,17 +12,16 @@ const client = createClient({
 });
 
 export async function POST(req: NextRequest) {
-  const { name, streetName, streetNo, city, about } = await req.json();
-  //console.log("req", req.json());
+  const { name,  address, about } = await req.json();
   try {
     // Create a new document in Sanity
     const response = await client.create({
-      _type: "form", // Use the document type you defined
+      _type: "form", 
       name,
       address: {
-        streetName,
-        streetNo,
-        city,
+        streetName: address.streetName, 
+        streetNo: address.streetNo, 
+        city: address.city,
       },
       about,
     });
@@ -38,27 +37,3 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({ message: "Form was submitted" }, { status: 200 });
 }
 
-//   switch (req.method) {
-//     case "POST":
-//       try {
-//         const newForm = JSON.parse(req.body);
-
-//         // Create a new document using Sanity client
-//         const result = await client.create({
-//           _type: "form",
-//           name: newForm.name,
-//           address: newForm.address,
-//           about: newForm.about,
-//         });
-
-//         console.log(`Form was created, document ID is ${result._id}`);
-//         res
-//           .status(200)
-//           .json({ msg: `Form was created, document ID is ${result._id}` });
-//       } catch (err) {
-//         console.error(err);
-//         res.status(500).json({ msg: "Error, check console" });
-//       }
-//       break;
-//   }
-// }

@@ -20,7 +20,7 @@ export default function Form() {
       body: JSON.stringify({
         name: name,
         address: {
-          street: streetName,
+          streetName: streetName,
           streetNo: streetNumber,
           city: city,
         },
@@ -75,7 +75,7 @@ export default function Form() {
               onChange={(e) => setStreetName(e.target.value)}
             />
 
-            <label htmlFor="street-no">Street Number</label>
+            <label htmlFor="streetNumber">Street Number</label>
             <input
               className="w-72 h-12 border p-4 border-blue-100"
               type="text"
