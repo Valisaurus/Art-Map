@@ -1,4 +1,4 @@
-import { NextApiRequest } from "next";
+import { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { createClient } from "@sanity/client";
 
@@ -11,9 +11,9 @@ const client = createClient({
   useCdn: false,
 });
 
-export async function POST(req: NextApiRequest) {
-  const { name, streetName, streetNo, city, about } = req.body;
-  console.log("req", req.body);
+export async function POST(req: NextRequest) {
+  const { name, streetName, streetNo, city, about } = await req.json();
+  console.log("req", req.json());
   try {
     // Create a new document in Sanity
     const response = await client.create({
