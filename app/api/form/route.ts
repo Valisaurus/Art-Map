@@ -13,7 +13,7 @@ const client = createClient({
 
 export async function POST(req: NextRequest) {
   const { name, streetName, streetNo, city, about } = await req.json();
-  console.log("req", req.json());
+  //console.log("req", req.json());
   try {
     // Create a new document in Sanity
     const response = await client.create({
