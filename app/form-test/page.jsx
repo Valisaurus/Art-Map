@@ -78,7 +78,7 @@ export default function Form({ _id }) {
           {...register("streetName", { required: true })}
         />
         <span className="text-red-400 text-sm py-2">
-          {errors?.street?.message}
+          {errors?.streetName?.message}
         </span>
       </div>
       <div>

@@ -4,10 +4,10 @@ import { createClient } from "@sanity/client";
 
 // Initialize the Sanity client
 const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_ID || "",
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "",
+  projectId: "z4x2zjsw",
+  dataset: "production",
   apiVersion: "2023-10-10",
-  token: process.env.NEXT_PUBLIC_SANITY_API_TOKEN,
+  token: process.env.SANITY_API_TOKEN,
   useCdn: false,
 });
 
@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
       _type: "form", // Use the document type you defined
       name,
       address: {
-        street: streetName,
+        streetName,
         streetNo,
         city,
       },
