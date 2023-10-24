@@ -15,6 +15,7 @@ export default {
       fields: [
         { name: "streetName", type: "string", title: "Street name" },
         { name: "streetNo", type: "string", title: "Street number" },
+        { name: "zip", type: "number", title: "Zip" },
         { name: "city", type: "string", title: "City" },
       ],
     },

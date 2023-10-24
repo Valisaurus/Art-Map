@@ -3,6 +3,7 @@ export type Form = {
   address: {
     streetName: string;
     streetNo: string;
+    zip: number;
     city: string;
   };
   about: string;

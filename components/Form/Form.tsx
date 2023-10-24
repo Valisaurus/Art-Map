@@ -77,6 +77,7 @@ export default function Form() {
           {errors.address?.streetName && (
             <p className="text-red-500">{errors.address?.streetName.message}</p>
           )}
+
           <label>Gatunummer</label>
           <Controller
             name="address.streetNo"
@@ -94,6 +95,25 @@ export default function Form() {
           {errors.address?.streetNo && (
             <p className="text-red-500">{errors.address?.streetNo.message}</p>
           )}
+
+          <label>Postkod</label>
+          <Controller
+            name="address.zip"
+            control={control}
+            rules={{ required: "Detta fält måste fyllas i" }}
+            render={({ field }) => (
+              <input
+                className="w-72 h-12 border p-4 border-blue-100"
+                placeholder=""
+                {...field}
+                value={field.value || ""}
+              />
+            )}
+          />
+          {errors.address?.zip && (
+            <p className="text-red-500">{errors.address?.zip.message}</p>
+          )}
+
           <label>Stad</label>
           <Controller
             name="address.city"
