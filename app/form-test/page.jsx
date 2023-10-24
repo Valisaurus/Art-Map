@@ -42,7 +42,9 @@ export default function Form({ _id }) {
         <ul>
           <li>
             Name: {formData.name} <br />
-            Address: {formData.address} <br />
+            Street Name: {formData.address.streetName} <br />
+            Street Number: {formData.address.streetName} <br />
+            City: {formData.streetName} <br />
             About: {formData.about} <br />
           </li>
         </ul>
