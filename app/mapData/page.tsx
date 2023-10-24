@@ -10,7 +10,7 @@ type DataItem = {
   };
   address: {
     streetName: string;
-    streetNumber: string;
+    streetNo: string;
     city: string;
   };
   name: string;
@@ -94,7 +94,7 @@ const MapComponent = () => {
         // Assuming your document has an "address" field
         if (item.address) {
           const location = await geocodeAddress(
-            `${item.address.streetName} ${item.address.streetNumber}, ${item.address.city}, Sweden`
+            `${item.address.streetName} ${item.address.streetNo}, ${item.address.city}, Sweden`
           );
 
           if (location) {
