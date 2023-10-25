@@ -7,11 +7,11 @@ export const durationType = defineType({
   fields: [
     defineField({
       name: "from",
-      type: "timeValue",
+      type: "string",
     }),
     defineField({
       name: "to",
-      type: "timeValue",
+      type: "string",
     }),
   ],
   // make the fields render next to each other

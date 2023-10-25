@@ -12,13 +12,37 @@ export type Form = {
     phone: number;
   };
   openingHours: {
-    monday?: string;
-    tuesday?: string;
-    wednesday?: string;
-    thursday?: string;
-    friday?: string;
-    saturday?: string;
-    sunday?: string;
+    monday?: {
+      from: string;
+      to: string;
+    };
+    tuesday?: {
+      from: string;
+      to: string;
+    };
+    wednesday?: {
+      from: string;
+      to: string;
+    };
+    thursday?: {
+      from: string;
+      to: string;
+    };
+    friday?: {
+      from: string;
+      to: string;
+    };
+    saturday?: {
+      from: string;
+      to: string;
+    };
+    sunday?: {
+      from: string;
+      to: string;
+    };
   };
-  about: string;
+  about: {
+    from: string;
+    to: string;
+  };
 };

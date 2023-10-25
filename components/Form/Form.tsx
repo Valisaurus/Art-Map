@@ -39,23 +39,24 @@ export default function Form() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="my-8">
-        <h1 className="text-4xl font-bold tracking-tight">
-          Info om utställningsplats
+    <div className="">
+      <div className="">
+        <h1 className="">
+          Fyll i uppgifter om er verksamhet
         </h1>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-col justify-center items-center">
-          <label>Namn på utställningsplats</label>
+        {/* _____________ NAME ____________*/}
+        <div className="">
+          <label>NAMN PÅ UTSTÄLLNINGSPLATS</label>
           <Controller
             name="name"
             control={control}
             rules={{ required: "Detta fält måste fyllas i" }}
             render={({ field }) => (
               <input
-                className="w-72 h-12 border p-4 border-blue-100"
+                className=""
                 placeholder=""
                 {...field}
                 value={field.value || ""}
@@ -64,7 +65,8 @@ export default function Form() {
           />
           {errors.name && <p className="text-red-500">{errors.name.message}</p>}
 
-          <label>Typ av utställningsplats</label>
+          {/* _____________ TYPE OF ____________*/}
+          <label>TYP AV UTSTÄLLNINGSPLATS</label>
           <Controller
             name="typeOf"
             control={control}
@@ -127,8 +129,8 @@ export default function Form() {
           {errors.typeOf && (
             <p className="text-red-500">{errors.typeOf.message}</p>
           )}
-
-          <h2>Kontaktuppgifter</h2>
+          {/* _____________ CONTACT ____________*/}
+          <h2>KONTAKTUPPGIFTER</h2>
           <label>Email</label>
           <Controller
             name="contact.email"
@@ -137,7 +139,7 @@ export default function Form() {
             render={({ field }) => (
               <input
                 type="email"
-                className="w-72 h-12 border p-4 border-blue-100"
+                className=""
                 placeholder=""
                 {...field}
                 value={field.value || ""}
@@ -156,7 +158,7 @@ export default function Form() {
             render={({ field }) => (
               <input
                 type="tel"
-                className="w-72 h-12 border p-4 border-blue-100"
+                className=""
                 placeholder=""
                 {...field}
                 value={field.value || ""}
@@ -166,7 +168,282 @@ export default function Form() {
           {errors.contact?.phone && (
             <p className="text-red-500">{errors.contact?.phone.message}</p>
           )}
-
+          {/* _____________ OPENING HOURS ____________*/}
+          <h2>ÖPPNINGSTIDER</h2>
+          <h3>Måndag</h3>
+          <label>Från</label>
+          <Controller
+            name="openingHours.monday.from"
+            control={control}
+            // rules={{ required: "Detta fält måste fyllas i" }}
+            render={({ field }) => (
+              <input
+                className=""
+                placeholder="00:00"
+                {...field}
+                value={field.value || ""}
+              />
+            )}
+          />
+          {errors.openingHours?.monday?.from && (
+            <p className="text-red-500">
+              {errors.openingHours?.monday?.from.message}
+            </p>
+          )}
+          <label>Till</label>
+          <Controller
+            name="openingHours.monday.to"
+            control={control}
+            // rules={{ required: "Detta fält måste fyllas i" }}
+            render={({ field }) => (
+              <input
+                className=""
+                placeholder="00:00"
+                {...field}
+                value={field.value || ""}
+              />
+            )}
+          />
+          {errors.openingHours?.monday?.to && (
+            <p className="text-red-500">
+              {errors.openingHours?.monday?.to.message}
+            </p>
+          )}
+          <h3>Tisdag</h3>
+          <label>Från</label>
+          <Controller
+            name="openingHours.tuesday.from"
+            control={control}
+            // rules={{ required: "Detta fält måste fyllas i" }}
+            render={({ field }) => (
+              <input
+                className=""
+                placeholder="00:00"
+                {...field}
+                value={field.value || ""}
+              />
+            )}
+          />
+          {errors.openingHours?.tuesday?.from && (
+            <p className="text-red-500">
+              {errors.openingHours?.tuesday?.from.message}
+            </p>
+          )}
+          <label>Till</label>
+          <Controller
+            name="openingHours.tuesday.to"
+            control={control}
+            // rules={{ required: "Detta fält måste fyllas i" }}
+            render={({ field }) => (
+              <input
+                className=""
+                placeholder="00:00"
+                {...field}
+                value={field.value || ""}
+              />
+            )}
+          />
+          {errors.openingHours?.tuesday?.to && (
+            <p className="text-red-500">
+              {errors.openingHours?.tuesday?.to.message}
+            </p>
+          )}
+          <h3>Onsdag</h3>
+          <label>Från</label>
+          <Controller
+            name="openingHours.wednesday.from"
+            control={control}
+            // rules={{ required: "Detta fält måste fyllas i" }}
+            render={({ field }) => (
+              <input
+                className=""
+                placeholder="00:00"
+                {...field}
+                value={field.value || ""}
+              />
+            )}
+          />
+          {errors.openingHours?.wednesday?.from && (
+            <p className="text-red-500">
+              {errors.openingHours?.wednesday?.from.message}
+            </p>
+          )}
+          <label>Till</label>
+          <Controller
+            name="openingHours.tuesday.to"
+            control={control}
+            // rules={{ required: "Detta fält måste fyllas i" }}
+            render={({ field }) => (
+              <input
+                className=""
+                placeholder="00:00"
+                {...field}
+                value={field.value || ""}
+              />
+            )}
+          />
+          {errors.openingHours?.wednesday?.to && (
+            <p className="text-red-500">
+              {errors.openingHours?.wednesday?.to.message}
+            </p>
+          )}
+          <h3>Torsdag</h3>
+          <label>Från</label>
+          <Controller
+            name="openingHours.thursday.from"
+            control={control}
+            // rules={{ required: "Detta fält måste fyllas i" }}
+            render={({ field }) => (
+              <input
+                className=""
+                placeholder="00:00"
+                {...field}
+                value={field.value || ""}
+              />
+            )}
+          />
+          {errors.openingHours?.thursday?.from && (
+            <p className="text-red-500">
+              {errors.openingHours?.thursday?.from.message}
+            </p>
+          )}
+          <label>Till</label>
+          <Controller
+            name="openingHours.thursday.to"
+            control={control}
+            // rules={{ required: "Detta fält måste fyllas i" }}
+            render={({ field }) => (
+              <input
+                className=""
+                placeholder="00:00"
+                {...field}
+                value={field.value || ""}
+              />
+            )}
+          />
+          {errors.openingHours?.thursday?.to && (
+            <p className="text-red-500">
+              {errors.openingHours?.thursday?.to.message}
+            </p>
+          )}
+          <h3>Fredag</h3>
+          <label>Från</label>
+          <Controller
+            name="openingHours.friday.from"
+            control={control}
+            // rules={{ required: "Detta fält måste fyllas i" }}
+            render={({ field }) => (
+              <input
+                className=""
+                placeholder="00:00"
+                {...field}
+                value={field.value || ""}
+              />
+            )}
+          />
+          {errors.openingHours?.friday?.from && (
+            <p className="text-red-500">
+              {errors.openingHours?.friday?.from.message}
+            </p>
+          )}
+          <label>Till</label>
+          <Controller
+            name="openingHours.friday.to"
+            control={control}
+            // rules={{ required: "Detta fält måste fyllas i" }}
+            render={({ field }) => (
+              <input
+                className=""
+                placeholder="00:00"
+                {...field}
+                value={field.value || ""}
+              />
+            )}
+          />
+          {errors.openingHours?.friday?.to && (
+            <p className="text-red-500">
+              {errors.openingHours?.friday?.to.message}
+            </p>
+          )}
+          <h3>Lördag</h3>
+          <label>Från</label>
+          <Controller
+            name="openingHours.saturday.from"
+            control={control}
+            // rules={{ required: "Detta fält måste fyllas i" }}
+            render={({ field }) => (
+              <input
+                className=""
+                placeholder="00:00"
+                {...field}
+                value={field.value || ""}
+              />
+            )}
+          />
+          {errors.openingHours?.saturday?.from && (
+            <p className="text-red-500">
+              {errors.openingHours?.saturday?.from.message}
+            </p>
+          )}
+          <label>Till</label>
+          <Controller
+            name="openingHours.saturday.to"
+            control={control}
+            // rules={{ required: "Detta fält måste fyllas i" }}
+            render={({ field }) => (
+              <input
+                className=""
+                placeholder="00:00"
+                {...field}
+                value={field.value || ""}
+              />
+            )}
+          />
+          {errors.openingHours?.saturday?.to && (
+            <p className="text-red-500">
+              {errors.openingHours?.saturday?.to.message}
+            </p>
+          )}
+          <h3>Söndag</h3>
+          <label>Från</label>
+          <Controller
+            name="openingHours.sunday.from"
+            control={control}
+            // rules={{ required: "Detta fält måste fyllas i" }}
+            render={({ field }) => (
+              <input
+                className=""
+                placeholder="00:00"
+                {...field}
+                value={field.value || ""}
+              />
+            )}
+          />
+          {errors.openingHours?.sunday?.from && (
+            <p className="text-red-500">
+              {errors.openingHours?.sunday?.from.message}
+            </p>
+          )}
+          <label>Till</label>
+          <Controller
+            name="openingHours.friday.to"
+            control={control}
+            // rules={{ required: "Detta fält måste fyllas i" }}
+            render={({ field }) => (
+              <input
+                className=""
+                placeholder="00:00"
+                {...field}
+                value={field.value || ""}
+              />
+            )}
+          />
+          {errors.openingHours?.friday?.to && (
+            <p className="text-red-500">
+              {errors.openingHours?.friday?.to.message}
+            </p>
+          )}
+          {/* _____________ ADDRESS ____________*/}
           <h2>Adress</h2>
           <label>Gatunamn</label>
           <Controller
@@ -175,7 +452,7 @@ export default function Form() {
             rules={{ required: "Detta fält måste fyllas i" }}
             render={({ field }) => (
               <input
-                className="w-72 h-12 border p-4 border-blue-100"
+                className=""
                 placeholder=""
                 {...field}
                 value={field.value || ""}
@@ -193,7 +470,7 @@ export default function Form() {
             rules={{ required: "Detta fält måste fyllas i" }}
             render={({ field }) => (
               <input
-                className="w-72 h-12 border p-4 border-blue-100"
+                className=""
                 placeholder=""
                 {...field}
                 value={field.value || ""}
@@ -212,7 +489,7 @@ export default function Form() {
             rules={{ required: "Detta fält måste fyllas i" }}
             render={({ field }) => (
               <input
-                className="w-72 h-12 border p-4 border-blue-100"
+                className=""
                 placeholder=""
                 {...field}
                 value={field.value || ""}
@@ -230,7 +507,7 @@ export default function Form() {
             rules={{ required: "Detta fält måste fyllas i" }}
             render={({ field }) => (
               <input
-                className="w-72 h-12 border p-4 border-blue-100"
+                className=""
                 placeholder=""
                 {...field}
                 value={field.value || ""}
@@ -240,7 +517,7 @@ export default function Form() {
           {errors.address?.city && (
             <p className="text-red-500">{errors.address?.city.message}</p>
           )}
-
+          {/* _____________ ABOUT ____________*/}
           <label>Om utställningsplatsen</label>
           <Controller
             name="about"
@@ -248,7 +525,7 @@ export default function Form() {
             rules={{ required: "Detta fält måste fyllas i" }}
             render={({ field }) => (
               <textarea
-                className="w-72 h-12 border p-4 border-blue-100"
+                className=""
                 placeholder=""
                 {...field}
                 value={field.value || []}
@@ -258,12 +535,10 @@ export default function Form() {
           {errors.about && (
             <p className="text-red-500">{errors.about?.message}</p>
           )}
-
+          {/* _____________ SUBMIT FORM ____________*/}
           <button
             type="submit"
-            className="focus:outline-none focus:ring focus:border-blue-800
-                px-6 py-2 rounded-xl bg-blue-500 text-blue-50 hover:bg-blue-800
-                font-semibold"
+            className=""
           >
             Publicera
           </button>
