@@ -2,8 +2,9 @@
 import { useEffect, useState } from "react";
 import { createClient } from "@sanity/client";
 import mapboxgl, { LngLatLike } from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 
-type DataItem = {
+type Location = {
   location: {
     lat: number;
     lng: number;
@@ -11,6 +12,7 @@ type DataItem = {
   address: {
     streetName: string;
     streetNo: string;
+    zip: number;
     city: string;
   };
   name: string;
@@ -20,22 +22,32 @@ const client = createClient({
   projectId: "z4x2zjsw",
   dataset: "production",
   useCdn: false,
-  // Add other configuration options here
 });
 
 const MapComponent = () => {
   const [map, setMap] = useState<mapboxgl.Map | null>(null);
-  const [data, setData] = useState<DataItem[]>([]);
+  const [locations, setLocations] = useState<Location[]>([]);
 
   // Initialize the Mapbox map
   useEffect(() => {
     mapboxgl.accessToken = process.env.NEXT_PUBLIC_ACCESS_TOKEN || "";
     const newMap = new mapboxgl.Map({
       container: "map", // Replace 'map' with the ID of your map container
-      style: "mapbox://styles/mapbox/streets-v11", // Choose your map style
-      center: [0, 0], // Initial map center coordinates
-      zoom: 1, // Initial zoom level
+      style: "mapbox://styles/mapbox/streets-v12", // Choose your map style
+      center: [11.967017, 57.707233], // Initial map center coordinates
+      zoom: 10, // Initial zoom level
     });
+
+    const navigationControl = new mapboxgl.NavigationControl();
+    newMap.addControl(navigationControl, "bottom-right");
+
+    const geolocateControl = new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true,
+      },
+      trackUserLocation: true,
+    });
+    newMap.addControl(geolocateControl, "top-left");
 
     setMap(newMap);
 
@@ -76,10 +88,10 @@ const MapComponent = () => {
     const documentType = "form"; // Replace with your document type
 
     client
-      .fetch<DataItem[]>(`*[_type == "${documentType}"]`)
-      .then((fetchedData) => {
+      .fetch<Location[]>(`*[_type == "${documentType}"]`)
+      .then((fetchedLocations) => {
         // Handle the fetched data
-        setData(fetchedData);
+        setLocations(fetchedLocations);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -89,21 +101,32 @@ const MapComponent = () => {
   // Add markers to the map using fetched data
   useEffect(() => {
     if (map) {
-      data.forEach(async (item) => {
-        console.log("THIS IS ITEM", item);
+      locations.forEach(async (locationData) => {
+        console.log("THIS IS ITEM", location);
         // Assuming your document has an "address" field
-        if (item.address) {
+        if (locationData.address) {
           const location = await geocodeAddress(
-            `${item.address.streetName} ${item.address.streetNo}, ${item.address.city}, Sweden`
+            `${locationData.address.streetName} ${locationData.address.streetNo}, ${locationData.address.zip} ,${locationData.address.city}, Sweden`
           );
-
+          const createPopup = (name: string) => {
+            if (map) {
+              new mapboxgl.Popup({ offset: [0, -15] })
+                .setLngLat([0, 0]) // You should specify a valid location here
+                .setHTML(`<h3>${name}</h3>`)
+                .addTo(map);
+            }
+          };
           if (location) {
-            new mapboxgl.Marker().setLngLat(location).addTo(map);
+            const marker = new mapboxgl.Marker().setLngLat(location).addTo(map);
+            marker.getElement().addEventListener("click", () => {
+              console.log("THIS IS NAME", locationData.name);
+              createPopup(locationData.name);
+            });
           }
         }
       });
     }
-  }, [map, data]);
+  }, [map, locations]);
 
   return <div id="map" style={{ width: "100%", height: "400px" }} />;
 };
