@@ -25,3 +25,23 @@ input, textarea {
   border: 1px solid black;
 }
 
+/* layout */
+
+.contentWrapper {
+  display: flex;
+  width: 100vw;
+}
+
+.leftBox {
+width: 4rem;
+height: calc(100vh - 4rem);
+border: 2px solid black;
+border-top: none;
+}
+
+.rightBox {
+  width: 4rem;
+  height: calc(100vh - 4rem);
+  border: 2px solid black;
+  border-top: none;
+}

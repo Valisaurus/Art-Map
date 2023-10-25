@@ -22,7 +22,11 @@ export default function RootLayout({
       <body>
         <main>
           <Nav />
+          <div className="contentWrapper">
+          <div className="leftBox"></div>
           {children}
+          <div className="rightBox"></div>
+          </div>
         </main>
       </body>
     </html>

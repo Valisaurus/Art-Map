@@ -15,20 +15,18 @@ export default async function Index() {
 
   return (
     <>
-      <nav className="">
-        <div className="">
-          {user ? (
-            <div className="">
-              Hey, {user.email}!
-              <LogoutButton />
-            </div>
-          ) : (
-            <Link href="/login" className="">
-              Login
-            </Link>
-          )}
-        </div>
-      </nav>
+      <div className="">
+        {user ? (
+          <div className="">
+            Hey, {user.email}!
+            <LogoutButton />
+          </div>
+        ) : (
+          <Link href="/login" className="">
+            Login
+          </Link>
+        )}
+      </div>
       <Map />
     </>
   );
