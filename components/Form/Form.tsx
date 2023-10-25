@@ -16,7 +16,6 @@ export default function Form() {
 
   const submitForm = async (data: Form) => {
     try {
-      // Make a POST request to your Next.js API route
       const response = await fetch("/api/form", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -148,6 +147,7 @@ export default function Form() {
           {errors.contact?.email && (
             <p className="text-red-500">{errors.contact?.email.message}</p>
           )}
+
           <label>Telefon</label>
           <Controller
             name="contact.phone"

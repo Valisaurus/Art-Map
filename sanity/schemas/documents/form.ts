@@ -34,7 +34,7 @@ export default {
       fields: [
         { name: "streetName", type: "string", title: "Street name" },
         { name: "streetNo", type: "string", title: "Street number" },
-        { name: "zip", type: "number", title: "Zip" },
+        { name: "zip", type: "string", title: "Zip" },
         { name: "city", type: "string", title: "City" },
       ],
     },
@@ -44,7 +44,7 @@ export default {
       type: "object",
       fields: [
         { name: "email", type: "string", title: "Email" },
-        { name: "phone", type: "number", title: "Phone number" },
+        { name: "phone", type: "string", title: "Phone number" },
       ],
     },
     defineType({
