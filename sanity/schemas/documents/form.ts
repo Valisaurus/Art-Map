@@ -16,15 +16,16 @@ export default {
       type: "string",
       options: {
         list: [
-          { title: "Commersial Gallery", value: "commersialGallery" },
-          { title: "Artist Run", value: "artistRun" },
-          { title: "Museum", value: "museum" },
-          { title: "Institution", value: "institution" },
-          { title: "Pop Up", value: "popUp" },
+          {title: "Commersial Gallery", value: "commersialGallery"},
+          {title: "Artist Run", value: "artistRun"},
+          {title: "Museum", value: "museum"},
+          {title: "Institution", value: "institution"},
+          {title: "Pop Up", value: "popUp"},
         ],
-        layout: "radio",
-        direction: "horizontal",
-      },
+               layout: "radio",
+        direction: "horizontal"
+      }
+      
     },
     {
       name: "address",
@@ -84,8 +85,7 @@ export default {
     {
       name: "about",
       title: "About",
-      type: "array",
-      of: [{ type: "block" }],
+      type: "text",
     },
   ],
 };

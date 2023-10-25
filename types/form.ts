@@ -20,10 +20,5 @@ export type Form = {
     saturday?: string;
     sunday?: string;
   };
-  about: {
-    name: string;
-    title: string;
-    type: string;
-    of: Array<{ type: string }>;
-  };
+  about: string;
 };
