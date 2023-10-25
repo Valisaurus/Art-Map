@@ -33,7 +33,7 @@ const MapComponent = () => {
     mapboxgl.accessToken = process.env.NEXT_PUBLIC_ACCESS_TOKEN || "";
     const newMap = new mapboxgl.Map({
       container: "map", // Replace 'map' with the ID of your map container
-      style: "mapbox://styles/mapbox/streets-v12", // Choose your map style
+      style: "mapbox://styles/valle88/clo5nyn1800rl01pf1sfb7ebm", // Choose your map style
       center: [11.967017, 57.707233], // Initial map center coordinates
       zoom: 10, // Initial zoom level
     });
@@ -69,7 +69,7 @@ const MapComponent = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("THIS IS DATA", data);
+        //console.log("THIS IS DATA", data);
         if (data.features && data.features.length > 0) {
           const [lng, lat] = data.features[0].center;
           return [lng, lat];
@@ -85,7 +85,7 @@ const MapComponent = () => {
 
   // Fetch data from Sanity when the component mounts
   useEffect(() => {
-    const documentType = "form"; // Replace with your document type
+    const documentType = "form"; //
 
     client
       .fetch<Location[]>(`*[_type == "${documentType}"]`)
@@ -102,25 +102,23 @@ const MapComponent = () => {
   useEffect(() => {
     if (map) {
       locations.forEach(async (locationData) => {
-        console.log("THIS IS ITEM", location);
-        // Assuming your document has an "address" field
+        //console.log("THIS IS ITEM", location);
+
         if (locationData.address) {
           const location = await geocodeAddress(
             `${locationData.address.streetName} ${locationData.address.streetNo}, ${locationData.address.zip} ,${locationData.address.city}, Sweden`
           );
-          const createPopup = (name: string) => {
-            if (map) {
-              new mapboxgl.Popup({ offset: [0, -15] })
-                .setLngLat([0, 0]) // You should specify a valid location here
-                .setHTML(`<h3>${name}</h3>`)
-                .addTo(map);
-            }
-          };
+
           if (location) {
-            const marker = new mapboxgl.Marker().setLngLat(location).addTo(map);
+            const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+              locationData.name
+            );
+            const marker = new mapboxgl.Marker()
+              .setLngLat(location)
+              .setPopup(popup)
+              .addTo(map);
             marker.getElement().addEventListener("click", () => {
-              console.log("THIS IS NAME", locationData.name);
-              createPopup(locationData.name);
+              //console.log("THIS IS NAME", locationData.name);
             });
           }
         }
