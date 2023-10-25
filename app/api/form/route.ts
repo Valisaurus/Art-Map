@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
   try {
     // Create a new document in Sanity
     const response = await client.create({
-      _type: "form", 
+      _type: "form",
       name,
       typeOf,
       contact: {
@@ -24,8 +24,8 @@ export async function POST(req: NextRequest) {
         phone: contact.phone,
       },
       address: {
-        streetName: address.streetName, 
-        streetNo: address.streetNo, 
+        streetName: address.streetName,
+        streetNo: address.streetNo,
         zip: address.zip,
         city: address.city,
       },
@@ -42,4 +42,3 @@ export async function POST(req: NextRequest) {
 
   return NextResponse.json({ message: "Form was submitted" }, { status: 200 });
 }
-
