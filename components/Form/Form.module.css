@@ -1,0 +1,9 @@
+.formWrapper {
+    width: 50rem;
+    height: auto;
+    padding: 2rem;
+}
+
+.formHeading {
+    text-transform: uppercase;
+}
