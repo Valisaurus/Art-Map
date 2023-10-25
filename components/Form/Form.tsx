@@ -6,6 +6,7 @@ export default function Form() {
   const {
     control,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<Form>();
   const [error, setError] = useState<string | null>(null);
@@ -23,12 +24,16 @@ export default function Form() {
       });
 
       if (response.ok) {
+        // FIXA:MESSAGE
         console.log("Form data submitted successfully");
+        reset();
       } else {
+        // FIXA: ERROR MESSAGE
         console.error("Failed to submit form data");
         setError("Failed to submit form data");
       }
     } catch (err) {
+      // FIXA: ERROR MESSAGE
       console.error("Error while submitting the form:", err);
       setError("Failed to submit form data");
     }
@@ -60,6 +65,109 @@ export default function Form() {
           />
           {errors.name && <p className="text-red-500">{errors.name.message}</p>}
 
+          <label>Typ av utställningsplats</label>
+          <Controller
+            name="typeOf"
+            control={control}
+            rules={{ required: "Välj endast ett alternativ" }}
+            render={({ field }) => (
+              <div>
+                <label>
+                  <input
+                    type="radio"
+                    name="typeOf"
+                    value="commersialGallery"
+                    checked={field.value === "commersialGallery"}
+                    onChange={() => field.onChange("commersialGallery")}
+                  />
+                  Kommersiellt Galleri
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="typeOf"
+                    value="artistRun"
+                    checked={field.value === "artistRun"}
+                    onChange={() => field.onChange("artistRun")}
+                  />
+                  Konstnärsdrivet
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="typeOf"
+                    value="museum"
+                    checked={field.value === "museum"}
+                    onChange={() => field.onChange("museum")}
+                  />
+                  Museum
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="typeOf"
+                    value="institution"
+                    checked={field.value === "institution"}
+                    onChange={() => field.onChange("institution")}
+                  />
+                  Konsthall
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="typeOf"
+                    value="popUp"
+                    checked={field.value === "popUp"}
+                    onChange={() => field.onChange("popUp")}
+                  />
+                  Pop Up/ temporär
+                </label>
+              </div>
+            )}
+          />
+          {errors.typeOf && (
+            <p className="text-red-500">{errors.typeOf.message}</p>
+          )}
+
+          <h2>Kontaktuppgifter</h2>
+          <label>Email</label>
+          <Controller
+            name="contact.email"
+            control={control}
+            rules={{ required: "Detta fält måste fyllas i" }}
+            render={({ field }) => (
+              <input
+                type="email"
+                className="w-72 h-12 border p-4 border-blue-100"
+                placeholder=""
+                {...field}
+                value={field.value || ""}
+              />
+            )}
+          />
+          {errors.contact?.email && (
+            <p className="text-red-500">{errors.contact?.email.message}</p>
+          )}
+          <label>Telefon</label>
+          <Controller
+            name="contact.phone"
+            control={control}
+            rules={{ required: "Detta fält måste fyllas i" }}
+            render={({ field }) => (
+              <input
+                type="tel"
+                className="w-72 h-12 border p-4 border-blue-100"
+                placeholder=""
+                {...field}
+                value={field.value || ""}
+              />
+            )}
+          />
+          {errors.contact?.phone && (
+            <p className="text-red-500">{errors.contact?.phone.message}</p>
+          )}
+
+          <h2>Adress</h2>
           <label>Gatunamn</label>
           <Controller
             name="address.streetName"
@@ -97,6 +205,7 @@ export default function Form() {
           )}
 
           <label>Postkod</label>
+          <p>Skriv utan mellanrum, t.ex 12345 inte 123 45</p>
           <Controller
             name="address.zip"
             control={control}
@@ -142,7 +251,7 @@ export default function Form() {
                 className="w-72 h-12 border p-4 border-blue-100"
                 placeholder=""
                 {...field}
-                value={field.value || ""}
+                value={field.value || []}
               />
             )}
           />
