@@ -53,3 +53,11 @@ border-top: none;
   border: 2px solid black;
   border-top: none;
 }
+
+
+@media only screen and (max-width: 990px) {
+.leftBox,
+.rightBox {
+  display: none;
+}
+}
