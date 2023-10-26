@@ -12,15 +12,13 @@ export default function TypeOf({ control, errors }: aboutProps) {
   return (
     <section className={styles.aboutSection}>
       <h2>Om verksamheten</h2>
-      <label hidden>Om utställningsplatsen</label>
+      <label hidden>Om verksamheten</label>
       <Controller
         name="about"
         control={control}
         rules={{ required: "Detta fält måste fyllas i" }}
         render={({ field }) => (
           <textarea
-            className=""
-            placeholder=""
             {...field}
             value={field.value || []}
           />
