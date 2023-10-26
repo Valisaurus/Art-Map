@@ -126,7 +126,7 @@ const MapComponent = () => {
     }
   }, [map, locations]);
 
-  return <div id="map" style={{ width: "100%", height: "400px" }} />;
+  return <div id="map" style={{ width: "100%", height: "100%" }} />;
 };
 
 export default MapComponent;

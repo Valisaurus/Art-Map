@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 * {
   box-sizing: border-box;
 }
@@ -12,3 +11,45 @@ main {
   height: 100vh;
 }
 
+h2 {
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+nav {
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
+
+input, textarea {
+  border: 1px solid black;
+  max-width: 20rem;
+}
+
+/* layout */
+
+.pageWrapper {
+  display: flex;
+  width: 100vw;
+}
+
+.contentWrapper {
+  width: 100%;
+  /* padding: 6rem; */
+}
+
+.leftBox {
+width: 4rem;
+height: calc(100vh - 4rem);
+border: 2px solid black;
+border-top: none;
+}
+
+.rightBox {
+  width: 4rem;
+  height: calc(100vh - 4rem);
+  border: 2px solid black;
+  border-top: none;
+}

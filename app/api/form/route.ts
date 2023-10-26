@@ -12,8 +12,8 @@ const client = createClient({
 });
 
 export async function POST(req: NextRequest) {
-  const { name, typeOf, contact, address, about } = await req.json();
-  try {
+  const { name, typeOf, contact, openingHours, address, about } = await req.json(); 
+  try {  
     // Create a new document in Sanity
     const response = await client.create({
       _type: "form",
@@ -22,6 +22,15 @@ export async function POST(req: NextRequest) {
       contact: {
         email: contact.email,
         phone: contact.phone,
+      },
+      openingHours: {
+        monday: openingHours.monday.from,
+        tuesday: openingHours.tuesday,
+        wednesday: openingHours.wednesday,
+        thursday: openingHours.thursday,
+        friday: openingHours.friday,
+        saturday: openingHours.saturday,
+        sunday: openingHours.sunday,
       },
       address: {
         streetName: address.streetName,

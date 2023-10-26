@@ -1,90 +1,125 @@
 import { defineField, defineType } from "sanity";
 
 export default {
-  name: "form",
   title: "Form",
+  name: "form",
   type: "document",
   fields: [
     {
-      name: "name",
       title: "Name",
+      name: "name",
       type: "string",
     },
     {
-      name: "typeOf",
       title: "Type of exhibition space",
+      name: "typeOf",
       type: "string",
       options: {
         list: [
-          {title: "Commersial Gallery", value: "commersialGallery"},
-          {title: "Artist Run", value: "artistRun"},
-          {title: "Museum", value: "museum"},
-          {title: "Institution", value: "institution"},
-          {title: "Pop Up", value: "popUp"},
+          { title: "Commersial Gallery", value: "commersialGallery" },
+          { title: "Artist Run", value: "artistRun" },
+          { title: "Museum", value: "museum" },
+          { title: "Institution", value: "institution" },
+          { title: "Pop Up", value: "popUp" },
         ],
-               layout: "radio",
-        direction: "horizontal"
-      }
-      
+        layout: "radio",
+        direction: "horizontal",
+      },
     },
     {
-      name: "address",
       title: "Address",
+      name: "address",
       type: "object",
       fields: [
-        { name: "streetName", type: "string", title: "Street name" },
-        { name: "streetNo", type: "string", title: "Street number" },
-        { name: "zip", type: "string", title: "Zip" },
-        { name: "city", type: "string", title: "City" },
+        { title: "Street name", name: "streetName", type: "string" },
+        { title: "Street number", name: "streetNo", type: "string" },
+        { title: "Zip", name: "zip", type: "string" },
+        { title: "City", name: "city", type: "string" },
       ],
     },
     {
-      name: "contact",
       title: "Contact",
+      name: "contact",
       type: "object",
       fields: [
-        { name: "email", type: "string", title: "Email" },
-        { name: "phone", type: "string", title: "Phone number" },
+        { title: "Email", name: "email", type: "string"},
+        { title: "Phone number", name: "phone", type: "string" },
       ],
     },
-    defineType({
-      name: "openingHours",
+    {
       title: "Opening Hours",
+      name: "openingHours",
       type: "object",
       fields: [
-        defineField({
+        {
+          title: "Monday",
           name: "monday",
-          type: "duration",
-        }),
-        defineField({
+          type: "object",
+          fields: [
+            { title: "From", name: "from", type: "string" },
+            { title: "To", name: "to", type: "string" },
+          ]
+        },
+        {
+          title: "Tuesday",
           name: "tuesday",
-          type: "duration",
-        }),
-        defineField({
+          type: "object",
+          fields: [
+            { title: "From", name: "from", type: "string" },
+            { title: "To", name: "to", type: "string" },
+          ]
+        },
+        {
+          title: "Wednesday",
           name: "wednesday",
-          type: "duration",
-        }),
-        defineField({
+          type: "object",
+          fields: [
+            { title: "From", name: "from", type: "string" },
+            { title: "To", name: "to", type: "string" },
+          ]
+        },
+        {
+          title: "Thursday",
           name: "thursday",
-          type: "duration",
-        }),
-        defineField({
+          type: "object",
+          fields: [
+            { title: "From", name: "from", type: "string" },
+            { title: "To", name: "to", type: "string" },
+          ]
+        },
+        {
+          title: "Friday",
           name: "friday",
-          type: "duration",
-        }),
-        defineField({
+          type: "object",
+          fields: [
+            { title: "From", name: "from", type: "string" },
+            { title: "To", name: "to", type: "string" },
+          ]
+        },
+        {
+          title: "Saturday",
           name: "saturday",
-          type: "duration",
-        }),
-        defineField({
+          type: "object",
+          fields: [
+            { title: "From", name: "from", type: "string" },
+            { title: "To", name: "to", type: "string" },
+          ]
+        },
+        {
+          title: "Sunday",
           name: "sunday",
-          type: "duration",
-        }),
+          type: "object",
+          fields: [
+            { title: "From", name: "from", type: "string" },
+            { title: "To", name: "to", type: "string" },
+          ]
+        },
+
       ],
-    }),
+    },
     {
-      name: "about",
       title: "About",
+      name: "about",
       type: "text",
     },
   ],
