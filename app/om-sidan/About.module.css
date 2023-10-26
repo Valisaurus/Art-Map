@@ -1,0 +1,13 @@
+.info {
+  width: 28rem;
+}
+
+.infoSection {
+  margin-bottom: 4rem;
+}
+
+.loginSection,
+.registerSection
+ {
+margin-top: 1rem;
+}
