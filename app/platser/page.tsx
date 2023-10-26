@@ -1,3 +1,5 @@
+import { createClient } from "@sanity/client";
+
 export default function Venues() {
   return (
     <div>
