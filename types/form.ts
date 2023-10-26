@@ -4,12 +4,12 @@ export type Form = {
   address: {
     streetName: string;
     streetNo: string;
-    zip: number;
+    zip: string;
     city: string;
   };
   contact: {
     email: string;
-    phone: number;
+    phone: string;
   };
   openingHours: {
     monday?: {
@@ -41,8 +41,5 @@ export type Form = {
       to: string;
     };
   };
-  about: {
-    from: string;
-    to: string;
-  };
+  about:Text;
 };

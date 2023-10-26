@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
         phone: contact.phone,
       },
       openingHours: {
-        monday: openingHours.monday.from,
+        monday: openingHours.monday,
         tuesday: openingHours.tuesday,
         wednesday: openingHours.wednesday,
         thursday: openingHours.thursday,
