@@ -3,7 +3,6 @@ import styles from "./Nav.module.css";
 const Nav = () => {
   return (
     <nav className={styles.nav}>
-      <Link href="/">GBG ART GUIDE</Link>
       <div className={styles.home}>
         <Link href="/">GBG ART GUIDE</Link>
       </div>

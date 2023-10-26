@@ -1,18 +1,7 @@
-import LogoutButton from "@/components/User/LogoutButton";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
-export const dynamic = "force-dynamic";
-
 import Link from "next/link";
 import styles from "./About.module.css";
 
 export default async function About() {
-  const supabase = createServerComponentClient({ cookies });
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
   return (
     <div>
       <div className={styles.div}>
@@ -47,21 +36,6 @@ export default async function About() {
             </b>
           </span>
         </p>
-      </div>
-      <div>
-        <p>This is the om sidan site Hej hej</p>
-        <div className="">
-          {user ? (
-            <div className="">
-              Hey, {user.email}!
-              <LogoutButton />
-            </div>
-          ) : (
-            <Link href="/login" className="">
-              Login
-            </Link>
-          )}
-        </div>
       </div>
     </div>
   );
