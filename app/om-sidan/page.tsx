@@ -3,8 +3,8 @@ import styles from "./About.module.css";
 
 export default async function About() {
   return (
-    <div>
-      <div className={styles.div}>
+    <div className={styles.info}>
+      <section className={styles.infoSection}>
         <p>
           <span>
             <b>GBG ART GUIDE </b>
@@ -20,15 +20,19 @@ export default async function About() {
           Har du några synpunkter eller idéer får du gärna höra av dig via vår
           mail!
         </p>
-      </div>
-      <div className={styles.div}>
+      </section>
+      <section className={styles.loginSection}>
         <p>
           Har du ett konto? -{">"}
           <span>
             <b>
-              <Link href={"/login"}>LOGGA IN </Link>
+              <Link href={"/login"}>LOGGA IN</Link>
             </b>
           </span>
+        </p>
+      </section>
+      <section className={styles.registerSection}>
+        <p>
           Vill du ansöka om att skapa ett konto? -{">"}
           <span>
             <b>
@@ -36,7 +40,7 @@ export default async function About() {
             </b>
           </span>
         </p>
-      </div>
+      </section>
     </div>
   );
 }
