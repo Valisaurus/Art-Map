@@ -24,7 +24,7 @@ export default function TypeOf({ control, errors }: aboutProps) {
           />
         )}
       />
-      {errors.about && <p className="text-red-500">{errors.about.message}</p>}
+      {errors.about && <p className={styles.errorMessage}>{errors.about.message}</p>}
     </section>
   );
 }

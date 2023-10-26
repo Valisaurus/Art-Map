@@ -27,7 +27,9 @@ export default function Adress({ control, errors }: AdressProps) {
         )}
       />
       {errors.address?.streetName && (
-        <p className="text-red-500">{errors.address?.streetName.message}</p>
+        <p className={styles.errorMessage}>
+          {errors.address?.streetName.message}
+        </p>
       )}
 
       <label>Gatunummer</label>
@@ -45,7 +47,9 @@ export default function Adress({ control, errors }: AdressProps) {
         )}
       />
       {errors.address?.streetNo && (
-        <p className="text-red-500">{errors.address?.streetNo.message}</p>
+        <p className={styles.errorMessage}>
+          {errors.address?.streetNo.message}
+        </p>
       )}
 
       <label>Postkod</label>
@@ -63,7 +67,7 @@ export default function Adress({ control, errors }: AdressProps) {
         )}
       />
       {errors.address?.zip && (
-        <p className="text-red-500">{errors.address?.zip.message}</p>
+        <p className={styles.errorMessage}>{errors.address?.zip.message}</p>
       )}
 
       <label>Stad</label>
@@ -81,7 +85,7 @@ export default function Adress({ control, errors }: AdressProps) {
         )}
       />
       {errors.address?.city && (
-        <p className="text-red-500">{errors.address?.city.message}</p>
+        <p className={styles.errorMessage}>{errors.address?.city.message}</p>
       )}
     </section>
   );

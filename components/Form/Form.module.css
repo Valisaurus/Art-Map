@@ -1,5 +1,4 @@
 .formWrapper {
-  width: 50rem;
   height: auto;
   padding: 2rem;
 }
@@ -45,9 +44,9 @@
 
 .radioList > label > svg {
   display: inline-block;
-  padding: 0px;
-  height: 30px;
-  width: 30px;
+  padding: 0;
+  height: 2rem;
+  width: 2rem;
   background: none;
 }
 
@@ -80,6 +79,8 @@
     margin-bottom: 1rem;
 }
 .day h3 {
+  text-transform: uppercase;
+  font-size: 0.8rem;
     margin-bottom: 0.5rem;
 }
 
@@ -108,4 +109,11 @@
 
 .aboutSection textarea {
     height: 20rem;
+}
+
+/* ERROR HANDLING */
+.errorMessage {
+  color: orangered; 
+  font-size: 0.75rem; 
+  margin-top: 0.5rem; 
 }

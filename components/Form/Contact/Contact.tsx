@@ -28,7 +28,7 @@ export default function Contact({ control, errors }: ContactProps) {
         )}
       />
       {errors.contact?.email && (
-        <p className="text-red-500">{errors.contact?.email.message}</p>
+        <p className={styles.errorMessage}>{errors.contact?.email.message}</p>
       )}
 
       <label>Telefon</label>
@@ -47,7 +47,7 @@ export default function Contact({ control, errors }: ContactProps) {
         )}
       />
       {errors.contact?.phone && (
-        <p className="text-red-500">{errors.contact?.phone.message}</p>
+        <p className={styles.errorMessage}>{errors.contact?.phone.message}</p>
       )}
     </section>
   );

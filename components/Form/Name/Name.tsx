@@ -26,7 +26,7 @@ export default function Name({ control, errors }: nameProps) {
               />
             )}
           />
-          {errors.name && <p className="text-red-500">{errors.name.message}</p>}
+          {errors.name && <p className={styles.errorMessage}>{errors.name.message}</p>}
     </section>
   );
 }

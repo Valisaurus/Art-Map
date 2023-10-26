@@ -17,7 +17,7 @@ export default function TypeOf({ control, errors }: TypeOfProps) {
       <Controller
         name="typeOf"
         control={control}
-        rules={{ required: "Välj endast ett alternativ" }}
+        rules={{ required: "Ett av alternativen måste kryssas i" }}
         render={({ field }) => (
           <div className={styles.radioList}>
             <label>
@@ -78,7 +78,7 @@ export default function TypeOf({ control, errors }: TypeOfProps) {
           </div>
         )}
       />
-      {errors.typeOf && <p className="text-red-500">{errors.typeOf.message}</p>}
+      {errors.typeOf && <p className={styles.errorMessage}>{errors.typeOf.message}</p>}
     </section>
   );
 }
