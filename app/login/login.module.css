@@ -1,0 +1,17 @@
+
+.form {
+display: flex;
+flex-direction: column;
+}
+
+.loginButton {
+    background-color: rgb(211, 210, 210);
+    height: 2.5rem;
+    width:fit-content;
+    padding: 0rem 1rem
+  }
+
+
+  .registerButton {
+
+  }
