@@ -10,7 +10,7 @@ const Nav = () => {
         <Link href="/utstallningar">Utställningar</Link>
         <Link href="/event">Event</Link>
         <Link href="/platser">Platser</Link>
-        <Link href="/omSidan">Om sidan</Link>
+        <Link href="/om-sidan">Om sidan</Link>
         <span>sv / en</span>
       </div>
     </nav>
