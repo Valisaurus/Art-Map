@@ -1,6 +1,7 @@
 import { Controller } from "react-hook-form";
 import type { Control, FieldErrors } from "react-hook-form";
 import type { Form } from "@/types/form";
+import styles from "../Form.module.css";
 
 interface AdressProps {
   control: Control<Form>;
@@ -9,7 +10,7 @@ interface AdressProps {
 
 export default function Adress({ control, errors }: AdressProps) {
   return (
-    <section className="adressSection">
+    <section className={styles.adressSection}>
       <h2>Adress</h2>
       <label>Gatunamn</label>
       <Controller

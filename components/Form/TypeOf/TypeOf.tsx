@@ -1,6 +1,7 @@
 import { Controller } from "react-hook-form";
 import type { Control, FieldErrors } from "react-hook-form";
 import type { Form } from "@/types/form";
+import styles from "../Form.module.css";
 
 interface TypeOfProps {
   control: Control<Form>;
@@ -10,14 +11,15 @@ interface TypeOfProps {
 export default function TypeOf({ control, errors }: TypeOfProps) {
 
   return (
-    <section className="typeOfSection">
-      <label>TYP AV UTSTÄLLNINGSPLATS</label>
+    <section className={styles.typeOfSection}>
+      <h2>Typ av verksamhet</h2>
+      <label hidden>Typ av verksamhet</label>
       <Controller
         name="typeOf"
         control={control}
         rules={{ required: "Välj endast ett alternativ" }}
         render={({ field }) => (
-          <div>
+          <div className={styles.radioList}>
             <label>
               <input
                 type="radio"
@@ -26,6 +28,7 @@ export default function TypeOf({ control, errors }: TypeOfProps) {
                 checked={field.value === "commersialGallery"}
                 onChange={() => field.onChange("commersialGallery")}
               />
+              < svg />
               Kommersiellt Galleri
             </label>
             <label>
@@ -36,6 +39,7 @@ export default function TypeOf({ control, errors }: TypeOfProps) {
                 checked={field.value === "artistRun"}
                 onChange={() => field.onChange("artistRun")}
               />
+              < svg />
               Konstnärsdrivet
             </label>
             <label>
@@ -46,6 +50,7 @@ export default function TypeOf({ control, errors }: TypeOfProps) {
                 checked={field.value === "museum"}
                 onChange={() => field.onChange("museum")}
               />
+              < svg />
               Museum
             </label>
             <label>
@@ -56,6 +61,7 @@ export default function TypeOf({ control, errors }: TypeOfProps) {
                 checked={field.value === "institution"}
                 onChange={() => field.onChange("institution")}
               />
+              < svg />
               Konsthall
             </label>
             <label>
@@ -66,6 +72,7 @@ export default function TypeOf({ control, errors }: TypeOfProps) {
                 checked={field.value === "popUp"}
                 onChange={() => field.onChange("popUp")}
               />
+              < svg />
               Pop Up/ temporär
             </label>
           </div>

@@ -1,6 +1,7 @@
 import { Controller } from "react-hook-form";
 import type { Control, FieldErrors } from "react-hook-form";
 import type { Form } from "@/types/form";
+import styles from "../Form.module.css"
 
 interface aboutProps {
   control: Control<Form>;
@@ -9,8 +10,9 @@ interface aboutProps {
 
 export default function TypeOf({ control, errors }: aboutProps) {
   return (
-    <section className="aboutSection">
-      <label>Om utställningsplatsen</label>
+    <section className={styles.aboutSection}>
+      <h2>Om verksamheten</h2>
+      <label hidden>Om utställningsplatsen</label>
       <Controller
         name="about"
         control={control}

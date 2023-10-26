@@ -1,6 +1,7 @@
 import { Controller } from "react-hook-form";
 import type { Control, FieldErrors } from "react-hook-form";
 import type { Form } from "@/types/form";
+import styles from "../Form.module.css";
 
 interface ContactProps {
   control: Control<Form>;
@@ -9,7 +10,7 @@ interface ContactProps {
 
 export default function Contact({ control, errors }: ContactProps) {
   return (
-    <div>
+    <section className={styles.contactSection}>
       <h2>KONTAKTUPPGIFTER</h2>
       <label>Email</label>
       <Controller
@@ -48,6 +49,6 @@ export default function Contact({ control, errors }: ContactProps) {
       {errors.contact?.phone && (
         <p className="text-red-500">{errors.contact?.phone.message}</p>
       )}
-    </div>
+    </section>
   );
 }

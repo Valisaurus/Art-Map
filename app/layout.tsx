@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Inter } from 'next/font/google';
+import { Inter } from "next/font/google";
 import Nav from "@/components/Nav/Nav";
 
 export const metadata = {
@@ -8,9 +8,9 @@ export const metadata = {
 };
 
 const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-})
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export default function RootLayout({
   children,
@@ -22,10 +22,10 @@ export default function RootLayout({
       <body>
         <main>
           <Nav />
-          <div className="contentWrapper">
-          <div className="leftBox"></div>
-          {children}
-          <div className="rightBox"></div>
+          <div className="pageWrapper">
+            <div className="leftBox"></div>
+            <div className="contentWrapper">{children}</div>
+            <div className="rightBox"></div>
           </div>
         </main>
       </body>

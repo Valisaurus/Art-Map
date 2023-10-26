@@ -8,6 +8,7 @@ import Contact from "./Contact/Contact";
 import OpeningHours from "./OpeningHours/OpeningHours";
 import Adress from "./Address/Address";
 import About from "./About/About";
+import Name from "./Name/Name";
 
 export default function Form() {
   const {
@@ -47,11 +48,9 @@ export default function Form() {
 
   return (
     <div className={styles.formWrapper}>
-      <h1 className={styles.formHeading}>Fyll i uppgifter om er verksamhet</h1>
-
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* _____________ NAME ____________*/}
-
+        <Name control={control} errors={errors} />
         {/* _____________ TYPE OF ____________*/}
         <TypeOf control={control} errors={errors} />
 
