@@ -1,8 +1,8 @@
-import { defineField, defineType } from "sanity";
+
 
 export default {
-  title: "Form",
-  name: "form",
+  title: "Venue",
+  name: "venue",
   type: "document",
   fields: [
     {
@@ -11,8 +11,8 @@ export default {
       type: "string",
     },
     {
-      name: "slug",
       title: "Slug",
+      name: "slug",
       type: "slug", // sanity has a built in slug-type.
       options: { source: "name" } // grabs the information from the name-field.
   },

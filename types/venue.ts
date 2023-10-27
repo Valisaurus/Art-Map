@@ -1,5 +1,6 @@
-export type Form = {
+export type Venue = {
   name: string;
+  slug: string;
   typeOf: string;
   address: {
     streetName: string;

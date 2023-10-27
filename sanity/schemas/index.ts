@@ -1,8 +1,8 @@
 import { durationType } from "./documents/durationType";
-import form from "./documents/form";
+import  venue from "./documents/venue";
 import { timeValueType } from "./documents/timeValueType";
 
 
-const schemas = [form, durationType, timeValueType];
+const schemas = [venue, durationType, timeValueType];
 
 export default schemas;

@@ -1,19 +1,19 @@
 import { Controller } from "react-hook-form";
 import type { Control, FieldErrors } from "react-hook-form";
-import type { Form } from "@/types/form";
+import type { Venue } from "@/types/venue";
 import styles from "../Form.module.css";
 
 interface OpeningHoursProps {
-  control: Control<Form>;
-  errors: FieldErrors<Form>;
+  control: Control<Venue>;
+  errors: FieldErrors<Venue>;
 }
 
 export default function OpeningHours({ control, errors }: OpeningHoursProps) {
   return (
     <section className={styles.openingHoursSection}>
       <div className={styles.headingWrapper}>
-      <h2>Öppettider</h2>
-      <small>Om ingen tid anges kommer dagen markeras som stängd.</small>
+        <h2>Öppettider</h2>
+        <small>Om ingen tid anges kommer dagen markeras som stängd.</small>
       </div>
       <div className={styles.day}>
         <h3>Måndag</h3>

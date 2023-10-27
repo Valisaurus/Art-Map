@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
   try {  
     // Create a new document in Sanity
     const response = await client.create({
-      _type: "form",
+      _type: "venue",
       name,
       typeOf,
       contact: {

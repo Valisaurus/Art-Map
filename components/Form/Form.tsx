@@ -1,6 +1,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
-import type { Form } from "@/types/form";
+import type { Venue } from "@/types/venue";
 import styles from "./Form.module.css";
 
 import TypeOf from "./TypeOf/TypeOf";
@@ -16,13 +16,13 @@ export default function Form() {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<Form>();
+  } = useForm<Venue>();
   const [error, setError] = useState<string | null>(null);
-  const onSubmit: SubmitHandler<Form> = (data) => {
+  const onSubmit: SubmitHandler<Venue> = (data) => {
     submitForm(data);
   };
 
-  const submitForm = async (data: Form) => {
+  const submitForm = async (data: Venue) => {
     try {
       const response = await fetch("/api/form", {
         method: "POST",

@@ -85,7 +85,7 @@ const MapComponent = () => {
 
   // Fetch data from Sanity when the component mounts
   useEffect(() => {
-    const documentType = "form"; //
+    const documentType = "venue"; //
 
     client
       .fetch<Location[]>(`*[_type == "${documentType}"]`)
