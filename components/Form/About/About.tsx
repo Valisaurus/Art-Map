@@ -20,7 +20,7 @@ export default function TypeOf({ control, errors }: aboutProps) {
         render={({ field }) => (
           <textarea
             {...field}
-            value={field.value || []}
+            value={field.value || ""}
           />
         )}
       />
