@@ -41,5 +41,5 @@ export type Form = {
       to: string;
     };
   };
-  about:Text;
+  about:string;
 };
