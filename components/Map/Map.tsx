@@ -3,20 +3,8 @@ import { useEffect, useState } from "react";
 import { createClient } from "@sanity/client";
 import mapboxgl, { LngLatLike } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { Location } from "@/types/location";
 
-type Location = {
-  location: {
-    lat: number;
-    lng: number;
-  };
-  address: {
-    streetName: string;
-    streetNo: string;
-    zip: number;
-    city: string;
-  };
-  name: string;
-};
 
 const client = createClient({
   projectId: "z4x2zjsw",

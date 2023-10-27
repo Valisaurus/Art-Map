@@ -17,10 +17,12 @@ export default function Venues() {
     const documentType = "venue";
 
     client
-      .fetch<Venue[]>(`*[_type == "${documentType}"]{
+      .fetch<Venue[]>(
+        `*[_type == "${documentType}"]{
         name,
         "slug": slug.current,
-    }`)
+    }`
+      )
       .then((fetchedName) => {
         // Handle the fetched data
         setVenueNames(fetchedName);
@@ -33,11 +35,16 @@ export default function Venues() {
   console.log(venueNames);
   return (
     <>
-      {venueNames.map((venueName) => (
-        <Link href={venueName.slug} key={venueName.name}>
-          {venueName.name}
-        </Link>
-      ))}
+      {" "}
+      <ul>
+        {venueNames.map((venueName) => (
+          <li key={venueName.name}>
+            <Link href={venueName.slug} >
+              {venueName.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </>
   );
 }
