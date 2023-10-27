@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@sanity/client": "^6.6.0",
-    "@supabase/auth-helpers-nextjs": "latest",
+    "@supabase/ssr": "^0.0.4",
     "@supabase/supabase-js": "latest",
     "autoprefixer": "10.4.15",
     "mapbox": "^1.0.0-beta10",
