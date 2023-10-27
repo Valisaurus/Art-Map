@@ -1,6 +1,8 @@
 "use client";
 import { createClient } from "@sanity/client";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { Venue } from "@/types/venue";
 
 const client = createClient({
   projectId: "z4x2zjsw",
@@ -8,18 +10,17 @@ const client = createClient({
   useCdn: false,
 });
 
-type venueName = {
-  name: string;
-};
-
 export default function Venues() {
-  const [venueNames, setVenueNames] = useState<venueName[]>([]);
+  const [venueNames, setVenueNames] = useState<Venue[]>([]);
 
   useEffect(() => {
-    const documentType = "form";
+    const documentType = "venue";
 
     client
-      .fetch<venueName[]>(`*[_type == "${documentType}"]`)
+      .fetch<Venue[]>(`*[_type == "${documentType}"]{
+        name,
+        "slug": slug.current,
+    }`)
       .then((fetchedName) => {
         // Handle the fetched data
         setVenueNames(fetchedName);
@@ -29,13 +30,14 @@ export default function Venues() {
       });
   }, []);
 
+  console.log(venueNames);
   return (
-    <div>
-      <ul>
-        {venueNames.map((venueName) => (
-          <li key={venueName.name}>{venueName.name}</li>
-        ))}
-      </ul>
-    </div>
+    <>
+      {venueNames.map((venueName) => (
+        <Link href={venueName.slug} key={venueName.name}>
+          {venueName.name}
+        </Link>
+      ))}
+    </>
   );
 }
