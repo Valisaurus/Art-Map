@@ -16,7 +16,7 @@ export default function Venues() {
   const [venueNames, setVenueNames] = useState<venueName[]>([]);
 
   useEffect(() => {
-    const documentType = "form"; //
+    const documentType = "form";
 
     client
       .fetch<venueName[]>(`*[_type == "${documentType}"]`)
