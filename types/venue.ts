@@ -42,6 +42,8 @@ export type Venue = {
       from: string;
       to: string;
     };
+    openByAppointment?: boolean;
+    irregularOpeningHours: string;
   };
-  about:string;
+  about: string;
 };

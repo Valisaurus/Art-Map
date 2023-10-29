@@ -1,5 +1,3 @@
-
-
 export default {
   title: "Venue",
   name: "venue",
@@ -13,21 +11,21 @@ export default {
     {
       title: "Slug",
       name: "slug",
-      type: "slug", 
-      options: { source: "name" } // grabs the information from the name-field.
-  },
+      type: "slug",
+      options: { source: "name" }, // grabs the information from the name-field.
+    },
     {
       title: "Website URL",
       name: "websiteUrl",
-      type: "url", 
-  },
+      type: "url",
+    },
     {
       title: "Type of exhibition space",
       name: "typeOf",
       type: "string",
       options: {
         list: [
-          { title: "Commersial Gallery", value: "commersialGallery" },
+          { title: "Gallery", value: "gallery" },
           { title: "Artist Run", value: "artistRun" },
           { title: "Museum", value: "museum" },
           { title: "Institution", value: "institution" },
@@ -53,7 +51,7 @@ export default {
       name: "contact",
       type: "object",
       fields: [
-        { title: "Email", name: "email", type: "string"},
+        { title: "Email", name: "email", type: "string" },
         { title: "Phone number", name: "phone", type: "string" },
       ],
     },
@@ -69,7 +67,7 @@ export default {
           fields: [
             { title: "From", name: "from", type: "string" },
             { title: "To", name: "to", type: "string" },
-          ]
+          ],
         },
         {
           title: "Tuesday",
@@ -78,7 +76,7 @@ export default {
           fields: [
             { title: "From", name: "from", type: "string" },
             { title: "To", name: "to", type: "string" },
-          ]
+          ],
         },
         {
           title: "Wednesday",
@@ -87,7 +85,7 @@ export default {
           fields: [
             { title: "From", name: "from", type: "string" },
             { title: "To", name: "to", type: "string" },
-          ]
+          ],
         },
         {
           title: "Thursday",
@@ -96,7 +94,7 @@ export default {
           fields: [
             { title: "From", name: "from", type: "string" },
             { title: "To", name: "to", type: "string" },
-          ]
+          ],
         },
         {
           title: "Friday",
@@ -105,7 +103,7 @@ export default {
           fields: [
             { title: "From", name: "from", type: "string" },
             { title: "To", name: "to", type: "string" },
-          ]
+          ],
         },
         {
           title: "Saturday",
@@ -114,7 +112,7 @@ export default {
           fields: [
             { title: "From", name: "from", type: "string" },
             { title: "To", name: "to", type: "string" },
-          ]
+          ],
         },
         {
           title: "Sunday",
@@ -123,10 +121,19 @@ export default {
           fields: [
             { title: "From", name: "from", type: "string" },
             { title: "To", name: "to", type: "string" },
-          ]
+          ],
         },
-
+        {
+          title: "Open by appointment only",
+          name: "openByAppointment",
+          type: "boolean",
+        },
       ],
+    },
+    {
+      title: "Irregular Opening Hours",
+      name: "irregularOpeningHours",
+      type: "text",
     },
     {
       title: "About",

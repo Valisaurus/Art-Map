@@ -96,6 +96,15 @@
     text-align: center;
 }
 
+.irregularOpeningHours textarea {
+  height: 10rem;
+  
+}
+.irregularOpeningHours h3 {
+text-transform: uppercase;
+font-size: 0.8rem;
+}
+
 /* ADRESS SECTION */
 .adressSection {
     display: flex;
@@ -109,8 +118,10 @@
 }
 
 .aboutSection textarea {
-    height: 20rem;
+  height: 20rem;
 }
+
+
 
 /* ERROR HANDLING */
 .errorMessage {

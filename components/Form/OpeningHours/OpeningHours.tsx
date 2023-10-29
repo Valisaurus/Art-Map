@@ -302,6 +302,42 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           </p>
         )}
       </div>
+      <div className={styles.day}>
+        <h3>Endast förbokade besök</h3>
+        <label hidden>Endast förbokade besök</label>
+        <Controller
+          name="openingHours.openByAppointment"
+          control={control}
+          // rules={{ required: "Detta fält måste fyllas i" }}
+          render={({ field }) => <input {...field} value={field.value || ""} />}
+        />
+        {errors.openingHours?.openByAppointment && (
+          <p className="text-red-500">
+            {errors.openingHours?.openByAppointment?.message}
+          </p>
+        )}
+      </div>
+      <div className={styles.irregularOpeningHours}>
+        <h3>Avvikande Öppettider</h3>
+        <label hidden> Avvikande öppettider</label>
+        <Controller
+          name="openingHours.irregularOpeningHours"
+          control={control}
+          // rules={{ required: "Detta fält måste fyllas i" }}
+          render={({ field }) => (
+            <textarea
+              className="irregularOpeningHours"
+              {...field}
+              value={field.value || ""}
+            />
+          )}
+        />
+        {errors.openingHours?.irregularOpeningHours && (
+          <p className="text-red-500">
+            {errors.openingHours?.irregularOpeningHours?.message}
+          </p>
+        )}
+      </div>
     </section>
   );
 }
