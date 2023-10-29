@@ -9,6 +9,7 @@ import OpeningHours from "./OpeningHours/OpeningHours";
 import Adress from "./Address/Address";
 import About from "./About/About";
 import Name from "./Name/Name";
+import Url from "./Url/Url";
 
 export default function Form() {
   const {
@@ -51,6 +52,8 @@ export default function Form() {
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* _____________ NAME ____________*/}
         <Name control={control} errors={errors} />
+        {/* _____________ WEBSITE ____________*/}
+        <Url control={control} errors={errors} />
         {/* _____________ TYPE OF ____________*/}
         <TypeOf control={control} errors={errors} />
 

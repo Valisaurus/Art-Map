@@ -1,6 +1,7 @@
 export type Venue = {
   name: string;
   slug: string;
+  websiteUrl: string;
   typeOf: string;
   address: {
     streetName: string;

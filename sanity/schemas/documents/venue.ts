@@ -13,8 +13,13 @@ export default {
     {
       title: "Slug",
       name: "slug",
-      type: "slug", // sanity has a built in slug-type.
+      type: "slug", 
       options: { source: "name" } // grabs the information from the name-field.
+  },
+    {
+      title: "Website URL",
+      name: "websiteUrl",
+      type: "url", 
   },
     {
       title: "Type of exhibition space",
