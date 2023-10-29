@@ -23,12 +23,12 @@ export default function TypeOf({ control, errors }: TypeOfProps) {
               <input
                 type="radio"
                 name="typeOf"
-                value="commersialGallery"
-                checked={field.value === "commersialGallery"}
-                onChange={() => field.onChange("commersialGallery")}
+                value="gallery"
+                checked={field.value === "gallery"}
+                onChange={() => field.onChange("gallery")}
               />
               <svg />
-              Kommersiellt Galleri
+              Galleri
             </label>
             <label>
               <input
