@@ -37,6 +37,8 @@ input, textarea {
 
 .contentWrapper {
   width: 100%;
+  max-height: calc(100vh - 3rem);
+  overflow-y: scroll;
   /* padding: 6rem; */
 }
 
