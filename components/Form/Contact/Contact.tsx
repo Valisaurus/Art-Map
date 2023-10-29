@@ -35,7 +35,7 @@ export default function Contact({ control, errors }: ContactProps) {
       <Controller
         name="contact.phone"
         control={control}
-        rules={{ required: "Detta fält måste fyllas i" }}
+        // rules={{ required: "Detta fält måste fyllas i" }}
         render={({ field }) => (
           <input
             type="tel"
