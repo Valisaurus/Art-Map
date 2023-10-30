@@ -1,10 +1,11 @@
-import Messages from "./messages";
-import styles from "./login.module.css";
+import Link from "next/link";
+//import Messages from "./messages";
+import styles from "./signUp.module.css";
 
-export default function Login() {
+export default function SignUp() {
   return (
     <div className={styles.formWrapper}>
-      <form className={styles.form} action="/auth/sign-in" method="post">
+      <form className={styles.form} action="/auth/sign-up" method="post">
         <label htmlFor="email">Email</label>
         <input name="email" placeholder="you@example.com" required />
         <label htmlFor="password">Lösenord</label>
@@ -14,9 +15,9 @@ export default function Login() {
           placeholder="••••••••"
           required
         />
-        <button className={styles.loginButton}>Logga in</button>
+        <button className={styles.loginButton}>Registera konto</button>
 
-        <Messages />
+        {/* <Messages /> */}
       </form>
     </div>
   );

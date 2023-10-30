@@ -36,7 +36,7 @@ export default async function About() {
           Vill du ansöka om att skapa ett konto? -{">"}
           <span>
             <b>
-              <Link href={"/login"}>ANSÖKAN</Link>
+              <Link href={"/sign-up"}>ANSÖKAN</Link>
             </b>
           </span>
         </p>

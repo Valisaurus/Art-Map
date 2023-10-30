@@ -1,16 +1,23 @@
-"use client";
-import styles from "./dashboard.module.css";
-import Form from "@/components/Form/Form";
+import ClientSideDashboard from "./dashboard";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
-export default function Dashboard() {
-  return (
-    <>
-      <div className={styles.intro}>
-        Hej!
-        <br />
-        Här fyller du i uppgifter om din verksamhet.
-      </div>
-      <Form />
-    </>
-  );
+export const dynamic = "force-dynamic";
+
+export default async function DashboardPage() {
+  const supabase = createServerComponentClient({
+    cookies,
+  });
+
+  // DENNA BORDE ÄNDRAS?
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session) {
+    redirect("/sign-up");
+  }
+
+  return <ClientSideDashboard />;
 }
