@@ -1,6 +1,6 @@
 "use client";
 import styles from "./dashboard.module.css";
-import Form from "@/components/Form/Form";
+import VenueForm from "@/components/VenueForm/VenueForm";
 
 export default function ClientSideDashboard() {
   return (
@@ -10,7 +10,7 @@ export default function ClientSideDashboard() {
         <br />
         Här fyller du i uppgifter om din verksamhet.
       </div>
-      <Form />
+      <VenueForm />
     </>
   );
 }

@@ -1,7 +1,7 @@
 import { Controller } from "react-hook-form";
 import type { Control, FieldErrors } from "react-hook-form";
 import type { Venue } from "@/types/venue";
-import styles from "../Form.module.css";
+import styles from "../VenueForm.module.css";
 
 interface OpeningHoursProps {
   control: Control<Venue>;
