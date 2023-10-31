@@ -37,7 +37,7 @@ export default async function setStatus() {
         const { error } = await supabase.from("applications").insert([
           {
             venue_name: venueName,
-            name: contactPersonName,
+            contact_name: contactPersonName,
             email: contactPersonEmail,
             phone: contactPersonPhone,
             status: status,
