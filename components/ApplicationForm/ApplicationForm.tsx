@@ -1,12 +1,11 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
-import type { Venue } from "@/types/venue";
 import styles from "./ApplicationForm.module.css";
-
-import Name from "../VenueForm/Name/Name";
-import Url from "../VenueForm/Url/Url";
-import About from "../VenueForm/About/About";
+import VenueName from "./VenueName/VenueName";
+import Url from "./Url/Url";
+import About from "./About/About";
 import ContactPerson from "./contactPerson/contactPerson";
+import { Application } from "@/types/application";
 
 export default function ApplicationForm() {
   const {
@@ -14,15 +13,15 @@ export default function ApplicationForm() {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<Venue>();
+  } = useForm<Application>();
   const [error, setError] = useState<string | null>(null);
-  const onSubmit: SubmitHandler<Venue> = (data) => {
+  const onSubmit: SubmitHandler<Application> = (data) => {
     submitForm(data);
   };
 
-  const submitForm = async (data: Venue) => {
+  const submitForm = async (data: Application) => {
     try {
-      const response = await fetch("/api/applicationform", {
+      const response = await fetch("/api/applicationForm", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -48,7 +47,7 @@ export default function ApplicationForm() {
     <div className={styles.formWrapper}>
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* _____________ NAME ____________*/}
-        <Name control={control} errors={errors} />
+        <VenueName control={control} errors={errors} />
         {/* _____________ WEBSITE ____________*/}
         <Url control={control} errors={errors} />
         {/* _____________ ABOUT ____________*/}

@@ -1,11 +1,11 @@
 import { Controller } from "react-hook-form";
 import type { Control, FieldErrors } from "react-hook-form";
-import type { Venue } from "@/types/venue";
 import styles from "../ApplicationForm.module.css";
+import { Application } from "@/types/application";
 
 interface ContactProps {
-  control: Control<Venue>;
-  errors: FieldErrors<Venue>;
+  control: Control<Application>;
+  errors: FieldErrors<Application>;
 }
 
 export default function ContactPerson({ control, errors }: ContactProps) {
@@ -16,7 +16,7 @@ export default function ContactPerson({ control, errors }: ContactProps) {
    
       <label>Namn</label>
       <Controller
-        name="name"
+        name="contactPerson.name"
         control={control}
         rules={{ required: "Detta fält måste fyllas i" }}
         render={({ field }) => (
@@ -28,13 +28,13 @@ export default function ContactPerson({ control, errors }: ContactProps) {
           />
         )}
       />
-      {errors.name && (
-        <p className={styles.errorMessage}>{errors.name.message}</p>
+      {errors.contactPerson?.name && (
+        <p className={styles.errorMessage}>{errors.contactPerson.name.message}</p>
       )}
 
       <label>Email</label>
       <Controller
-        name="contact.email"
+        name="contactPerson.email"
         control={control}
         rules={{ required: "Detta fält måste fyllas i" }}
         render={({ field }) => (
@@ -47,13 +47,13 @@ export default function ContactPerson({ control, errors }: ContactProps) {
           />
         )}
       />
-      {errors.contact?.email && (
-        <p className={styles.errorMessage}>{errors.contact?.email.message}</p>
+      {errors.contactPerson?.email && (
+        <p className={styles.errorMessage}>{errors.contactPerson?.email.message}</p>
       )}
 
       <label>Telefon</label>
       <Controller
-        name="contact.phone"
+        name="contactPerson.phone"
         control={control}
         // rules={{ required: "Detta fält måste fyllas i" }}
         render={({ field }) => (
@@ -66,8 +66,8 @@ export default function ContactPerson({ control, errors }: ContactProps) {
           />
         )}
       />
-      {errors.contact?.phone && (
-        <p className={styles.errorMessage}>{errors.contact?.phone.message}</p>
+      {errors.contactPerson?.phone && (
+        <p className={styles.errorMessage}>{errors.contactPerson?.phone.message}</p>
       )}
     </section>
   );

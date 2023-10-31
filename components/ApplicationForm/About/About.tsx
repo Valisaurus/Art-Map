@@ -1,11 +1,11 @@
 import { Controller } from "react-hook-form";
 import type { Control, FieldErrors } from "react-hook-form";
-import type { Venue } from "@/types/venue";
-import styles from "../VenueForm.module.css";
+import styles from "../ApplicationForm.module.css";
+import { Application } from "@/types/application";
 
 interface aboutProps {
-  control: Control<Venue>;
-  errors: FieldErrors<Venue>;
+  control: Control<Application>;
+  errors: FieldErrors<Application>;
 }
 
 export default function About({ control, errors }: aboutProps) {
