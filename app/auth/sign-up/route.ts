@@ -12,12 +12,12 @@ export async function POST(request: Request) {
 
   const supabase = createRouteHandlerClient({ cookies });
 
-  const { error } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email,
     password,
-    options: {
-      emailRedirectTo: `${requestUrl.origin}/auth/callback`,
-    },
+    // options: {
+    //   emailRedirectTo: `${requestUrl.origin}/auth/callback`,
+    // },
   });
 
   if (error) {
@@ -28,6 +28,21 @@ export async function POST(request: Request) {
         status: 301,
       }
     );
+  } else {
+    const user = data.user;
+    if (user) {
+      const { data: userStatus, error } = await supabase
+        .from("user_status")
+        .insert([
+          {
+            user_id: user.id,
+            status: "pending",
+          },
+        ]);
+    }
+  }
+  if (error) {
+    console.log("oh no error");
   }
 
   return NextResponse.redirect(`${requestUrl.origin}/dashboard`, {

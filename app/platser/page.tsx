@@ -39,9 +39,7 @@ export default function Venues() {
       <ul>
         {venueNames.map((venueName) => (
           <li key={venueName.name}>
-            <Link href={venueName.slug} >
-              {venueName.name}
-            </Link>
+            <Link href={venueName.slug}>{venueName.name}</Link>
           </li>
         ))}
       </ul>
