@@ -25,12 +25,24 @@ export default function Form() {
 
   const submitForm = async (data: Venue) => {
     try {
-      const response = await fetch("/api/form", {
+
+    // Converts the checkbox value to a boolean
+    const openByAppointment = !!data.openingHours?.openByAppointment;
+
+    const formData = {
+      ...data,
+      openingHours: {
+        ...data.openingHours,
+        openByAppointment,
+      },
+    };
+
+      const response = await fetch("/api/venueForm", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(formData),
       });
-
+      console.log(formData);
       if (response.ok) {
         // FIXA:MESSAGE
         console.log("Form data submitted successfully");

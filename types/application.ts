@@ -1,5 +1,5 @@
-export type Venue = {
-  name: string;
+export type Application = {
+  venueName: string;
   websiteUrl: string;
   about: string;
   contactPerson: {
@@ -7,4 +7,5 @@ export type Venue = {
     email: string;
     phone: string;
   };
+  status: boolean;
 };

@@ -3,6 +3,10 @@ import { useState } from "react";
 import type { Venue } from "@/types/venue";
 import styles from "./ApplicationForm.module.css";
 
+import Name from "../VenueForm/Name/Name";
+import Url from "../VenueForm/Url/Url";
+import About from "../VenueForm/About/About";
+import ContactPerson from "./contactPerson/contactPerson";
 
 export default function ApplicationForm() {
   const {
@@ -18,7 +22,7 @@ export default function ApplicationForm() {
 
   const submitForm = async (data: Venue) => {
     try {
-      const response = await fetch("/api/form", {
+      const response = await fetch("/api/applicationform", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -43,6 +47,14 @@ export default function ApplicationForm() {
   return (
     <div className={styles.formWrapper}>
       <form onSubmit={handleSubmit(onSubmit)}>
+        {/* _____________ NAME ____________*/}
+        <Name control={control} errors={errors} />
+        {/* _____________ WEBSITE ____________*/}
+        <Url control={control} errors={errors} />
+        {/* _____________ ABOUT ____________*/}
+        <About control={control} errors={errors} />
+        {/* _____________ CONTACT ____________*/}
+        <ContactPerson control={control} errors={errors} />
 
         <button type="submit" className="">
           Skicka Ansökan

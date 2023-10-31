@@ -298,6 +298,7 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
             <input
               type="checkbox"
               {...field}
+              
               checked={field.value || false}
               value={undefined}
             />
