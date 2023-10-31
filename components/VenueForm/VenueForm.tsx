@@ -1,7 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import type { Venue } from "@/types/venue";
-import styles from "./Form.module.css";
+import styles from "./VenueForm.module.css";
 
 import TypeOf from "./TypeOf/TypeOf";
 import Contact from "./Contact/Contact";

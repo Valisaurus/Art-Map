@@ -1,7 +1,7 @@
 import { Controller } from "react-hook-form";
 import type { Control, FieldErrors } from "react-hook-form";
 import type { Venue } from "@/types/venue";
-import styles from "../Form.module.css";
+import styles from "../VenueForm.module.css";
 
 interface OpeningHoursProps {
   control: Control<Venue>;
@@ -21,7 +21,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
         <Controller
           name="openingHours.monday.from"
           control={control}
-          // rules={{ required: "Detta fält måste fyllas i" }}
           render={({ field }) => (
             <input
               className=""
@@ -40,7 +39,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
         <Controller
           name="openingHours.monday.to"
           control={control}
-          // rules={{ required: "Detta fält måste fyllas i" }}
           render={({ field }) => (
             <input
               className=""
@@ -62,7 +60,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
         <Controller
           name="openingHours.tuesday.from"
           control={control}
-          // rules={{ required: "Detta fält måste fyllas i" }}
           render={({ field }) => (
             <input
               className=""
@@ -81,7 +78,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
         <Controller
           name="openingHours.tuesday.to"
           control={control}
-          // rules={{ required: "Detta fält måste fyllas i" }}
           render={({ field }) => (
             <input
               className=""
@@ -103,7 +99,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
         <Controller
           name="openingHours.wednesday.from"
           control={control}
-          // rules={{ required: "Detta fält måste fyllas i" }}
           render={({ field }) => (
             <input
               className=""
@@ -122,7 +117,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
         <Controller
           name="openingHours.wednesday.to"
           control={control}
-          // rules={{ required: "Detta fält måste fyllas i" }}
           render={({ field }) => (
             <input
               className=""
@@ -144,7 +138,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
         <Controller
           name="openingHours.thursday.from"
           control={control}
-          // rules={{ required: "Detta fält måste fyllas i" }}
           render={({ field }) => (
             <input
               className=""
@@ -163,7 +156,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
         <Controller
           name="openingHours.thursday.to"
           control={control}
-          // rules={{ required: "Detta fält måste fyllas i" }}
           render={({ field }) => (
             <input
               className=""
@@ -185,7 +177,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
         <Controller
           name="openingHours.friday.from"
           control={control}
-          // rules={{ required: "Detta fält måste fyllas i" }}
           render={({ field }) => (
             <input
               className=""
@@ -204,7 +195,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
         <Controller
           name="openingHours.friday.to"
           control={control}
-          // rules={{ required: "Detta fält måste fyllas i" }}
           render={({ field }) => (
             <input
               className=""
@@ -226,7 +216,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
         <Controller
           name="openingHours.saturday.from"
           control={control}
-          // rules={{ required: "Detta fält måste fyllas i" }}
           render={({ field }) => (
             <input
               className=""
@@ -245,7 +234,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
         <Controller
           name="openingHours.saturday.to"
           control={control}
-          // rules={{ required: "Detta fält måste fyllas i" }}
           render={({ field }) => (
             <input
               className=""
@@ -267,7 +255,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
         <Controller
           name="openingHours.sunday.from"
           control={control}
-          // rules={{ required: "Detta fält måste fyllas i" }}
           render={({ field }) => (
             <input
               className=""
@@ -286,7 +273,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
         <Controller
           name="openingHours.sunday.to"
           control={control}
-          // rules={{ required: "Detta fält måste fyllas i" }}
           render={({ field }) => (
             <input
               className=""
@@ -308,8 +294,14 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
         <Controller
           name="openingHours.openByAppointment"
           control={control}
-          // rules={{ required: "Detta fält måste fyllas i" }}
-          render={({ field }) => <input {...field} value={field.value || ""} />}
+          render={({ field }) => (
+            <input
+              type="checkbox"
+              {...field}
+              checked={field.value || false}
+              value={undefined}
+            />
+          )}
         />
         {errors.openingHours?.openByAppointment && (
           <p className="text-red-500">
@@ -323,7 +315,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
         <Controller
           name="openingHours.irregularOpeningHours"
           control={control}
-          // rules={{ required: "Detta fält måste fyllas i" }}
           render={({ field }) => (
             <textarea
               className="irregularOpeningHours"
