@@ -1,9 +1,7 @@
-
-
 export default function Slask() {
   return (
-    <div >
-      <form  action="/auth/status" method="post">
+    <div>
+      <form action="/api/status" method="get">
         {/* <label htmlFor="email">Email</label>
         <input name="email" placeholder="you@example.com" required />
         <label htmlFor="password">Lösenord</label>
@@ -13,8 +11,7 @@ export default function Slask() {
           placeholder="••••••••"
           required
         /> */}
-        <button >Registera konto</button>
-
+        <button>Registera konto</button>
       </form>
     </div>
   );
