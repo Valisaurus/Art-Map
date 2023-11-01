@@ -31,21 +31,19 @@ export async function POST(request: Request) {
   } else {
     const user = data.user;
     if (user) {
-      const { data: userStatus, error } = await supabase
-        .from("user_status")
-        .insert([
-          {
-            user_id: user.id,
-            status: "pending",
-          },
-        ]);
+      const { data: userStatus, error } = await supabase.from("status").insert([
+        {
+          user_id: user.id,
+          status: "pending",
+        },
+      ]);
     }
   }
   if (error) {
     console.log("oh no error");
   }
 
-  return NextResponse.redirect(`${requestUrl.origin}/dashboard`, {
+  return NextResponse.redirect(`${requestUrl.origin}/ansokan`, {
     // a 301 status is required to redirect from a POST to a GET route
     status: 301,
   });
