@@ -2,7 +2,6 @@ import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { createClient } from "@sanity/client";
 import { Application } from "../../../types/application";
-import { useState } from "react";
 
 const client = createClient({
   projectId: "z4x2zjsw",
@@ -21,7 +20,8 @@ export default async function setStatus() {
     const fetchedapplication = await client.fetch<
       Application[]
     >(`*[_type == "${documentType}"]{
-      venueName,
+      _id,
+        venueName,
       contactPerson { name, email, phone },
       status,
     }`);
@@ -32,14 +32,15 @@ export default async function setStatus() {
       const contactPersonEmail = application.contactPerson.email;
       const contactPersonPhone = application.contactPerson.phone;
       const status = application.status;
-
+      const id = application._id;
       if (application) {
         const { error } = await supabase.from("applications").insert([
           {
+            application_id: id,
             venue_name: venueName,
             contact_name: contactPersonName,
-            email: contactPersonEmail,
-            phone: contactPersonPhone,
+            contact_email: contactPersonEmail,
+            contact_phone: contactPersonPhone,
             status: status,
           },
         ]);
