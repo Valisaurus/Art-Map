@@ -29,9 +29,21 @@ export default {
       ],
     },
     {
-      title: "Status",
+      title: "Application Status",
       name: "status",
-      type: "boolean",
+      type: "string",
+      options: {
+        layout: "radio",
+        direction: "vertical",
+        list: [
+          { title: "Pending", value: "pending" },
+          { title: "Approved", value: "approved" },
+          { title: "Denied", value: "denied" },
+        ],
+        initialValue: {
+          list: "pending",
+        },
+      },
     },
   ],
 };

@@ -8,5 +8,5 @@ export type Application = {
     email: string;
     phone: string;
   };
-  status: boolean;
+  status: string;
 };
