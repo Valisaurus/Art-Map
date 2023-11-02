@@ -1,8 +1,7 @@
 "use client";
 import { NextStudio } from "next-sanity/studio";
 import { config } from "@/sanity.config";
-import supabase from "@/supabase/utils/supabaseClient";
-import { useState } from "react";
+
 import Messages from "./messages";
 
 export default function AdminPage() {
@@ -37,7 +36,7 @@ export default function AdminPage() {
           />
           <button>Sign up user</button>
         </form>
-        < Messages />
+        <Messages />
       </div>
     </>
   );
