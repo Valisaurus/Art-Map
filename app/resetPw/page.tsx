@@ -1,5 +1,5 @@
 //import Messages from "./messages";
-import styles from "./signUp.module.css";
+import styles from "./resetPw.module.css";
 
 export default function changePw() {
   return (
@@ -9,7 +9,7 @@ export default function changePw() {
         <input name="email" placeholder="you@example.com" required />
         <label htmlFor="newPassword">Nytt Lösenord</label>
         <input
-          type="new password"
+          type="password"
           name="new password"
           placeholder="••••••••"
           required

@@ -20,11 +20,7 @@ export async function POST(request: Request) {
 
   if (error) {
     return NextResponse.redirect(
-<<<<<<< Updated upstream
       `${requestUrl.origin}/admin/desk?error=Could not sign up user`,
-=======
-      `${requestUrl.origin}/admin/desk?error=Could not authenticate user`,
->>>>>>> Stashed changes
       {
         // a 301 status is required to redirect from a POST to a GET route
         status: 301,
