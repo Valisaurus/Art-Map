@@ -14,13 +14,17 @@ export async function POST(request: Request) {
     email,
     password,
     options: {
-      emailRedirectTo: `${requestUrl.origin}/auth/callback`,
+      //emailRedirectTo: `${requestUrl.origin}/auth/callback`,
     },
   });
 
   if (error) {
     return NextResponse.redirect(
+<<<<<<< Updated upstream
       `${requestUrl.origin}/admin/desk?error=Could not sign up user`,
+=======
+      `${requestUrl.origin}/admin/desk?error=Could not authenticate user`,
+>>>>>>> Stashed changes
       {
         // a 301 status is required to redirect from a POST to a GET route
         status: 301,

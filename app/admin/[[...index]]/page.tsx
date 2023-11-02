@@ -2,6 +2,7 @@
 import { NextStudio } from "next-sanity/studio";
 import { config } from "@/sanity.config";
 
+<<<<<<< Updated upstream
 import Messages from "./messages";
 
 export default function AdminPage() {
@@ -17,11 +18,17 @@ export default function AdminPage() {
   //   }
   // }
 
+=======
+import { useState } from "react";
+
+export default function AdminPage() {
+>>>>>>> Stashed changes
   return (
     <>
       <NextStudio config={config} />
       <div>
         <form action="/auth/sign-up" method="POST">
+<<<<<<< Updated upstream
           <input
             type="email"
             name="email"
@@ -34,6 +41,10 @@ export default function AdminPage() {
             // value={password}
             // onChange={(e) => setPassword(e.target.value)}
           />
+=======
+          <input type="email" name="email" />
+          <input type="password" name="password" />
+>>>>>>> Stashed changes
           <button>Sign up user</button>
         </form>
         <Messages />
