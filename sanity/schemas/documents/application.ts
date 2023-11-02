@@ -1,3 +1,4 @@
+
 export default {
   title: "Application",
   name: "application",
@@ -47,3 +48,4 @@ export default {
     },
   ],
 };
+

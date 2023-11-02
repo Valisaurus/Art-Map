@@ -24,3 +24,4 @@ export async function getVenue(slug: string): Promise<Venue> {
     { slug: slug } // can be shorthanded to slug
   );
 }
+
