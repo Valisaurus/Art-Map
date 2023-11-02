@@ -20,6 +20,7 @@ export async function POST(request: Request) {
   const password = String(formData.get("password"));
 
   const supabase = createRouteHandlerClient({ cookies });
+
   const documentType = "application";
   const fetchedApplications = await client.fetch<
     Application[]
@@ -73,7 +74,7 @@ export async function POST(request: Request) {
   //   console.log("oh no error");
   // }
 
-  return NextResponse.redirect(`${requestUrl.origin}/ansokan`, {
+  return NextResponse.redirect(`${requestUrl.origin}`, {
     // a 301 status is required to redirect from a POST to a GET route
     status: 301,
   });
