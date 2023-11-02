@@ -10,14 +10,13 @@ export default async function DashboardPage() {
     cookies,
   });
 
-  // DENNA BORDE ÄNDRAS?
-  // const {
-  //   data: { session },
-  // } = await supabase.auth.getSession();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-  // if (!session) {
-  //   redirect("/sign-up");
-  // }
+  if (!session) {
+    redirect("/sign-up");
+  }
 
   return <ClientSideDashboard />;
 }

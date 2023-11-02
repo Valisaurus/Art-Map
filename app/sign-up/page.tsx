@@ -1,5 +1,5 @@
 import Link from "next/link";
-//import Messages from "./messages";
+import Messages from "./messages";
 import styles from "./signUp.module.css";
 
 export default function SignUp() {
@@ -17,7 +17,7 @@ export default function SignUp() {
         />
         <button className={styles.loginButton}>Registera konto</button>
 
-        {/* <Messages /> */}
+        <Messages />
       </form>
     </div>
   );
