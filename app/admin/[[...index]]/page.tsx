@@ -21,19 +21,19 @@ export default function AdminPage() {
     <>
       <NextStudio config={config} />
       <div>
-        <form action="/auth/sign-up" method="POST">
+        <form action="/auth/invite" method="POST">
           <input
             type="email"
             name="email"
             // value={email}
             // onChange={(e) => setEmail(e.target.value)}
           />
-          <input
+          {/* <input
             type="password"
             name="password"
             // value={password}
             // onChange={(e) => setPassword(e.target.value)}
-          />
+          /> */}
           <button>Sign up user</button>
         </form>
         <Messages />

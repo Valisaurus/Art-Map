@@ -10,8 +10,16 @@ export async function POST(request: Request) {
   const requestUrl = new URL(request.url);
   const formData = await request.formData();
   const password = String(formData.get("password"));
-  const email = String(formData.get("email"));
-  //const code = String(formData.get("code"));
+  const code = String(formData.get("code"));
 
   const supabase = createRouteHandlerClient({ cookies });
+  await supabase.auth.exchangeCodeForSession(code);
+
+  const { data, error } = await supabase.auth.updateUser({
+    password: password,
+  });
+
+  return NextResponse.redirect(`${requestUrl.origin}/reset-password`, {
+    status: 301,
+  });
 }
