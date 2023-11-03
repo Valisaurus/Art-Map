@@ -19,7 +19,7 @@ export async function POST(request: Request) {
     password: password,
   });
 
-  return NextResponse.redirect(`${requestUrl.origin}/reset-password`, {
+  return NextResponse.redirect(`${requestUrl.origin}/dashboard`, {
     status: 301,
   });
 }

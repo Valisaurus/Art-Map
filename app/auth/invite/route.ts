@@ -10,7 +10,14 @@ export async function POST(request: Request) {
   //const password = String(formData.get("password"));
   const supabase = createRouteHandlerClient({ cookies });
 
-  const { error } = await supabase.auth.admin.inviteUserByEmail(email);
+  // const { data, error } = await supabase.auth.admin.inviteUserByEmail(email);
+
+  const { data, error } = await supabase.auth.signInWithOtp({
+    email: email,
+    options: {
+      emailRedirectTo: `${requestUrl.origin}/reset-password`,
+    },
+  });
 
   if (error) {
     return NextResponse.redirect(
