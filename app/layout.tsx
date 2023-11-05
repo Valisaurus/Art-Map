@@ -1,6 +1,5 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Nav from "@/components/Nav/Nav";
 
 export const metadata = {
   title: "Create Next App",
@@ -21,12 +20,7 @@ export default function RootLayout({
     <html lang="en" className={inter.className}>
       <body>
         <main>
-          <Nav />
-          <div className="pageWrapper">
-            <div className="leftBox"></div>
-            <div className="contentWrapper">{children}</div>
-            <div className="rightBox"></div>
-          </div>
+          <div className="contentWrapper">{children}</div>
         </main>
       </body>
     </html>

@@ -15,7 +15,7 @@ export default async function DashboardPage() {
   } = await supabase.auth.getSession();
 
   if (!session) {
-    redirect("/sign-up");
+    redirect("/");
   }
 
   return <ClientSideDashboard />;
