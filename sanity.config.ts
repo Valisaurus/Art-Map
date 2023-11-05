@@ -10,7 +10,7 @@ const config = defineConfig({
   title: "Art-Map",
   apiVersion: "2023-10-10",
   token: process.env.NEXT_PUBLIC_SANITY_NEW_API_TOKEN,
-  basePath: "/admin",
+  basePath: "/admin/sanity-studio",
   plugins: [deskTool()],
   schema: { types: schemas },
 });

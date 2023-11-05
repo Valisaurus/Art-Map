@@ -4,10 +4,11 @@ const AdminNav = () => {
   return (
     <nav className={styles.nav}>
       <div className={styles.home}>
-        <Link href="/">GBG ART GUIDE</Link>
+        <Link href="/admin">GBG ART GUIDE - ADMIN</Link>
       </div>
       <div className={styles.list}>
-        <Link href="/admin/desk">Sanity</Link>
+        <Link href="/admin/invite-users">Hantera användare</Link>
+        <Link href="/admin/sanity-studio/desk">Sanity Studio</Link>
         <span>sv / en</span>
       </div>
     </nav>
