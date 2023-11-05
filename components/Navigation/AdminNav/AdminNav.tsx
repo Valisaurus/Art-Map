@@ -9,6 +9,7 @@ const AdminNav = () => {
       <div className={styles.list}>
         <Link href="/admin/invite-user">Hantera användare</Link>
         <Link href="/admin/sanity-studio/desk">Sanity Studio</Link>
+        <Link href="auth/sign-out">Logga ut</Link>
         <span>sv / en</span>
       </div>
     </nav>
