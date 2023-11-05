@@ -1,16 +1,16 @@
 "use client";
-import styles from "./dashboard.module.css";
 
+import VenueForm from "@/components/Forms/VenueForm/VenueForm";
 
-export default function ClientSideDashboard() {
+export default function VenueAbout() {
   return (
     <>
-      <div className={styles.intro}>
+      <div >
         Hej!
         <br />
         Här fyller du i uppgifter om din verksamhet.
       </div>
-      
+      <VenueForm />
     </>
   );
 }

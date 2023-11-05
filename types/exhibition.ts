@@ -1,6 +1,7 @@
 export type Exhibition = {
     _type: "exhibition"; 
     _id?: string; // Optional, used for document ID.
+    venue: string;
     title: string;
     slug: {
       _type: "slug";

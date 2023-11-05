@@ -12,20 +12,21 @@ const client = createClient({
 });
 
 export async function POST(req: NextRequest) {
-  const { venueName, websiteUrl, about, contactPerson } = await req.json(); 
+  const { title, artistNames, image, openingDate, dates, exhibitionText } = await req.json(); 
 
   try {  
     // Create a new document in Sanity
     const response = await client.create({
-      _type: "application",
-      venueName,
-      websiteUrl,
-      about,
-      contactPerson: {
-        name: contactPerson.name,
-        email: contactPerson.email,
-        phone: contactPerson.phone,
+      _type: "exhibition",
+      title,
+      artistNames,
+      image: {
+        alt: image.alt,
       },
+      openingDate,
+      dates,
+      exhibitionText,
+
     });
     console.log("res", response);
   } catch (err) {
@@ -35,5 +36,6 @@ export async function POST(req: NextRequest) {
       { status: 500 }
     );
   }
+
   return NextResponse.json({ message: "Form was submitted" }, { status: 200 });
 }

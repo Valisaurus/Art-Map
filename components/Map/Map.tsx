@@ -10,6 +10,7 @@ const client = createClient({
   projectId: "z4x2zjsw",
   dataset: "production",
   useCdn: false,
+  apiVersion: "2023-10-10",
 });
 
 const MapComponent = () => {

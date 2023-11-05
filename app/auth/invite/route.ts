@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
       }
     );
   }
-  return NextResponse.redirect(`${requestUrl.origin}/admin/desk`, {
+  return NextResponse.redirect(`${requestUrl.origin}/admin/invite-user`, {
     status: 301,
   });
 }

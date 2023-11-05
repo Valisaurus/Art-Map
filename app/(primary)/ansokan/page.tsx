@@ -1,6 +1,6 @@
 "use client";
 // import styles from "./ansokan.module.css";
-import ApplicationForm from "@/components/ApplicationForm/ApplicationForm";
+import ApplicationForm from "@/components/Forms/ApplicationForm/ApplicationForm";
 
 
 export default function Application() {

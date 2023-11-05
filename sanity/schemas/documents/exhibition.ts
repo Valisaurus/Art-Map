@@ -4,6 +4,12 @@ export default {
   type: "document",
   fields: [
     {
+      title: "Venue",
+      name: "venue",
+      type: "reference",
+      to: [{type: "venue"}]
+    },
+    {
       title: "Title",
       name: "title",
       type: "string",

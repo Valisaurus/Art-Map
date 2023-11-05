@@ -8,6 +8,7 @@ const client = createClient({
   projectId: "z4x2zjsw",
   dataset: "production",
   useCdn: false,
+  apiVersion: "2023-10-10",
 });
 
 export default function Venues() {
@@ -24,7 +25,6 @@ export default function Venues() {
     }`
       )
       .then((fetchedName) => {
-        // Handle the fetched data
         setVenueNames(fetchedName);
       })
       .catch((error) => {
@@ -35,7 +35,6 @@ export default function Venues() {
   console.log(venueNames);
   return (
     <>
-      {" "}
       <ul>
         {venueNames.map((venueName) => (
           <li key={venueName.name}>

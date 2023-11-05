@@ -7,7 +7,7 @@ const AdminNav = () => {
         <Link href="/admin">GBG ART GUIDE - ADMIN</Link>
       </div>
       <div className={styles.list}>
-        <Link href="/admin/invite-users">Hantera användare</Link>
+        <Link href="/admin/invite-user">Hantera användare</Link>
         <Link href="/admin/sanity-studio/desk">Sanity Studio</Link>
         <span>sv / en</span>
       </div>

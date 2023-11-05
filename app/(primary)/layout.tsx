@@ -1,5 +1,5 @@
 import "../globals.css";
-import Nav from "@/components/Nav/Nav";
+import Nav from "@/components/Navigation/MainNav/MainNav";
 
 
 
