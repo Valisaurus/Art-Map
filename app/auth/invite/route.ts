@@ -11,24 +11,22 @@ export async function POST(request: Request) {
   const supabase = createRouteHandlerClient({ cookies });
 
   // const { data, error } = await supabase.auth.admin.inviteUserByEmail(email);
-
-  const { data, error } = await supabase.auth.signInWithOtp({
-    email: email,
-    options: {
-      emailRedirectTo: `${requestUrl.origin}/reset-password`,
-    },
-  });
-
-  if (error) {
+  try {
+    const { error } = await supabase.auth.signInWithOtp({
+      email: email,
+      options: {
+        emailRedirectTo: `${requestUrl.origin}/reset-password`,
+      },
+    });
+  } catch (err) {
+    console.error("Error while creating document:", err);
     return NextResponse.redirect(
       `${requestUrl.origin}/admin/desk?error=Could not sign up user`,
       {
-        // a 301 status is required to redirect from a POST to a GET route
         status: 301,
       }
     );
   }
-
   return NextResponse.redirect(`${requestUrl.origin}/admin/desk`, {
     status: 301,
   });
