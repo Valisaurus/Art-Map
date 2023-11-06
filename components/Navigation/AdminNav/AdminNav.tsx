@@ -1,5 +1,7 @@
 import Link from "next/link";
 import styles from "./AdminNav.module.css";
+import Form from "@/components/Forms/VenueForm/VenueForm";
+import LogoutButton from "@/components/User/LogoutButton";
 const AdminNav = () => {
   return (
     <nav className={styles.nav}>
@@ -9,7 +11,7 @@ const AdminNav = () => {
       <div className={styles.list}>
         <Link href="/admin/invite-user">Hantera användare</Link>
         <Link href="/admin/sanity-studio/desk">Sanity Studio</Link>
-        <Link href="auth/sign-out">Logga ut</Link>
+        <LogoutButton />
         <span>sv / en</span>
       </div>
     </nav>
