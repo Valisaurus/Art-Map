@@ -26,7 +26,7 @@ export default async function About() {
           Har du ett konto? -{">"}
           <span>
             <b>
-              <Link href={"/login"}>LOGGA IN</Link>
+              <Link href={"/login-user"}>LOGGA IN</Link>
             </b>
           </span>
         </p>
