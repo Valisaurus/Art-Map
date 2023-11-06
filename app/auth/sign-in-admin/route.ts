@@ -13,8 +13,8 @@ export async function POST(request: Request) {
 
   const { data: admin, error: adminNotFound } = await supabase
     .from("admin")
-    .select("email")
-    .eq("email", email);
+    .select("admin_email")
+    .eq("admin_email", email);
 
   if (adminNotFound) {
     return NextResponse.redirect(
