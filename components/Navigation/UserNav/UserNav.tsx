@@ -4,7 +4,7 @@ const AdminNav = () => {
   return (
     <nav className={styles.nav}>
       <div className={styles.home}>
-        <Link href="/admin">GBG ART GUIDE - INLOGGAD</Link>
+        <Link href="/dashboard">GBG ART GUIDE - INLOGGAD</Link>
       </div>
       <div className={styles.list}>
         <Link href="/dashboard/about">Dina uppgifter</Link>
