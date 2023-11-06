@@ -1,5 +1,5 @@
 export type Venue = {
-  name: string;
+  venueName: string;
   slug: string;
   websiteUrl: string;
   typeOf: string;

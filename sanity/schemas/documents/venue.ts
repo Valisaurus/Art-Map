@@ -4,15 +4,15 @@ export default {
   type: "document",
   fields: [
     {
-      title: "Name",
-      name: "name",
+      title: "Venue Name",
+      name: "venueName",
       type: "string",
     },
     {
       title: "Slug",
       name: "slug",
       type: "slug",
-      options: { source: "name" }, // grabs the information from the name-field.
+      options: { source: "venueName" }, // grabs the information from the name-field.
     },
     {
       title: "Website URL",
