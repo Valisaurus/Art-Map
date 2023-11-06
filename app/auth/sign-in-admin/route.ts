@@ -1,4 +1,5 @@
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -9,16 +10,24 @@ export async function POST(request: Request) {
   const formData = await request.formData();
   const email = String(formData.get("email"));
   const password = String(formData.get("password"));
-  const supabase = createRouteHandlerClient({ cookies });
+  const supabase = createRouteHandlerClient({
+    cookies,
+  });
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   const { data: admin, error: adminNotFound } = await supabase
     .from("admin")
-    .select("admin_email")
+    .select("*")
     .eq("admin_email", email);
+
+  console.log("THIS IS ADMIN", admin);
 
   if (adminNotFound) {
     return NextResponse.redirect(
-      `${requestUrl.origin}/login?error=Admin not found`,
+      `${requestUrl.origin}/login-admin?error=Admin not found`,
       {
         status: 301,
       }
@@ -33,7 +42,7 @@ export async function POST(request: Request) {
 
     if (signInError) {
       return NextResponse.redirect(
-        `${requestUrl.origin}/login?error=Could not authenticate user`,
+        `${requestUrl.origin}/login-admin?error=Could not authenticate user`,
         {
           // a 301 status is required to redirect from a POST to a GET route
           status: 301,
@@ -47,7 +56,7 @@ export async function POST(request: Request) {
     });
   } else {
     return NextResponse.redirect(
-      `${requestUrl.origin}/login?error=Admin access denied`,
+      `${requestUrl.origin}/login-admin?error=Admin access denied`,
       {
         // a 301 status is required to redirect from a POST to a GET route
         status: 301,
