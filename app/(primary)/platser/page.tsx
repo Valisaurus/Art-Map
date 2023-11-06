@@ -20,7 +20,7 @@ export default function Venues() {
     client
       .fetch<Venue[]>(
         `*[_type == "${documentType}"]{
-        name,
+        venueName,
         "slug": slug.current,
     }`
       )
