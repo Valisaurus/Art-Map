@@ -14,7 +14,7 @@ export default function Name({ control, errors }: nameProps) {
       <h2>Namn på verksamhet</h2>
       <label hidden>Namn på verksamhet</label>
       <Controller
-        name="name"
+        name="venueName"
         control={control}
         rules={{ required: "Detta fält måste fyllas i" }}
         render={({ field }) => (
@@ -26,8 +26,8 @@ export default function Name({ control, errors }: nameProps) {
           />
         )}
       />
-      {errors.name && (
-        <p className={styles.errorMessage}>{errors.name.message}</p>
+      {errors.venueName && (
+        <p className={styles.errorMessage}>{errors.venueName.message}</p>
       )}
     </section>
   );
