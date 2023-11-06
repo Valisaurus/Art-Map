@@ -1,11 +1,20 @@
-"use client";
-export default function AdminStartPage() {
-  return (
-    <>
-      <div className="">
-        <h1>Hej .... !</h1>
-        <p>Här hanterar du och publicerar information om din verksamhet, dina utställningar och dina event. </p>
-      </div>
-    </>
-  );
+import ClientSideAdmin from "./admin";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
+
+export const dynamic = "force-dynamic";
+
+export default async function AdminStartPage() {
+  // Create a Supabase client configured to use cookies
+  const supabase = createServerComponentClient({ cookies });
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session) {
+    redirect("/");
+  }
+
+  return <ClientSideAdmin />;
 }
