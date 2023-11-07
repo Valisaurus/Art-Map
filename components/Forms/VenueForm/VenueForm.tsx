@@ -11,11 +11,11 @@ import About from "./About/About";
 import Name from "./Name/Name";
 import Url from "./Url/Url";
 
-interface VenueFormProps {
-  userId: string;
-}
+// interface VenueFormProps {
+//   userId: string;
+// }
 
-export default function VenueForm(props: VenueFormProps) {
+export default function VenueForm() {
   const {
     control,
     handleSubmit,
@@ -34,7 +34,7 @@ export default function VenueForm(props: VenueFormProps) {
 
       const formData = {
         ...data,
-        userId: props.userId,
+        // userId: props.userId,
         openingHours: {
           ...data.openingHours,
           openByAppointment,

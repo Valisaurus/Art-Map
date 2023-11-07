@@ -9,6 +9,6 @@ export type Location = {
       zip: number;
       city: string;
     };
-    name: string;
+    venueName: string;
   };
   

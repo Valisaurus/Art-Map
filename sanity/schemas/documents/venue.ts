@@ -141,8 +141,8 @@ export default {
       type: "text",
     },
     {
-      title: "Supabase Id",
-      name: "supabaseId",
+      title: "User Id",
+      name: "userId",
       type: "string",
     },
   ],

@@ -1,6 +1,7 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import VenueForm from "@/components/Forms/VenueForm/VenueForm";
+import VenueAbout from "./about";
 interface userIdProps {
   userId: string;
 }
@@ -25,5 +26,5 @@ export default async function AboutPage(props: userIdProps) {
     return "could not get user";
   }
 
-  return <VenueForm userId={userId} />;
+  return <VenueAbout/>;
 }

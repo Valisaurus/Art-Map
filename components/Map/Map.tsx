@@ -98,13 +98,14 @@ const MapComponent = () => {
             `${locationData.address.streetName} ${locationData.address.streetNo}, ${locationData.address.zip} ,${locationData.address.city}, Sweden`
           );
 
+          // if statement if slug not exists
           if (location) {
             const link = `https://example.com/${encodeURIComponent(
-              locationData.name
+              locationData.venueName
             )}`;
 
             const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
-              `<a href="${link}">${locationData.name}</a>`
+              `<a href="${link}">${locationData.venueName}</a>`
             );
             const marker = new mapboxgl.Marker()
               .setLngLat(location)
