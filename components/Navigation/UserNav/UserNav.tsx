@@ -11,7 +11,7 @@ const AdminNav = () => {
         <Link href="/dashboard/about">Dina uppgifter</Link>
         <Link href="/dashboard/exhibitions">Utställningar</Link>
         <Link href="/dashboard/event">Event</Link>
-        <Link href="/settings"></Link>
+        <Link href="/settings">Inställningar</Link>
         <LogoutButton />
         <span>sv / en</span>
       </div>
