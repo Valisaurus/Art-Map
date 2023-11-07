@@ -46,4 +46,5 @@ export type Venue = {
     irregularOpeningHours: string;
   };
   about: string;
+  supabaseId: string;
 };

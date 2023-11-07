@@ -12,7 +12,7 @@ export default {
       title: "Slug",
       name: "slug",
       type: "slug",
-      options: { source: "venueName" }, // grabs the information from the name-field.
+      options: { source: "venueName" },
     },
     {
       title: "Website URL",
@@ -139,6 +139,11 @@ export default {
       title: "About",
       name: "about",
       type: "text",
+    },
+    {
+      title: "Supabase Id",
+      name: "supabaseId",
+      type: "string",
     },
   ],
 };
