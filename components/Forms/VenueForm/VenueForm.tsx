@@ -2,8 +2,6 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import type { Venue } from "@/types/venue";
 import styles from "./VenueForm.module.css";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
 
 import TypeOf from "./TypeOf/TypeOf";
 import Contact from "./Contact/Contact";
@@ -13,7 +11,11 @@ import About from "./About/About";
 import Name from "./Name/Name";
 import Url from "./Url/Url";
 
-export default function Form() {
+interface VenueFormProps {
+  userId: string;
+}
+
+export default function VenueForm(props: VenueFormProps) {
   const {
     control,
     handleSubmit,
@@ -32,6 +34,7 @@ export default function Form() {
 
       const formData = {
         ...data,
+        userId: props.userId,
         openingHours: {
           ...data.openingHours,
           openByAppointment,
@@ -69,19 +72,14 @@ export default function Form() {
         <Url control={control} errors={errors} />
         {/* _____________ TYPE OF ____________*/}
         <TypeOf control={control} errors={errors} />
-
         {/* _____________ CONTACT ____________*/}
         <Contact control={control} errors={errors} />
-
         {/* _____________ OPENING HOURS ____________*/}
         <OpeningHours control={control} errors={errors} />
-
         {/* _____________ ADDRESS ____________*/}
         <Adress control={control} errors={errors} />
-
         {/* _____________ ABOUT ____________*/}
         <About control={control} errors={errors} />
-
         {/* _____________ SUBMIT FORM ____________*/}
         <button type="submit" className="">
           Publicera
