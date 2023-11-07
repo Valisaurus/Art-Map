@@ -1,16 +1,27 @@
-"use client";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 
-import VenueForm from "@/components/Forms/VenueForm/VenueForm";
+interface userIdProps {
+  userId: string;
+}
 
-export default function VenueAbout() {
-  return (
-    <>
-      <div >
-        Hej!
-        <br />
-        Här fyller du i uppgifter om din verksamhet.
-      </div>
-      <VenueForm />
-    </>
-  );
+export default async function AboutPage(props: userIdProps) {
+  const supabase = createServerComponentClient({
+    cookies,
+  });
+
+  const { userId } = props;
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (session) {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    const userId = user?.id;
+    console.log("THIS IS USER ID", userId);
+  } else {
+    return "could not get user";
+  }
 }

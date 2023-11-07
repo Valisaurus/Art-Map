@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     .select("*")
     .eq("admin_email", email);
 
-  console.log("THIS IS ADMIN", admin);
+  //console.log("THIS IS ADMIN", admin);
 
   if (adminNotFound) {
     return NextResponse.redirect(

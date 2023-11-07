@@ -2,6 +2,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import type { Venue } from "@/types/venue";
 import styles from "./VenueForm.module.css";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 
 import TypeOf from "./TypeOf/TypeOf";
 import Contact from "./Contact/Contact";
@@ -25,17 +27,16 @@ export default function Form() {
 
   const submitForm = async (data: Venue) => {
     try {
+      // Converts the checkbox value to a boolean
+      const openByAppointment = !!data.openingHours?.openByAppointment;
 
-    // Converts the checkbox value to a boolean
-    const openByAppointment = !!data.openingHours?.openByAppointment;
-
-    const formData = {
-      ...data,
-      openingHours: {
-        ...data.openingHours,
-        openByAppointment,
-      },
-    };
+      const formData = {
+        ...data,
+        openingHours: {
+          ...data.openingHours,
+          openByAppointment,
+        },
+      };
 
       const response = await fetch("/api/venueForm", {
         method: "POST",
