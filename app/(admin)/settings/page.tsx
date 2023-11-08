@@ -1,4 +1,4 @@
-import ChangePassword from "../../../components/User/ChangePassword";
+import ChangePassword from "../../../components/User/ChangePassword/ChangePassword";
 export default function Settings() {
   return (
     <div>
