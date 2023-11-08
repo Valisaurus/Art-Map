@@ -11,6 +11,7 @@ const AdminNav = () => {
       <div className={styles.list}>
         <Link href="/admin/invite-user">Hantera användare</Link>
         <Link href="/admin/sanity-studio/desk">Sanity Studio</Link>
+        <Link href="/settings">Inställningar</Link>
         <LogoutButton />
         <span>sv / en</span>
       </div>

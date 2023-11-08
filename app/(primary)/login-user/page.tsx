@@ -1,6 +1,6 @@
 import Messages from "./messages";
 import styles from "./login.module.css";
-
+import Link from "next/link";
 export default function LoginUser() {
   return (
     <div className={styles.formWrapper}>
@@ -15,9 +15,11 @@ export default function LoginUser() {
           required
         />
         <button className={styles.loginButton}>Logga in</button>
-
         <Messages />
       </form>
+      <Link href="/send-reset-password-req-email">
+        <button>Glömt lösenord?</button>
+      </Link>
     </div>
   );
 }
