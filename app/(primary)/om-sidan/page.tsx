@@ -23,14 +23,24 @@ export default async function About() {
       </section>
       <section className={styles.loginSection}>
         <p>
-          Har du ett konto? -{">"}
+          Har du ett GBG ART GUIDE-konto? -{">"}
           <span>
             <b>
-              <Link href={"/login-user"}>LOGGA IN</Link>
+              <Link href={"/login-user"}>LOGGA IN HÄR</Link>
+            </b>
+          </span>
+        </p>
+        <br />
+        <p>
+          Är du admin? -{">"}
+          <span>
+            <b>
+              <Link href={"/login-admin"}>LOGGA IN HÄR</Link>
             </b>
           </span>
         </p>
       </section>
+
       <section className={styles.registerSection}>
         <p>
           Vill du ansöka om att skapa ett konto? -{">"}

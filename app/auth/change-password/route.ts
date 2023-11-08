@@ -1,6 +1,7 @@
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
@@ -29,24 +30,25 @@ export async function POST(request: Request) {
       return NextResponse.redirect(
         `${requestUrl.origin}/?error=incorrect old password`,
         {
-          // a 301 status is required to redirect from a POST to a GET route
           status: 301,
         }
       );
     }
-  }
 
-  if (error) {
-    return NextResponse.redirect(
-      `${requestUrl.origin}/?error=incorrect old password`,
-      {
-        // a 301 status is required to redirect from a POST to a GET route
+    // Check if the user is an admin
+    const { data: admin } = await supabase
+      .from("admin")
+      .select("*")
+      .eq("admin_email", email);
+
+    if (admin && admin.length > 0) {
+      return NextResponse.redirect(`${requestUrl.origin}/admin`, {
         status: 301,
-      }
-    );
+      });
+    } else {
+      return NextResponse.redirect(`${requestUrl.origin}/dashboard`, {
+        status: 301,
+      });
+    }
   }
-
-  return NextResponse.redirect(`${requestUrl.origin}/`, {
-    status: 301,
-  });
 }

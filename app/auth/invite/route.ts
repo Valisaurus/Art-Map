@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
   const formData = await request.formData();
 
   const email = String(formData.get("email"));
-  
+
   const supabase = createRouteHandlerClient({ cookies });
 
   // const { data, error } = await supabase.auth.admin.inviteUserByEmail(email);
