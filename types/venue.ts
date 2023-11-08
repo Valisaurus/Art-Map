@@ -1,4 +1,5 @@
 export type Venue = {
+  _id: string;
   venueName: string;
   slug: string;
   websiteUrl: string;
@@ -43,8 +44,8 @@ export type Venue = {
       to: string;
     };
     openByAppointment?: boolean;
-    irregularOpeningHours: string;
   };
+  irregularOpeningHours: string;
   about: string;
   userId: string;
 };

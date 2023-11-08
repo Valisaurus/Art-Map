@@ -18,7 +18,7 @@ const config = defineConfig({
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_ID || "",
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "",
-  useCdn: true, // set to `false` to bypass the edge cache
+  useCdn: false, // set to `false` to bypass the edge cache
   apiVersion: "2023-10-10",
   token: process.env.NEXT_PUBLIC_SANITY_NEW_API_TOKEN, // Only if you want to update content with the client
 });

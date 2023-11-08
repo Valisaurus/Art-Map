@@ -50,7 +50,7 @@ const MapComponent = () => {
   const geocodeAddress = async (
     address: string
   ): Promise<LngLatLike | null> => {
-    console.log("this is address", address);
+    // console.log("this is address", address);
     try {
       const response = await fetch(
         `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${mapboxgl.accessToken}`
