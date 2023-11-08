@@ -1,5 +1,5 @@
 export default {
-  title: "Venue",
+  title: "Venues",
   name: "venue",
   type: "document",
   fields: [

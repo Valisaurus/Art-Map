@@ -1,6 +1,6 @@
 
 export default {
-  title: "Application",
+  title: "Applications",
   name: "application",
   type: "document",
   fields: [
