@@ -39,7 +39,6 @@ input, textarea {
   width: 100%;
   max-height: calc(100vh - 3rem);
   overflow-y: scroll;
-  /* padding: 6rem; */
 }
 
 .leftBox {
@@ -60,6 +59,9 @@ border-top: none;
 @media only screen and (max-width: 990px) {
 .leftBox,
 .rightBox {
-  display: none;
+  width: 0px;
+  border: none;
 }
+
+
 }
