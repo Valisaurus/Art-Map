@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./UserNav.module.css";
-import LogoutButton from "@/components/User/LogoutButton";
+import LogoutButton from "@/components/User/LogoutButton/LogoutButton";
 const AdminNav = () => {
   return (
     <nav className={styles.nav}>
