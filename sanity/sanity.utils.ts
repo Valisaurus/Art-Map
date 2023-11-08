@@ -18,7 +18,6 @@ export async function getVenues(): Promise<Venue[]> {
 
 // Function that returns one venue based on slug
 export async function getVenue(slug: string): Promise<Venue> {
-  console.log(slug);
   return createClient(clientConfig).fetch(
     groq`*[_type == "venue" && slug.current == $slug][0]{
       _id,

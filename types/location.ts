@@ -10,6 +10,8 @@ export type Location = {
       city: string;
     };
     venueName: string;
-    slug: string;
+    slug:{
+      current: string;
+    } 
   };
   

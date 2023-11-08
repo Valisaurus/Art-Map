@@ -5,9 +5,6 @@ import mapboxgl, { LngLatLike } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Location } from "@/types/location";
 
-
-
-
 const client = createClient({
   projectId: "z4x2zjsw",
   dataset: "production",
@@ -94,7 +91,7 @@ const MapComponent = () => {
   useEffect(() => {
     if (map) {
       locations.forEach(async (locationData) => {
-        console.log("THIS IS ITEM", locationData);
+        console.log("THIS IS ITEM", locationData.slug);
 
         if (locationData.address) {
           const location = await geocodeAddress(
@@ -104,7 +101,7 @@ const MapComponent = () => {
           // if statement if slug not exists
           if (location) {
             const link = `/platser/${encodeURIComponent(
-              locationData.slug
+              locationData.slug.current
             )}`;
 
             const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
