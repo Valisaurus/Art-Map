@@ -1,6 +1,6 @@
 import Messages from "./messages";
 import styles from "./login.module.css";
-
+import Link from "next/link";
 export const dynamic = "force-dynamic";
 
 export default async function LoginAdmin() {
@@ -17,9 +17,9 @@ export default async function LoginAdmin() {
           required
         />
         <button className={styles.loginButton}>Logga in</button>
-        <form action="/auth/reset-email" method="POST">
+        <Link href="/send-reset-password-req-email">
           <button>Glömt lösenord?</button>
-        </form>
+        </Link>
 
         <Messages />
       </form>
