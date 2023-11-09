@@ -10,6 +10,7 @@ import Adress from "./Address/Address";
 import About from "./About/About";
 import Name from "./Name/Name";
 import Url from "./Url/Url";
+import { getVenues } from "@/sanity/sanity.utils";
 
 export default function VenueForm() {
   const {
@@ -36,6 +37,7 @@ export default function VenueForm() {
           openByAppointment,
         },
       };
+
 
       const response = await fetch("/api/venueForm", {
         method: "POST",

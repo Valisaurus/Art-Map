@@ -4,6 +4,8 @@ import { createClient } from "@sanity/client";
 import mapboxgl, { LngLatLike } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Location } from "@/types/location";
+import "./Map.css";
+
 
 const client = createClient({
   projectId: "z4x2zjsw",
@@ -21,7 +23,7 @@ const MapComponent = () => {
     mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || "";
     const newMap = new mapboxgl.Map({
       container: "map",
-      style: "mapbox://styles/valle88/clo5nyn1800rl01pf1sfb7ebm",
+      style: "mapbox://styles/anbru/clnew4y6y03xm01qxft776f2b",
 
       center: [11.967017, 57.707233], // Initial map center coordinates
       zoom: 12, // Initial zoom level
@@ -88,8 +90,6 @@ const MapComponent = () => {
   useEffect(() => {
     if (map) {
       locations.forEach(async (locationData) => {
-        console.log("THIS IS ITEM", locationData.slug);
-
         if (locationData.address) {
           const location = await geocodeAddress(
             `${locationData.address.streetName} ${locationData.address.streetNo}, ${locationData.address.zip} ,${locationData.address.city}, Sweden`
@@ -101,13 +101,20 @@ const MapComponent = () => {
               locationData.slug.current
             )}`;
 
+         
             const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
               `<a href="${link}">${locationData.venueName}</a>`
             );
-            const marker = new mapboxgl.Marker()
+
+            // create custom marker element
+            const customMarkerElement = document.createElement("div");
+            customMarkerElement.className = "marker"; 
+
+            const marker = new mapboxgl.Marker({ element: customMarkerElement })
               .setLngLat(location)
               .setPopup(popup)
               .addTo(map);
+              
             marker.getElement().addEventListener("click", () => {});
           }
         }
