@@ -16,7 +16,7 @@ export async function POST(request: Request) {
     password: password,
   });
 
-  return NextResponse.redirect(`${requestUrl.origin}/dashboard`, {
+  return NextResponse.redirect(`${requestUrl.origin}/om-sidan`, {
     status: 301,
   });
 }

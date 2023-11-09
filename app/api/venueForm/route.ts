@@ -4,6 +4,9 @@ import { createClient } from "@sanity/client";
 import { cookies } from "next/headers";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 
+import { Venue } from "@/types/venue";
+import { getVenues } from "@/sanity/sanity.utils";
+
 // Initialize the Sanity client
 const client = createClient({
   projectId: "z4x2zjsw",
@@ -14,6 +17,7 @@ const client = createClient({
 });
 
 export async function POST(req: NextRequest) {
+  // Supabase logic
   const supabase = createServerComponentClient({
     cookies,
   });
@@ -27,7 +31,12 @@ export async function POST(req: NextRequest) {
       data: { user },
     } = await supabase.auth.getUser();
     const userId = user?.id;
-    console.log("THIS IS USER ID", userId);
+
+    //Sanity logic
+    const venues = await getVenues();
+
+    // Check if userId matches any of the venue userIds
+    const matchingVenue = venues.find((venue) => venue.userId === userId);
 
     const { venueName, typeOf, contact, openingHours, address, about } =
       await req.json();

@@ -11,10 +11,6 @@ import About from "./About/About";
 import Name from "./Name/Name";
 import Url from "./Url/Url";
 
-// interface VenueFormProps {
-//   userId: string;
-// }
-
 export default function VenueForm() {
   const {
     control,
