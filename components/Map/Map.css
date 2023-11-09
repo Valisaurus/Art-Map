@@ -8,7 +8,7 @@
 }
 
 .marker {
-    background-image: url("/images/map/customMarker.svg");
+    background-image: url("");
     background-size: cover;
     width: 2rem;
     height: 2rem;

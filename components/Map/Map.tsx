@@ -86,6 +86,25 @@ const MapComponent = () => {
       });
   }, []);
 
+
+  // CHANGE COLOR ON TYPE OF VENUE
+  const getMarkerColor = (typeOf: string): string => {
+    switch (typeOf) {
+      case "gallery":
+        return "/images/map/orangeMarker.svg"; 
+      case "artistRun":
+        return "/images/map/purpleMarker.svg"; 
+      case "museum":
+        return "/images/map/redMarker.svg"; 
+      case "institution":
+        return "/images/map/greenMarker.svg"; 
+      case "popUp":
+        return "/images/map/turquoiseMarker.svg"; 
+      default:
+        return "/images/map/yellowMarker.svg"; // Default color if typeOf doesn't match any case
+    }
+  };
+
   // Add markers to the map using fetched data
   useEffect(() => {
     if (map) {
@@ -109,6 +128,8 @@ const MapComponent = () => {
             // create custom marker element
             const customMarkerElement = document.createElement("div");
             customMarkerElement.className = "marker"; 
+            customMarkerElement.style.backgroundImage = `url(${getMarkerColor(locationData.typeOf)})`
+          ;
 
             const marker = new mapboxgl.Marker({ element: customMarkerElement })
               .setLngLat(location)
