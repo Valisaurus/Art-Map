@@ -12,6 +12,7 @@ export async function getVenues(): Promise<Venue[]> {
             venueName,
             "slug": slug.current,
             typeOf,
+            userId,
     }`
   );
 }
