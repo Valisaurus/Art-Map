@@ -46,7 +46,7 @@ export async function POST(request: Request) {
         status: 301,
       });
     } else {
-      return NextResponse.redirect(`${requestUrl.origin}/dashboard`, {
+      return NextResponse.redirect(`${requestUrl.origin}/om-sidan`, {
         status: 301,
       });
     }
