@@ -21,10 +21,10 @@ const MapComponent = () => {
   useEffect(() => {
     mapboxgl.accessToken = process.env.NEXT_PUBLIC_ACCESS_TOKEN || "";
     const newMap = new mapboxgl.Map({
-      container: "map", // Replace 'map' with the ID of your map container
-      style: "mapbox://styles/valle88/clo5nyn1800rl01pf1sfb7ebm", // Choose your map style
+      container: "map", 
+      style: "mapbox://styles/valle88/clo5nyn1800rl01pf1sfb7ebm", 
       center: [11.967017, 57.707233], // Initial map center coordinates
-      zoom: 10, // Initial zoom level
+      zoom: 12, // Initial zoom level
     });
 
     const navigationControl = new mapboxgl.NavigationControl();
@@ -50,7 +50,6 @@ const MapComponent = () => {
   const geocodeAddress = async (
     address: string
   ): Promise<LngLatLike | null> => {
-    // console.log("this is address", address);
     try {
       const response = await fetch(
         `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${mapboxgl.accessToken}`
@@ -58,7 +57,6 @@ const MapComponent = () => {
 
       if (response.ok) {
         const data = await response.json();
-        //console.log("THIS IS DATA", data);
         if (data.features && data.features.length > 0) {
           const [lng, lat] = data.features[0].center;
           return [lng, lat];
@@ -74,8 +72,7 @@ const MapComponent = () => {
 
   // Fetch data from Sanity when the component mounts
   useEffect(() => {
-    const documentType = "venue"; //
-
+    const documentType = "venue"; 
     client
       .fetch<Location[]>(`*[_type == "${documentType}"]`)
       .then((fetchedLocations) => {

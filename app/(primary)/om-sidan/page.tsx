@@ -11,7 +11,7 @@ export default async function About() {
           </span>
           samlar platser som ställer ut samtida konst i Göteborg. Utställande
           aktörer är indelade efter kategorierna Museum, Institution,
-          Kommersiellt Galleri, Konstnärsdrivet Galleri, och Pop-Up/ tillfällig
+          Galleri, Konstnärsdrivet Galleri, och Pop-Up/ tillfällig
           utställningsplats. Dessa är markerade med olika färger på startsidans
           karta.
         </p>

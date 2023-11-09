@@ -1,5 +1,5 @@
 "use server";
-import ClientSideResetPassword from "./reset-pw";
+import ClientSideResetPassword from "./reset-password";
 
 const ResetPassword = () => {
   return <ClientSideResetPassword />;
