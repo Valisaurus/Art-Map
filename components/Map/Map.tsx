@@ -13,16 +13,16 @@ const client = createClient({
 });
 
 const MapComponent = () => {
-
   const [map, setMap] = useState<mapboxgl.Map | null>(null);
   const [locations, setLocations] = useState<Location[]>([]);
 
   // Initialize the Mapbox map
   useEffect(() => {
-    mapboxgl.accessToken = process.env.NEXT_PUBLIC_ACCESS_TOKEN || "";
+    mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || "";
     const newMap = new mapboxgl.Map({
-      container: "map", 
-      style: "mapbox://styles/valle88/clo5nyn1800rl01pf1sfb7ebm", 
+      container: "map",
+      style: "mapbox://styles/valle88/clo5nyn1800rl01pf1sfb7ebm",
+
       center: [11.967017, 57.707233], // Initial map center coordinates
       zoom: 12, // Initial zoom level
     });
@@ -72,7 +72,7 @@ const MapComponent = () => {
 
   // Fetch data from Sanity when the component mounts
   useEffect(() => {
-    const documentType = "venue"; 
+    const documentType = "venue";
     client
       .fetch<Location[]>(`*[_type == "${documentType}"]`)
       .then((fetchedLocations) => {
