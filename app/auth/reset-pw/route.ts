@@ -7,7 +7,6 @@ export async function POST(request: Request) {
   const requestUrl = new URL(request.url);
   const formData = await request.formData();
   const password = String(formData.get("password"));
-
   const code = String(formData.get("code"));
 
   const supabase = createRouteHandlerClient({ cookies });
