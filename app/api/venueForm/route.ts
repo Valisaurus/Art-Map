@@ -17,7 +17,8 @@ const client = createClient({
 });
 
 export async function POST(req: NextRequest) {
-  // Supabase logic
+
+  // SUPABASE LOGIC
   const supabase = createServerComponentClient({
     cookies,
   });
@@ -32,16 +33,10 @@ export async function POST(req: NextRequest) {
     } = await supabase.auth.getUser();
     const userId = user?.id;
 
-    //Sanity logic
+    //SANITY LOGIC
     const venues = await getVenues();
-
-    const venueIds = venues.map((venue) => venue._id === venue._id);
-
     // Check if userId matches any of the venue userIds
     const matchingVenue = venues.find((venue) => venue.userId === userId);
-
-    // const matchingVenueID = venues.find((venue) => venue._id === venuesIds);
-    //console.log("THIS IS VENUEID", matchingVenueID);
 
     const {    
       venueName,
@@ -56,7 +51,7 @@ export async function POST(req: NextRequest) {
 
     try {
       const venueData = {
-        _id: userId || "",
+        // _id: userId || "",
         _type: "venue",
         venueName,
         typeOf,
@@ -86,10 +81,27 @@ export async function POST(req: NextRequest) {
         websiteUrl,
       };
 
-      // Create a new document in Sanity if none with the userId exists. If it does exist, Replace it with the new venue data.
-      client.createOrReplace(venueData).then((res) => {
+  // Check if userId matches any of the venue userIds
+  if (matchingVenue) {
+    // If a document with the userId exists, patch it with the new venue data
+    client
+      .patch(matchingVenue._id)
+      .set(venueData)
+      .commit()
+      .then((res) => {
         console.log("res", res);
       });
+  } else {
+    // If the document with userId doesn't exist, create a new document
+    client.create(venueData).then((res) => {
+      console.log("res", res);
+    });
+  }
+
+      // Create a new document in Sanity if none with the userId exists. If it does exist, Replace it with the new venue data.
+      // client.createOrReplace(venueData).then((res) => {
+      //   console.log("res", res);
+      // });
 
       // const response = await client.createOrReplace(venueData);
 
