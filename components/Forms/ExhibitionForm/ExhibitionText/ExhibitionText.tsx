@@ -3,27 +3,26 @@ import type { Control, FieldErrors } from "react-hook-form";
 import type { Exhibition } from "@/types/exhibition";
 import styles from "../ExhibitionForm.module.css";
 
-interface artistsProps {
+interface exhibitionTextProps {
   control: Control<Exhibition>;
   errors: FieldErrors<Exhibition>;
 }
 
-export default function Artists({ control, errors }: artistsProps) {
+export default function ExhibitionText({ control, errors }: exhibitionTextProps) {
   return (
     <section className={styles.nameSection}>
-      <h2>Konstnär / konstnärer</h2>
-      <small>Separera med komma, avsluta med & </small>
-      <label hidden>Konstnär / konstnärer</label>
+      <h2>Utställningstext</h2>
+      <label hidden>Utställningstext</label>
       <Controller
-        name="artistNames"
+        name="exhibitionText"
         control={control}
         rules={{ required: "Detta fält måste fyllas i" }}
         render={({ field }) => (
-          <input {...field} value={field.value || ""} />
+          <textarea {...field} value={field.value || ""} />
         )}
       />
-      {errors.artistNames && (
-        <p className={styles.errorMessage}>{errors.artistNames.message}</p>
+      {errors.exhibitionText && (
+        <p className={styles.errorMessage}>{errors.exhibitionText.message}</p>
       )}
     </section>
   );

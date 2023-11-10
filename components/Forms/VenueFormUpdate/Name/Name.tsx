@@ -1,20 +1,20 @@
 import { Controller } from "react-hook-form";
 import type { Control, FieldErrors } from "react-hook-form";
 import type { Venue } from "@/types/venue";
-import styles from "../VenueForm.module.css";
+import styles from "../VenueFormUpdate.module.css";
 
-interface urlProps {
+interface nameProps {
   control: Control<Venue>;
   errors: FieldErrors<Venue>;
 }
 
-export default function Url({ control, errors }: urlProps) {
+export default function Name({ control, errors }: nameProps) {
   return (
-    <section className={styles.urlSection}>
-      <h2>Hemsida</h2>
-      <label hidden>Hemsida</label>
+    <section className={styles.nameSection}>
+      <h2>Namn på verksamhet</h2>
+      <label hidden>Namn på verksamhet</label>
       <Controller
-        name="websiteUrl"
+        name="venueName"
         control={control}
         // rules={{ required: "Detta fält måste fyllas i" }}
         render={({ field }) => (
@@ -26,8 +26,8 @@ export default function Url({ control, errors }: urlProps) {
           />
         )}
       />
-      {errors.websiteUrl && (
-        <p className={styles.errorMessage}>{errors.websiteUrl.message}</p>
+      {errors.venueName && (
+        <p className={styles.errorMessage}>{errors.venueName.message}</p>
       )}
     </section>
   );

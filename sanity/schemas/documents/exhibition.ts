@@ -23,8 +23,8 @@ export default {
     {
       title: "Artist Names",
       name: "artistNames",
-      type: "array",
-      of: [{ type: "string" }],
+      type: "string", // in a perfect world I want it to be an array
+      // of: [{ type: "string" }],
     },
     {
       title: "Image",
@@ -47,7 +47,19 @@ export default {
     {
       title: "Dates",
       name: "dates",
-      type: "date",
+      type: "object",
+      fields: [
+        {
+          title: "Opening",
+          name: "opening",
+          type: "date",
+        },
+        {
+          title: "Closing",
+          name: "closing",
+          type: "date",
+        },
+      ]
     },
     {
         title: "Exhibition text",

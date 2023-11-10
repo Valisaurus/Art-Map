@@ -7,7 +7,7 @@ export type Exhibition = {
       _type: "slug";
       current: string;
     };
-    artistNames: string[];
+    artistNames: string;
     image: {
       _type: "image";
       asset: {
@@ -17,7 +17,10 @@ export type Exhibition = {
       alt: string;
     };
     openingDate: string; // Should be in ISO 8601 datetime format
-    dates: string; // Should be in ISO 8601 date format
+    dates: {
+      opening: string; // Should be in ISO 8601 date format
+      closing: string; // Should be in ISO 8601 date format
+    }
     exhibitionText: string;
   };
   

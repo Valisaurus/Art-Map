@@ -1,6 +1,7 @@
 "use client";
 
-import VenueForm from "@/components/Forms/VenueForm/VenueForm";
+// import VenueForm from "@/components/Forms/VenueForm/VenueForm";
+import VenueFormUpdate from "@/components/Forms/VenueFormUpdate/VenueFormUpdate";
 
 export default function VenueAbout() {
   return (
@@ -10,7 +11,7 @@ export default function VenueAbout() {
         <br />
         Här fyller du i uppgifter om din verksamhet.
       </div>
-      <VenueForm />
+      <VenueFormUpdate />
     </>
   );
 }
