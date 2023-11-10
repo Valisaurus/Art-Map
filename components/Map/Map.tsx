@@ -122,7 +122,7 @@ const MapComponent = () => {
           // if statement if slug not exists
           if (location) {
             const link = `/platser/${encodeURIComponent(
-              locationData.slug.current
+              locationData.slug?.current
             )}`;
 
          
