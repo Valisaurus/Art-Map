@@ -43,8 +43,7 @@ export async function POST(req: NextRequest) {
     // const matchingVenueID = venues.find((venue) => venue._id === venuesIds);
     //console.log("THIS IS VENUEID", matchingVenueID);
 
-    const {
-      _id,
+    const {    
       venueName,
       typeOf,
       contact,
@@ -52,12 +51,12 @@ export async function POST(req: NextRequest) {
       address,
       about,
       irregularOpeningHours,
+      websiteUrl,
     } = await req.json();
 
     try {
-      // Create a new document in Sanity
       const venueData = {
-        _id: "cat",
+        _id: userId || "",
         _type: "venue",
         venueName,
         typeOf,
@@ -87,6 +86,7 @@ export async function POST(req: NextRequest) {
         websiteUrl,
       };
 
+      // Create a new document in Sanity if none with the userId exists. If it does exist, Replace it with the new venue data.
       client.createOrReplace(venueData).then((res) => {
         console.log("res", res);
       });
