@@ -12,7 +12,7 @@ const client = createClient({
   projectId: "z4x2zjsw",
   dataset: "production",
   apiVersion: "2023-10-10",
-  token: process.env.SANITY_API_TOKEN,
+  token: process.env.NEXT_SANITY_FORM_INSERT2_ACCESS_TOKEN,
   useCdn: false,
 });
 
@@ -35,15 +35,29 @@ export async function POST(req: NextRequest) {
     //Sanity logic
     const venues = await getVenues();
 
+    const venueIds = venues.map((venue) => venue._id === venue._id);
+
     // Check if userId matches any of the venue userIds
     const matchingVenue = venues.find((venue) => venue.userId === userId);
 
-    const { venueName, typeOf, contact, openingHours, address, about } =
-      await req.json();
+    // const matchingVenueID = venues.find((venue) => venue._id === venuesIds);
+    //console.log("THIS IS VENUEID", matchingVenueID);
+
+    const {
+      _id,
+      venueName,
+      typeOf,
+      contact,
+      openingHours,
+      address,
+      about,
+      irregularOpeningHours,
+    } = await req.json();
 
     try {
       // Create a new document in Sanity
-      const response = await client.create({
+      const venueData = {
+        _id: "cat",
         _type: "venue",
         venueName,
         typeOf,
@@ -60,8 +74,8 @@ export async function POST(req: NextRequest) {
           saturday: openingHours.saturday,
           sunday: openingHours.sunday,
           openByAppointment: openingHours.openByAppointment,
-          irregularOpeningHours: openingHours.irregularOpeningHours,
         },
+        irregularOpeningHours,
         address: {
           streetName: address.streetName,
           streetNo: address.streetNo,
@@ -69,10 +83,44 @@ export async function POST(req: NextRequest) {
           city: address.city,
         },
         about,
-        userId: userId,
+        userId: userId || "",
+        websiteUrl,
+      };
+
+      client.createOrReplace(venueData).then((res) => {
+        console.log("res", res);
       });
 
-      console.log("res", response);
+      // const response = await client.createOrReplace(venueData);
+
+      // const response = await client.create({
+      //   _type: "venue",
+      //   venueName,
+      //   typeOf,
+      //   contact: {
+      //     email: contact.email,
+      //     phone: contact.phone,
+      //   },
+      //   openingHours: {
+      //     monday: openingHours.monday,
+      //     tuesday: openingHours.tuesday,
+      //     wednesday: openingHours.wednesday,
+      //     thursday: openingHours.thursday,
+      //     friday: openingHours.friday,
+      //     saturday: openingHours.saturday,
+      //     sunday: openingHours.sunday,
+      //     openByAppointment: openingHours.openByAppointment,
+      //     irregularOpeningHours: openingHours.irregularOpeningHours,
+      //   },
+      //   address: {
+      //     streetName: address.streetName,
+      //     streetNo: address.streetNo,
+      //     zip: address.zip,
+      //     city: address.city,
+      //   },
+      //   about,
+      //   userId: userId,
+      // });
     } catch (err) {
       console.error("Error while creating document:", err);
       return NextResponse.json(

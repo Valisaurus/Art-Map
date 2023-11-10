@@ -1,5 +1,6 @@
 export type Venue = {
   _id: string;
+  _type: string;
   venueName: string;
   slug: string;
   websiteUrl: string;
