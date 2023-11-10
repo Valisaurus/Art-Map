@@ -5,7 +5,12 @@ import mapboxgl, { LngLatLike } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Location } from "@/types/location";
 import "./Map.css";
+import { Inter } from "next/font/google";
 
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const client = createClient({
   projectId: "z4x2zjsw",
@@ -143,7 +148,7 @@ const MapComponent = () => {
     }
   }, [map, locations]);
 
-  return <div id="map" style={{ width: "100%", height: "100%" }} />;
+  return <div className={inter.className} id="map" style={{ width: "100%", height: "100%" }} />;
 };
 
 export default MapComponent;
