@@ -1,21 +1,19 @@
-import "../globals.css";
-import Nav from "@/components/Navigation/MainNav/MainNav";
+import AdminNav from "@/components/Navigation/AdminNav/AdminNav";
 
-
-
-export default function PrimaryLayout({
+export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
     <>
-      <Nav />
+      <AdminNav />
       <div className="pageWrapper">
         <div className="leftBox"></div>
         <div className="contentWrapper">{children}</div>
         <div className="rightBox"></div>
       </div>
+      <div className="bottomBox"></div>
     </>
   );
 }

@@ -5,7 +5,12 @@ import mapboxgl, { LngLatLike } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Location } from "@/types/location";
 import "./Map.css";
+import { Inter } from "next/font/google";
 
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const client = createClient({
   projectId: "z4x2zjsw",
@@ -86,6 +91,25 @@ const MapComponent = () => {
       });
   }, []);
 
+
+  // CHANGE COLOR ON TYPE OF VENUE
+  const getMarkerColor = (typeOf: string): string => {
+    switch (typeOf) {
+      case "gallery":
+        return "/images/map/orangeMarker.svg"; 
+      case "artistRun":
+        return "/images/map/purpleMarker.svg"; 
+      case "museum":
+        return "/images/map/redMarker.svg"; 
+      case "institution":
+        return "/images/map/greenMarker.svg"; 
+      case "popUp":
+        return "/images/map/turquoiseMarker.svg"; 
+      default:
+        return "/images/map/yellowMarker.svg"; // Default color if typeOf doesn't match any case
+    }
+  };
+
   // Add markers to the map using fetched data
   useEffect(() => {
     if (map) {
@@ -109,6 +133,8 @@ const MapComponent = () => {
             // create custom marker element
             const customMarkerElement = document.createElement("div");
             customMarkerElement.className = "marker"; 
+            customMarkerElement.style.backgroundImage = `url(${getMarkerColor(locationData.typeOf)})`
+          ;
 
             const marker = new mapboxgl.Marker({ element: customMarkerElement })
               .setLngLat(location)
@@ -122,7 +148,7 @@ const MapComponent = () => {
     }
   }, [map, locations]);
 
-  return <div id="map" style={{ width: "100%", height: "100%" }} />;
+  return <div className={inter.className} id="map" style={{ width: "100%", height: "100%" }} />;
 };
 
 export default MapComponent;

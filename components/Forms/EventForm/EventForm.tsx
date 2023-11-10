@@ -1,6 +1,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
-import styles from "./ApplicationForm.module.css";
+import styles from "./EventForm.module.css";
 import { Event } from "@/types/event";
 
 export default function EventForm() {

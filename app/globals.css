@@ -29,32 +29,32 @@ input, textarea {
 }
 
 /* layout */
-
+.layoutWrapper {
+  display:flex;
+}
 .pageWrapper {
   display: flex;
   width: 100vw;
 }
-
 .contentWrapper {
   width: 100%;
   max-height: calc(100vh - 3rem);
   overflow-y: scroll;
 }
-
-.leftBox {
+.leftBox, 
+.rightBox {
 width: 4rem;
-height: calc(100vh - 4rem);
+height: calc(100vh - 8rem);
 border: 2px solid black;
 border-top: none;
+border-bottom: none;
 }
 
-.rightBox {
-  width: 4rem;
-  height: calc(100vh - 4rem);
+.bottomBox {
+  height: 4rem;
+  width: 100vw;
   border: 2px solid black;
-  border-top: none;
 }
-
 
 @media only screen and (max-width: 990px) {
 .leftBox,
@@ -62,6 +62,5 @@ border-top: none;
   width: 0px;
   border: none;
 }
-
 
 }
