@@ -1,7 +1,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import styles from "./ExhibitionForm.module.css";
-import { Application } from "@/types/application";
 import { Exhibition } from "@/types/exhibition";
 
 export default function ExhibitionForm() {
