@@ -16,7 +16,7 @@ const client = createClient({
   useCdn: false,
 });
 
-export async function POST(req: NextRequest) {
+export async function POST(req: NextRequest): Promise<NextResponse> {
 
   // SUPABASE LOGIC
   const supabase = createServerComponentClient({
@@ -33,12 +33,12 @@ export async function POST(req: NextRequest) {
     } = await supabase.auth.getUser();
     const userId = user?.id;
 
-    //SANITY LOGIC
+    // SANITY LOGIC
     const venues = await getVenues();
     // Check if userId matches any of the venue userIds
     const matchingVenue = venues.find((venue) => venue.userId === userId);
 
-    const {    
+    const {
       venueName,
       typeOf,
       contact,
@@ -81,22 +81,25 @@ export async function POST(req: NextRequest) {
         websiteUrl,
       };
 
-  // Check if userId matches any of the venue userIds
-  if (matchingVenue) {
-    // If a document with the userId exists, patch it with the new venue data
-    client
-      .patch(matchingVenue._id)
-      .set(venueData)
-      .commit()
-      .then((res) => {
-        console.log("res", res);
-      });
+      return NextResponse.json(
+        { message: "Form was submitted" },
+        { status: 200 }
+      );
+    } catch (err) {
+      console.error("Error while creating document:", err);
+      return NextResponse.json(
+        { message: "Failed to create document" },
+        { status: 500 }
+      );
+    }
   } else {
-    // If the document with userId doesn't exist, create a new document
-    client.create(venueData).then((res) => {
-      console.log("res", res);
-    });
+    return NextResponse.json(
+      { message: "Could not get user" },
+      { status: 401 }
+    );
   }
+}
+
 
       // Create a new document in Sanity if none with the userId exists. If it does exist, Replace it with the new venue data.
       // client.createOrReplace(venueData).then((res) => {
@@ -133,19 +136,3 @@ export async function POST(req: NextRequest) {
       //   about,
       //   userId: userId,
       // });
-    } catch (err) {
-      console.error("Error while creating document:", err);
-      return NextResponse.json(
-        { message: "Failed to create document" },
-        { status: 500 }
-      );
-    }
-
-    return NextResponse.json(
-      { message: "Form was submitted" },
-      { status: 200 }
-    );
-  } else {
-    return "could not get user";
-  }
-}
