@@ -9,6 +9,8 @@ interface imageProps {
 }
 
 export default function Image({ control, errors }: imageProps) {
+
+  
   return (
     <section className={styles.nameSection}>
       <h2>Utställningsbild</h2>

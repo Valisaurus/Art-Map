@@ -1,4 +1,5 @@
 "use client";
+import styles from "./sendResetPasswordReqEmail.module.css";
 
 export default function ResetPasswordWithEmail() {
   return (
@@ -6,12 +7,12 @@ export default function ResetPasswordWithEmail() {
       <form
         action="/auth/reset-password-email"
         method="POST"
-        className="flex flex-col gap-[24px]"
+        className={`${styles.form} ${styles.flex} ${styles.flexCol} ${styles.gap}`}
       >
         <label htmlFor="mail">Skriv in din mail</label>
-        <input name="email" required></input>
+        <input name="email" className={styles.input} required ></input>
 
-        <button className="px-4 mb-2 border-4 w-full border-black dark:border-white text-black dark:text-white h-[50px]">
+        <button className={`${styles.button}`}>
           Återställ lösenord
         </button>
       </form>

@@ -14,6 +14,14 @@
   margin: 0 0.5rem 0 0.5rem;
 }
 
+/* User location dot */
+.mapboxgl-user-location-dot{
+  background-color: #1df260;
+}
+.mapboxgl-user-location-dot:before {
+  background-color: #1df260;
+}
+
 .marker {
   background-image: url("");
   background-size: cover;

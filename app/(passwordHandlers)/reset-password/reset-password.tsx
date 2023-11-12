@@ -1,5 +1,5 @@
 "use client";
-
+import styles from "./resetPassword.module.css"; 
 import { useSearchParams } from "next/navigation";
 
 const ClientSideResetPassword = () => {
@@ -7,19 +7,19 @@ const ClientSideResetPassword = () => {
   const code = codeFetch !== null ? codeFetch : "";
   return (
     <div>
-      <div className="flex flex-col justify-center items-center w-full h-screen">
-        <div className=" flex flex-col justify-center items-center border-4 border-solid border-black dark:border-white text-black dark:text-white w-[332px] h-[250px] p-[16px]">
+      <div className={`${styles.container} ${styles.flex} ${styles.justifyCenter} ${styles.itemsCenter} ${styles.fullHeight}`}>
+        <div className={`${styles.flex} ${styles.justifyCenter} ${styles.itemsCenter} ${styles.border} ${styles.borderSolid} ${styles.borderColor} ${styles.textColors} ${styles.width} ${styles.height} ${styles.padding}`}>
           <form
             action="/auth/reset-pw"
             method="POST"
-            className="flex flex-col gap-[24px]"
+            className={`${styles.flex} ${styles.flexCol} ${styles.gap}`}
           >
             <input type="hidden" name="code" value={code} />
             <label htmlFor="password">Skriv in ditt nya lösenord:</label>
-            <div className="px-4 py-2 border-4 w-full border-black bg-inherit text-black dark:border-white dark:bg-black dark:text-white h-[50px]">
-              <input type="password" name="password" />
+            <div className={`${styles.inputContainer}`}>
+              <input type="password" name="password" className={`${styles.input}`}/>
             </div>
-            <button className="px-4 mb-2 border-4 w-full border-black dark:border-white text-black dark:text-white h-[50px]">
+            <button className={`${styles.button}`}>
               Uppdatera
             </button>
           </form>

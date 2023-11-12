@@ -25,21 +25,6 @@ export async function POST(req: NextRequest) {
       exhibitionText,
     });
 
-    exports.handler = async function (event : any) {
-      const { image } = event.body;
-      const base64Image = image.replace(/^data:image/\w+;,/, '');
-      const buffer = Buffer.from(base64Image, 'base64');
-    
-      // Upload image to Sanity
-      const result = await client.assets.upload('image', buffer, { filename: 'myImage.jpg' });
-    
-      return {
-        statusCode: 200,
-        body: JSON.stringify({ imageUrl: result.url }),
-      };
-    };
-
-
     console.log("res", response);
   } catch (err) {
     console.error("Error while creating document:", err);

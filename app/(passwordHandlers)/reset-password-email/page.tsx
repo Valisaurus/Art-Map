@@ -1,8 +1,8 @@
 "use server";
-import ClientSideResetPassword from "./reset-password-email";
+import ClientSideResetPasswordEmail from "./reset-password-email";
 
 const ResetPassword = () => {
-  return <ClientSideResetPassword />;
+  return <ClientSideResetPasswordEmail />;
 };
 
 export default ResetPassword;

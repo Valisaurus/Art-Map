@@ -28,7 +28,7 @@ input, textarea {
   max-width: 20rem;
 }
 
-/* layout */
+/* LAYOUT */
 .layoutWrapper {
   display:flex;
 }
@@ -44,7 +44,7 @@ input, textarea {
 .leftBox, 
 .rightBox {
 width: 4rem;
-height: calc(100vh - 8rem);
+height: calc(100vh - 3rem);
 border: 2px solid black;
 border-top: none;
 border-bottom: none;
@@ -54,6 +54,23 @@ border-bottom: none;
   height: 4rem;
   width: 100vw;
   border: 2px solid black;
+}
+
+/* ERROR/SUCCESS MESSAGES */
+.message {
+  margin-top: 1rem; 
+  padding: 1rem;
+  text-align: center;
+}
+
+.error {
+  background-color: #e53e3e; 
+  color: #fff; 
+}
+
+.success {
+  background-color: #38a169;
+  color: #fff; 
 }
 
 @media only screen and (max-width: 990px) {
