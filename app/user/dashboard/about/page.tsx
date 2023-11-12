@@ -1,17 +1,17 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import VenueForm from "@/components/Forms/VenueForm/VenueForm";
 import VenueAbout from "./about";
-interface userIdProps {
-  userId: string;
-}
 
-export default async function AboutPage(props: userIdProps) {
+// interface userIdProps {
+//   userId: string;
+// }
+
+export default async function AboutPage() {
   const supabase = createServerComponentClient({
     cookies,
   });
 
-  const { userId } = props;
+  // const { userId } = props;
   const {
     data: { session },
   } = await supabase.auth.getSession();
