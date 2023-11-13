@@ -20,6 +20,7 @@ export async function POST(req: NextRequest) {
       _type: "exhibition",
       title,
       artistNames,
+      image,
       openingDate,
       dates,
       exhibitionText,

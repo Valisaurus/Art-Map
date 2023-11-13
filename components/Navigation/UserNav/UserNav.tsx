@@ -8,9 +8,9 @@ const AdminNav = () => {
         <Link href="/user/dashboard">GBG ART GUIDE - INLOGGAD</Link>
       </div>
       <div className={styles.list}>
-        <Link href="user/dashboard/about">Dina uppgifter</Link>
-        <Link href="user/dashboard/exhibitions">Utställningar</Link>
-        <Link href="user/dashboard/event">Event</Link>
+        <Link href="dashboard/about">Dina uppgifter</Link>
+        <Link href="dashboard/exhibitions">Utställningar</Link>
+        <Link href="dashboard/event">Event</Link>
         <Link href="user/settings">Inställningar</Link>
         <LogoutButton />
         <span>sv / en</span>
