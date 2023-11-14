@@ -7,7 +7,14 @@ export default {
       title: "Venue",
       name: "venue",
       type: "reference",
-      to: [{type: "venue"}]
+      to: [{type: "venue"}],
+      fields: [
+        {
+          title: "Venue Name",
+          name: "venueName",
+          type: "string",
+        }
+      ]
     },
     {
       title: "Title",
@@ -53,18 +60,24 @@ export default {
           title: "Opening",
           name: "opening",
           type: "date",
+          options: {
+            dateFormat: 'DD.MM',
+          }
         },
         {
           title: "Closing",
           name: "closing",
           type: "date",
+          options: {
+            dateFormat: 'DD.MM',
+          }
         },
       ]
     },
     {
         title: "Exhibition text",
         name: "exhibitionText",
-        type: "text"
+        type: "text",
     }
   ],
 };
