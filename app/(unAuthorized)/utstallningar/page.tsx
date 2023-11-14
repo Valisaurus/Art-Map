@@ -1,3 +1,5 @@
+import { getExhibitions } from "@/sanity/sanity.utils";
+
 export default function Exhibitions() {
   return (
     <div>

@@ -6,6 +6,7 @@
     width: 100vw;
   }
   .contentWrapper {
+    display:flex;
     width: 100%;
     max-height: calc(100vh - 3rem);
     overflow-y: scroll;
@@ -24,3 +25,16 @@
     width: 100vw;
     border: 2px solid black;
   }
+
+  @media only screen and (max-width: 990px) {
+    .leftBox,
+    .rightBox {
+      width: 0px;
+      border: none;
+    }
+
+    .contentWrapper {
+      flex-direction: column-reverse;
+    }
+    
+    }
