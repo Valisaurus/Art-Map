@@ -1,17 +1,21 @@
-"use client";
+"use server";
 
-import EventForm from "@/components/Forms/EventForm/EventForm";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import ClientSideEvent from "./event";
 
+export default async function EventPage() {
+  const supabase = createServerComponentClient({
+    cookies,
+  });
 
-export default function Events() {
-  return (
-    <>
-      <div>
-        Hej!
-        <br />
-        Här fyller du i era kommande event.
-      </div>
-      <EventForm />
-    </>
-  );
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session) {
+    redirect("/");
+  }
+  return <ClientSideEvent />;
 }
