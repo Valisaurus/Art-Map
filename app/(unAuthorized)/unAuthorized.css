@@ -4,17 +4,17 @@
   .pageWrapper {
     display: flex;
     width: 100vw;
+    height: calc(100vh - 8rem);
   }
   .contentWrapper {
     display:flex;
     width: 100%;
-    max-height: calc(100vh - 3rem);
+    max-height: calc(100vh - 8rem);
     overflow-y: scroll;
   }
   .leftBox, 
   .rightBox {
   width: 4rem;
-  height: calc(100vh - 8rem);
   border: 2px solid black;
   border-top: none;
   border-bottom: none;
@@ -36,5 +36,10 @@
     .contentWrapper {
       flex-direction: column-reverse;
     }
-    
+
+    .bottomBox {
+      width: 0;
+      height: 0;
+    }
+
     }

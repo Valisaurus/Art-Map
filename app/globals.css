@@ -40,16 +40,17 @@ input, textarea {
 .pageWrapper {
   display: flex;
   width: 100vw;
+  height: 100vh;
 }
 .contentWrapper {
   width: 100%;
-  max-height: calc(100vh - 3rem);
+  max-height: calc(100vh - 4rem);
   overflow-y: scroll;
 }
 .leftBox, 
 .rightBox {
 width: 4rem;
-height: calc(100vh - 3rem);
+height: 100%;
 border: 2px solid black;
 border-top: none;
 border-bottom: none;
@@ -59,6 +60,12 @@ border-bottom: none;
   height: 4rem;
   width: 100vw;
   border: 2px solid black;
+}
+
+/* MAP */
+.mapWrapper {
+  width: 100%;
+  height: 100%;
 }
 
 /* ERROR/SUCCESS MESSAGES */

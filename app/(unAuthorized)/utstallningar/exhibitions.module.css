@@ -1,0 +1,71 @@
+.module {
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    border-right: 2px solid black;
+    overflow-y: scroll;
+}
+
+.exhibitionList {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.exhibitionList li {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0rem;
+}
+
+.exhibitionCard {
+    width: 100%;
+    padding: 1rem;
+}
+
+/* TOP SECTION */
+.topSection {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    text-transform: uppercase;
+    font-weight: bold;
+    width: 50%;   
+}
+
+.artistNames span{
+    display: flex;
+    text-align: end;
+}
+
+.venueName {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* BOTTOM SECTION */
+.bottomSection {
+
+}
+
+@media only screen and (max-width: 990px) {
+    .module {
+        border-top: 2px solid black;
+        border-left: 2px solid black;
+    }
+
+    .topSection {
+        flex-direction: column;
+    }
+
+    .title {
+        width: 100%;   
+    }
+
+    .artistNames span {
+        text-align: start;  
+    }
+}
