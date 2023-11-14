@@ -18,7 +18,7 @@ export default {
       title: "Slug",
       name: "slug",
       type: "slug", // sanity has a built in slug-type.
-      options: { source: "name" }, // grabs the information from the name-field.
+      options: { source: "title" }, // grabs the information from the name-field.
     },
     {
       title: "Artist Names",
