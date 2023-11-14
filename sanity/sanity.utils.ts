@@ -81,35 +81,43 @@ export async function getExhibitions(): Promise<Exhibition[]> {
   return createClient(clientConfig).fetch(
     groq`*[_type == "exhibition"]{
              _id,
-            venue,
+            "venue": {
+              "venueName": venue->venueName
+            },
             title,
             "slug": slug.current,
             artistNames,
             image,
+            "imageUrl": image.asset->url,
             openingDate,
             "dates": {
-              "opening": openingDate.opening,
-              "closing": openingDate.closing,
-            },       
+              "opening": dates.opening,
+              "closing": dates.closing,
+            },
+            exhibitionText,        
     }`
   );
 }
 
-export async function getExhibition(): Promise<Exhibition> {
+export async function getExhibition(slug: string): Promise<Exhibition> {
   return createClient(clientConfig).fetch(
-    groq`*[_type == "exhibition"]{
+    groq`*[_type == "exhibition" && slug.current == $slug][0]{
              _id,
-            venue,
+            "venue": {
+              "venueName": venue->venueName
+            },
             title,
             "slug": slug.current,
             artistNames,
             image,
+            "imageUrl": image.asset->url,
             openingDate,
             "dates": {
-              "opening": openingDate.opening,
-              "closing": openingDate.closing,
+              "opening": dates.opening,
+              "closing": dates.closing,
             },
             exhibitionText,         
-    }`
+    }`,
+    { slug }
   );
 }
