@@ -1,7 +1,10 @@
 export type Exhibition = {
+    imageUrl: string | StaticImport;
     _type: "exhibition"; 
     _id?: string; // Optional, used for document ID.
-    venue: string;
+    venue: {
+      venueName: string;
+    }
     title: string;
     slug: {
       _type: "slug";
