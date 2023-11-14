@@ -10,7 +10,6 @@ interface imageProps {
 
 export default function Image({ control, errors }: imageProps) {
   const handleUpload = async (selectedFile: File) => {
-
     // create FormData object
     const formData = new FormData();
 
@@ -25,24 +24,29 @@ export default function Image({ control, errors }: imageProps) {
       const response = await fetch("/api/imageUpload", {
         method: "POST",
         body: formData,
+        headers: {
+          "Content-Type": "application/octet-stream",
+        },
       });
 
       if (!response.ok) {
-        throw new Error(`Failed to upload image: ${response.statusText}`)
+        throw new Error(`Failed to upload image: ${response.statusText}`);
       }
 
       // handle response data
       const data = await response.json();
       // data here is the response from the server
-      console.log('Image uploaded:', data);
-     } catch (error) {
+      console.log("Image uploaded:", data);
+    } catch (error) {
       // Handle errors
-      {errors.image && (
-        <p className={styles.errorMessage}>{errors.image.message}</p>
-      )}
+      {
+        errors.image && (
+          <p className={styles.errorMessage}>{errors.image.message}</p>
+        );
+      }
     }
   };
-  
+
   return (
     <section className={styles.nameSection}>
       <h2>Utställningsbild</h2>
@@ -53,7 +57,7 @@ export default function Image({ control, errors }: imageProps) {
         rules={{ required: "Detta fält måste fyllas i" }}
         render={({ field }) => (
           <input
-            type="image"
+            type="file"
             onChange={(e) => {
               const file = e.target.files?.[0];
               if (file) {
