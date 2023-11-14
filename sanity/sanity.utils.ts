@@ -3,6 +3,7 @@
 import { Venue } from "@/types/venue";
 import { createClient, groq } from "next-sanity";
 import clientConfig from "./config/client-config";
+import { Exhibition } from "@/types/exhibition";
 
 // Function that returns all venues in array
 export async function getVenues(): Promise<Venue[]> {
@@ -72,5 +73,43 @@ export async function getVenue(slug: string): Promise<Venue> {
       about,
       }`,
     { slug }
+  );
+}
+
+// Function that returns all exhibitions in array
+export async function getExhibitions(): Promise<Exhibition[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "exhibition"]{
+             _id,
+            venue,
+            title,
+            "slug": slug.current,
+            artistNames,
+            image,
+            openingDate,
+            "dates": {
+              "opening": openingDate.opening,
+              "closing": openingDate.closing,
+            },       
+    }`
+  );
+}
+
+export async function getExhibition(): Promise<Exhibition> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "exhibition"]{
+             _id,
+            venue,
+            title,
+            "slug": slug.current,
+            artistNames,
+            image,
+            openingDate,
+            "dates": {
+              "opening": openingDate.opening,
+              "closing": openingDate.closing,
+            },
+            exhibitionText,         
+    }`
   );
 }
