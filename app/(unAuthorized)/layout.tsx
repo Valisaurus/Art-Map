@@ -1,4 +1,4 @@
-import "../globals.css";
+import "./unAuthorized.css";
 import Nav from "@/components/Navigation/MainNav/MainNav";
 
 export default function PrimaryLayout({
