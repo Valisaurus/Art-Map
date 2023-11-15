@@ -85,7 +85,7 @@ border-bottom: none;
   color: #fff; 
 }
 
-@media only screen and (max-width: 990px) {
+@media only screen and (max-width: 900px) {
 .leftBox,
 .rightBox {
   width: 0px;

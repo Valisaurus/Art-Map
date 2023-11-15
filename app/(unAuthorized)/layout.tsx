@@ -1,5 +1,6 @@
 import "./unAuthorized.css";
 import Nav from "@/components/Navigation/MainNav/MainNav";
+import MapComponent from "@/components/Map/Map";
 
 export default function PrimaryLayout({
   children,
@@ -11,7 +12,9 @@ export default function PrimaryLayout({
       <Nav />
       <div className="pageWrapper">
         <div className="leftBox"></div>
-        <div className="contentWrapper">{children}</div>
+        <div className="contentWrapper">
+          {children} <MapComponent />
+        </div>
         <div className="rightBox"></div>
       </div>
       <div className="bottomBox"></div>

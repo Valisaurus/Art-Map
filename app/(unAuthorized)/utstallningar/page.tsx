@@ -53,9 +53,6 @@ export default async function Exhibitions() {
           ))}
         </ul>
       </div>
-      <div className="mapWrapper">
-        <Map />
-      </div>
     </>
   );
 }

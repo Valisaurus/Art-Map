@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { getVenues } from "@/sanity/sanity.utils";
 import styles from "./platser.module.css";
-import Map from "@/components/Map/Map";
+// import Map from "@/components/Map/Map";
 
 export default async function Venues() {
   const venues = await getVenues();
@@ -22,9 +22,6 @@ export default async function Venues() {
         ))}
       </ul>
       </div>
-      {/* <div className="mapWrapper"> */}
-      < Map />
-      {/* </div> */}
     </>
   );
 }
