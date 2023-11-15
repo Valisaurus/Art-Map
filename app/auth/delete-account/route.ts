@@ -9,8 +9,8 @@ export async function POST(request: Request) {
   const requestUrl = new URL(request.url);
   const formData = await request.formData();
   const password = String(formData.get("password"));
-  const email = String(formData.get("user_email"));
-  const user_id = String(formData.get("user_id"));
+  // const email = String(formData.get("user_email"));
+  // const user_id = String(formData.get("user_id"));
 
   const supabase = createClient(
     String(process.env.NEXT_PUBLIC_SUPABASE_URL),
@@ -23,15 +23,12 @@ export async function POST(request: Request) {
     }
   );
 
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
+  const { data: { user }, error } = await supabase.auth.getUser();
   //console.log("THIS IS USERID", user_id);
 
-  if (data?.user?.aud === "authenticated") {
+  if (user?.aud === "authenticated") {
     const { error: deleteError } = await supabase.auth.admin.deleteUser(
-      user_id
+      user.id
     );
 
     if (deleteError) {
@@ -48,8 +45,7 @@ export async function POST(request: Request) {
   }
 
   if (error?.message) {
-    console.log("user id:", user_id)
-    console.log("Email:", email);
+    console.log(user)
     console.log("Password:", password);
     console.error("Authentication error:", error.message);
     return NextResponse.redirect(
