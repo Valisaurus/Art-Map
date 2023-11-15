@@ -1,9 +1,11 @@
+import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { createClient } from "@supabase/supabase-js";
-
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
+  
   const requestUrl = new URL(request.url);
   const formData = await request.formData();
   const password = String(formData.get("password"));
@@ -28,15 +30,15 @@ export async function POST(request: Request) {
   //console.log("THIS IS USERID", user_id);
 
   if (data?.user?.aud === "authenticated") {
-    const { data, error } = await supabase.auth.admin.deleteUser(user_id);
+    const { error: deleteError } = await supabase.auth.admin.deleteUser(
+      user_id
+    );
 
-    if (error) {
+    if (deleteError) {
+      console.error("Error deleting user:", deleteError.message);
       return NextResponse.redirect(
         `${requestUrl.origin}/login-user?error=Could not delete user`,
-        {
-          // a 301 status is required to redirect from a POST to a GET route
-          status: 301,
-        }
+        { status: 301 }
       );
     }
 
@@ -46,13 +48,13 @@ export async function POST(request: Request) {
   }
 
   if (error?.message) {
-    console.log(error?.message);
+    console.log("user id:", user_id)
+    console.log("Email:", email);
+    console.log("Password:", password);
+    console.error("Authentication error:", error.message);
     return NextResponse.redirect(
       `${requestUrl.origin}/?error=incorrect password`,
-      {
-        // a 301 status is required to redirect from a POST to a GET route
-        status: 301,
-      }
+      { status: 301 }
     );
   }
 }
