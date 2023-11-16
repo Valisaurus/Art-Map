@@ -37,6 +37,7 @@
 }
 
 .artistNames span {
+  font-size: 0.8rem;
   display: flex;
   text-align: end;
 }
@@ -45,6 +46,11 @@
   text-transform: uppercase;
   font-weight: bold;
 }
+/* IMAGE */
+.exhibitionImage {
+  margin: 0.8rem 0rem;
+}
+
 
 /* BOTTOM SECTION */
 .bottomSection {

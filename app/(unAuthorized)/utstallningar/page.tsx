@@ -2,9 +2,11 @@ import Link from "next/link";
 import { getExhibitions } from "@/sanity/sanity.utils";
 import styles from "./exhibitions.module.css";
 import Image from "next/image";
+import { Exhibition } from "@/types/exhibition";
+import { formatDateRange, getColor } from "@/utils/functions";
 
 export default async function Exhibitions() {
-  const exhibitions = await getExhibitions();
+  const exhibitions: Exhibition[] = await getExhibitions();
 
   return (
     <>
@@ -13,7 +15,10 @@ export default async function Exhibitions() {
         <ul className={styles.exhibitionList}>
           {exhibitions.map((exhibition) => (
             <li key={exhibition._id}>
-              <div className={styles.exhibitionCard}>
+              <div
+                className={styles.exhibitionCard}
+                style={{ backgroundColor: getColor(exhibition.typeOf.typeOf) }}
+              >
                 <div className={styles.topSection}>
                   <div className={styles.title}>
                     <Link
@@ -27,7 +32,9 @@ export default async function Exhibitions() {
                     <span>{exhibition.artistNames}</span>
                   </div>
                 </div>
+
                 <Image
+                  className={styles.exhibitionImage}
                   src={exhibition.imageUrl}
                   alt={`${exhibition.title}`}
                   sizes="100%"
@@ -37,14 +44,19 @@ export default async function Exhibitions() {
                     width: "100%",
                     height: "auto",
                   }}
-                /> 
+                />
+
                 <div className={styles.topSection}>
-                  <span className={styles.venueName}>
+                  <Link className={styles.venueName} href={""}>
                     {exhibition.venue.venueName}
-                  </span>
+                  </Link>
                   <div className={styles.dates}>
-                    <span>{exhibition.dates.opening}</span>
-                    <span>{exhibition.dates.closing}</span>
+                    <span>
+                      {formatDateRange(
+                        exhibition.dates.opening,
+                        exhibition.dates.closing
+                      )}
+                    </span>
                   </div>
                 </div>
               </div>

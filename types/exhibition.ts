@@ -5,6 +5,9 @@ export type Exhibition = {
   venue: {
     venueName: string;
   };
+  typeOf: {
+    typeOf: string;
+  }
   title: string;
   slug: string;
   artistNames: string;
