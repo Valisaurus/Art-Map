@@ -140,6 +140,9 @@ export async function getExhibitions(): Promise<Exhibition[]> {
             "venue": {
               "venueName": venue->venueName
             },
+            "typeOf": {
+              "typeOf": venue->typeOf
+            },
             title,
             "slug": slug.current,
             artistNames,
