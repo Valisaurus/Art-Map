@@ -1,11 +1,14 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { createClient } from "@sanity/client";
 import mapboxgl, { LngLatLike } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Location } from "@/types/location";
 import "./Map.css";
-import { Inter } from "next/font/google";
+import { Inter, Marko_One } from "next/font/google";
+import VenueName from "../Forms/ApplicationForm/VenueName/VenueName";
+import { getExhibitions } from "@/sanity/sanity.utils";
+import { Exhibition } from "@/types/exhibition";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,9 +22,13 @@ const client = createClient({
   apiVersion: "2023-10-10",
 });
 
-const MapComponent = () => {
+const MapComponent = ({ getExhibitions }: { getExhibitions: Exhibition[] }) => {
   const [map, setMap] = useState<mapboxgl.Map | null>(null);
   const [locations, setLocations] = useState<Location[]>([]);
+  const [clickedExhibition, setClickedExhibition] = useState<string | null>(
+    null
+  );
+  const clickedExhibitionLocationRef = useRef<LngLatLike | null>(null);
 
   // Initialize the Mapbox map
   useEffect(() => {
@@ -91,20 +98,31 @@ const MapComponent = () => {
       });
   }, []);
 
+  // const Exhibition = ({ getExhibitions }: { getExhibitions: Exhibition[] }) => {
+  //   useEffect(() => {
+  //     getExhibitions.forEach((exhibition) => {
+  //       const exhibitionVenueName = exhibition.venue.venueName;
+  //       console.log("exibitionName:", exhibitionVenueName);
+  //     });
+  //     // Log or use the exhibition names as needed
+  //   }, [getExhibitions]);
+
+  //   // rest of your component...
+  // };
 
   // CHANGE COLOR ON TYPE OF VENUE
   const getMarkerColor = (typeOf: string): string => {
     switch (typeOf) {
       case "gallery":
-        return "/images/map/orangeMarker.svg"; 
+        return "/images/map/orangeMarker.svg";
       case "artistRun":
-        return "/images/map/purpleMarker.svg"; 
+        return "/images/map/purpleMarker.svg";
       case "museum":
-        return "/images/map/redMarker.svg"; 
+        return "/images/map/redMarker.svg";
       case "institution":
-        return "/images/map/greenMarker.svg"; 
+        return "/images/map/greenMarker.svg";
       case "popUp":
-        return "/images/map/turquoiseMarker.svg"; 
+        return "/images/map/turquoiseMarker.svg";
       default:
         return "/images/map/yellowMarker.svg"; // Default color if typeOf doesn't match any case
     }
@@ -125,30 +143,47 @@ const MapComponent = () => {
               locationData.slug?.current
             )}`;
 
-         
             const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
               `<a href="${link}">${locationData.venueName}</a>`
             );
 
             // create custom marker element
             const customMarkerElement = document.createElement("div");
-            customMarkerElement.className = "marker"; 
-            customMarkerElement.style.backgroundImage = `url(${getMarkerColor(locationData.typeOf)})`
-          ;
+            customMarkerElement.className = "marker";
+            customMarkerElement.style.backgroundImage = `url(${getMarkerColor(
+              locationData.typeOf
+            )})`;
 
             const marker = new mapboxgl.Marker({ element: customMarkerElement })
               .setLngLat(location)
               .setPopup(popup)
               .addTo(map);
-              
-            marker.getElement().addEventListener("click", () => {});
+
+            marker.getElement().addEventListener("click", () => {
+              setClickedExhibition(locationData.venueName);
+            });
+
+            if (map && clickedExhibitionLocationRef.current) {
+              map.flyTo({
+                center: clickedExhibitionLocationRef.current,
+                zoom: 20,
+              });
+            }
           }
         }
       });
     }
-  }, [map, locations]);
+  }, [map, locations, clickedExhibition]);
 
-  return <div className={inter.className} id="map" style={{ width: "100%", height: "100%" }} />;
+  return (
+    <>
+      <div
+        className={inter.className}
+        id="map"
+        style={{ width: "100%", height: "100%" }}
+      />
+    </>
+  );
 };
 
 export default MapComponent;
