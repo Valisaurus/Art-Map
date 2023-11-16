@@ -3,27 +3,10 @@ import { getExhibitions } from "@/sanity/sanity.utils";
 import styles from "./exhibitions.module.css";
 import Image from "next/image";
 import { Exhibition } from "@/types/exhibition";
+import { formatDateRange, getColor } from "@/utils/functions";
 
 export default async function Exhibitions() {
   const exhibitions: Exhibition[] = await getExhibitions();
-
-  // Function to determine the color based on typeOf
-  const getColor = (typeOf: string): string => {
-    switch (typeOf) {
-      case "gallery":
-        return "rgba(255, 164, 28, 0.3)"; 
-      case "artistRun":
-        return "rgba(91, 114, 233, 0.3)"; 
-      case "museum":
-        return "rgba(218, 95, 95, 0.30);"; 
-      case "institution":
-        return "rgba(106, 157, 139, 0.3)"; 
-      case "popUp":
-        return "rgba(115, 247, 255, 0.30)"; 
-      default:
-        return "rgba(255, 214, 0, 0.30)"; // Default color if typeOf doesn't match any case
-    }
-  };
 
   return (
     <>
@@ -63,8 +46,7 @@ export default async function Exhibitions() {
                     {exhibition.venue.venueName}
                   </span>
                   <div className={styles.dates}>
-                    <span>{exhibition.dates.opening}</span>
-                    <span>{exhibition.dates.closing}</span>
+                    <span>{formatDateRange(exhibition.dates.opening, exhibition.dates.closing)}</span>                
                   </div>
                 </div>
               </div>

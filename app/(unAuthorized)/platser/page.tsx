@@ -3,30 +3,11 @@ import Link from "next/link";
 import { getVenues } from "@/sanity/sanity.utils";
 import styles from "./platser.module.css";
 import { Venue } from "@/types/venue";
-import { getTitleFromTypeOf } from "@/utils/functions";
+import { getColor, getTitleFromTypeOf } from "@/utils/functions";
 
 
 export default async function Venues() {
   const venues: Venue[] = await getVenues();
-
-    // Function to determine the color based on typeOf
-    const getColor = (typeOf: string): string => {
-      switch (typeOf) {
-        case "gallery":
-          return "rgba(255, 164, 28, 0.3)"; 
-        case "artistRun":
-          return "rgba(91, 114, 233, 0.3)"; 
-        case "museum":
-          return "rgba(218, 95, 95, 0.30)"; 
-        case "institution":
-          return "rgba(106, 157, 139, 0.3)"; 
-        case "popUp":
-          return "rgba(115, 247, 255, 0.30)"; 
-        default:
-          return "rgba(255, 214, 0, 0.30)"; // Default color if typeOf doesn't match any case
-      }
-    };
-  
 
   return (
     <>
