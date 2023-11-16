@@ -14,9 +14,11 @@ export default async function Exhibitions() {
         <h1>Utställningar</h1>
         <ul className={styles.exhibitionList}>
           {exhibitions.map((exhibition) => (
-            
             <li key={exhibition._id}>
-              <div className={styles.exhibitionCard} style={{ backgroundColor: getColor(exhibition.typeOf.typeOf) }}>
+              <div
+                className={styles.exhibitionCard}
+                style={{ backgroundColor: getColor(exhibition.typeOf.typeOf) }}
+              >
                 <div className={styles.topSection}>
                   <div className={styles.title}>
                     <Link
@@ -30,7 +32,9 @@ export default async function Exhibitions() {
                     <span>{exhibition.artistNames}</span>
                   </div>
                 </div>
+
                 <Image
+                  className={styles.exhibitionImage}
                   src={exhibition.imageUrl}
                   alt={`${exhibition.title}`}
                   sizes="100%"
@@ -40,13 +44,19 @@ export default async function Exhibitions() {
                     width: "100%",
                     height: "auto",
                   }}
-                /> 
+                />
+
                 <div className={styles.topSection}>
-                  <span className={styles.venueName}>
+                  <Link className={styles.venueName} href={""}>
                     {exhibition.venue.venueName}
-                  </span>
+                  </Link>
                   <div className={styles.dates}>
-                    <span>{formatDateRange(exhibition.dates.opening, exhibition.dates.closing)}</span>                
+                    <span>
+                      {formatDateRange(
+                        exhibition.dates.opening,
+                        exhibition.dates.closing
+                      )}
+                    </span>
                   </div>
                 </div>
               </div>
