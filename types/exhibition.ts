@@ -1,4 +1,5 @@
 export type Exhibition = {
+  imageUrl: string;
   _id: string; 
   _type: string;
   venue: {
