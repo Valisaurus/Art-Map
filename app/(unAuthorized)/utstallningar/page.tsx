@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { getExhibitions } from "@/sanity/sanity.utils";
 import styles from "./exhibitions.module.css";
-import Map from "@/components/Map/Map";
 import Image from "next/image";
 
 export default async function Exhibitions() {
@@ -28,7 +27,7 @@ export default async function Exhibitions() {
                     <span>{exhibition.artistNames}</span>
                   </div>
                 </div>
-                <Image
+                {/* <Image
                   src={exhibition.imageUrl}
                   alt={`${exhibition.title}`}
                   sizes="100%"
@@ -38,7 +37,7 @@ export default async function Exhibitions() {
                     width: "100%",
                     height: "auto",
                   }}
-                />
+                /> */}
                 <div className={styles.topSection}>
                   <span className={styles.venueName}>
                     {exhibition.venue.venueName}
