@@ -22,7 +22,7 @@ export default async function AboutPage() {
       data: { user },
     } = await supabase.auth.getUser();
     const userId = user?.id;
-    console.log("THIS IS USER ID", userId);
+
   } else {
     return "could not get user";
   }
