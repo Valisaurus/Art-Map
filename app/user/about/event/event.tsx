@@ -2,8 +2,7 @@
 
 import EventForm from "@/components/Forms/EventForm/EventForm";
 
-export default async function ClientSideEvent() {
-
+export default function ClientSideEvent() {
   return (
     <>
       <div>

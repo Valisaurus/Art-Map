@@ -7,14 +7,15 @@ const client = createClient({
   projectId: "z4x2zjsw",
   dataset: "production",
   apiVersion: "2023-10-10",
-  token: process.env.SANITY_API_TOKEN,
+  token: process.env.NEXT_SANITY_FORM_INSERT2_ACCESS_TOKEN,
   useCdn: false,
 });
 
 export async function POST(req: NextRequest) {
-  const { title, artistNames, image, openingDate, dates, exhibitionText } = await req.json(); 
+  const { title, artistNames, image, openingDate, dates, exhibitionText } =
+    await req.json();
 
-  try {  
+  try {
     // Create a new document in Sanity
     const response = await client.create({
       _type: "exhibition",

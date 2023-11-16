@@ -7,7 +7,7 @@ import Artists from "./Artists/Artists";
 import Dates from "./Dates/Dates";
 import ExhibitionText from "./ExhibitionText/ExhibitionText";
 import Title from "./Title/Title";
-import Image from "./Image/Image";
+//import Image from "./Image/Image";
 
 export default function ExhibitionForm() {
   const {
@@ -48,13 +48,11 @@ export default function ExhibitionForm() {
   return (
     <div className={styles.formWrapper}>
       <form onSubmit={handleSubmit(onSubmit)}>
-  
-      <Title control={control} errors={errors} />
-      <Artists control={control} errors={errors} />
-      <Dates control={control} errors={errors} />
-      <ExhibitionText control={control} errors={errors} />
-      <Image control={control} errors={errors} />
-
+        <Title control={control} errors={errors} />
+        <Artists control={control} errors={errors} />
+        <Dates control={control} errors={errors} />
+        <ExhibitionText control={control} errors={errors} />
+        {/* <Image control={control} errors={errors} /> */}
 
         <button type="submit" className="">
           Publicera utställning

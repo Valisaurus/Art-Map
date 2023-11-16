@@ -1,8 +1,4 @@
-type DeleteAccountProps = {
-  user_id: string | undefined;
-  user_email: string | undefined;
-};
-const DeleteAccount = ({ user_id, user_email }: DeleteAccountProps) => {
+const DeleteAccount = () => {
   return (
     <div>
       <div>
