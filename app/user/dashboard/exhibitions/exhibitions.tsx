@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = "auto";
 import ExhibitionForm from "@/components/Forms/ExhibitionForm/ExhibitionForm";
 
 export default function ClientSideExhibitions() {
