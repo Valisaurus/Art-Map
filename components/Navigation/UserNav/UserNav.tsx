@@ -5,12 +5,12 @@ const AdminNav = () => {
   return (
     <nav className={styles.nav}>
       <div className={styles.home}>
-        <Link href="/user/dashboard">GBG ART GUIDE - INLOGGAD</Link>
+        <Link href="/user">GBG ART GUIDE - INLOGGAD</Link>
       </div>
       <div className={styles.list}>
-        <Link href="/user/dashboard/about">Dina uppgifter</Link>
-        <Link href="/user/dashboard/exhibitions">Utställningar</Link>
-        <Link href="/user/dashboard/event">Event</Link>
+        <Link href="/user/about">Dina uppgifter</Link>
+       
+      
         <Link href="/user/settings">Inställningar</Link>
         <LogoutButton />
         <span>sv / en</span>
