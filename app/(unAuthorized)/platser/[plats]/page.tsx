@@ -7,7 +7,7 @@ type Props = {
 export default async function Venue({ params }: Props) {
   const slug = params.plats;
   const venue = await getVenue(slug);
-
+ 
   return (
     <>
       <h1>{venue.venueName}</h1>

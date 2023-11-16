@@ -1,12 +1,11 @@
 import Link from "next/link";
 import styles from "./AdminNav.module.css";
-import Form from "@/components/Forms/VenueForm/VenueForm";
 import LogoutButton from "@/components/User/LogoutButton/LogoutButton";
 const AdminNav = () => {
   return (
     <nav className={styles.nav}>
       <div className={styles.home}>
-        <Link href="/admin">GBG ART GUIDE - ADMIN</Link>
+        <Link href="/admin">GBG ART GUIDE<span className={styles.admin}>Admin</span></Link>
       </div>
       <div className={styles.list}>
         <Link href="/admin/invite-user">Hantera användare</Link>

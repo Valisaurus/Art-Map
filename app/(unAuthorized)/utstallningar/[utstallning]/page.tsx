@@ -1,19 +1,22 @@
+import Messages from "@/components/Messages/Messages";
 import { getExhibition } from "@/sanity/sanity.utils";
 
+
 type Props = {
-  params: { ustallning: string };
+  params: { utstallning: string };
 };
 
 export default async function Exhibition({ params }: Props) {
-  const slug = params.ustallning;
+  const slug = params.utstallning;
+
+  if (!slug) {
+    return < Messages />
+  }
   const exhibition = await getExhibition(slug);
 
   return (
     <>
       <h1>{exhibition.title}</h1>
-
-
-
     </>
   );
 }

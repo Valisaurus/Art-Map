@@ -27,7 +27,7 @@ export default async function Exhibitions() {
                     <span>{exhibition.artistNames}</span>
                   </div>
                 </div>
-                {/* <Image
+                <Image
                   src={exhibition.imageUrl}
                   alt={`${exhibition.title}`}
                   sizes="100%"
@@ -37,7 +37,7 @@ export default async function Exhibitions() {
                     width: "100%",
                     height: "auto",
                   }}
-                /> */}
+                /> 
                 <div className={styles.topSection}>
                   <span className={styles.venueName}>
                     {exhibition.venue.venueName}
