@@ -16,7 +16,7 @@ const client = createClient({
   useCdn: false,
 });
 
-export default async function POST(req: NextRequest): Promise<NextResponse> {
+export async function POST(req: NextRequest): Promise<NextResponse> {
   // SUPABASE LOGIC
   const supabase = createServerComponentClient({
     cookies,
