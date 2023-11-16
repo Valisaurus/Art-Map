@@ -1,18 +1,16 @@
-import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { createClient } from "@supabase/supabase-js";
+import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
-  
   const requestUrl = new URL(request.url);
   const formData = await request.formData();
   const password = String(formData.get("password"));
-  const email = String(formData.get("user_email"));
-  const user_id = String(formData.get("user_id"));
 
-  const supabase = createClient(
+  const supabaseAdminClient = createClient(
     String(process.env.NEXT_PUBLIC_SUPABASE_URL),
     String(process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE),
     {
@@ -23,16 +21,36 @@ export async function POST(request: Request) {
     }
   );
 
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
-  //console.log("THIS IS USERID", user_id);
+  const supabaseRouteClient = createRouteHandlerClient({ cookies });
 
-  if (data?.user?.aud === "authenticated") {
-    const { error: deleteError } = await supabase.auth.admin.deleteUser(
-      user_id
+  const {
+    data: { user },
+  } = await supabaseRouteClient.auth.getUser();
+  const email = user?.email;
+  const user_id = user?.id;
+
+  if (!email || !user_id) {
+    return NextResponse.redirect(`${requestUrl.origin}/?error=user not found`);
+  }
+  // Authenticate the user
+  const { data: authData, error: authError } =
+    await supabaseRouteClient.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+  if (authError) {
+    console.error("Authentication error:", authError.message);
+    return NextResponse.redirect(
+      `${requestUrl.origin}/?error=could not authenticate user`,
+      { status: 301 }
     );
+  }
+  // Check if the user is authenticated
+  if (authData?.user?.aud === "authenticated") {
+    // Delete the user
+    const { error: deleteError } =
+      await supabaseAdminClient.auth.admin.deleteUser(user_id);
 
     if (deleteError) {
       console.error("Error deleting user:", deleteError.message);
@@ -42,19 +60,9 @@ export async function POST(request: Request) {
       );
     }
 
+    // Redirect after successful deletion
     return NextResponse.redirect(`${requestUrl.origin}/login-user`, {
       status: 301,
     });
-  }
-
-  if (error?.message) {
-    console.log("user id:", user_id)
-    console.log("Email:", email);
-    console.log("Password:", password);
-    console.error("Authentication error:", error.message);
-    return NextResponse.redirect(
-      `${requestUrl.origin}/?error=incorrect password`,
-      { status: 301 }
-    );
   }
 }
