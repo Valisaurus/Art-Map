@@ -3,16 +3,13 @@ import { cookies } from "next/headers";
 import VenueAbout from "./about";
 import { redirect } from "next/navigation";
 
-// interface userIdProps {
-//   userId: string;
-// }
 
 export default async function AboutPage() {
   const supabase = createServerComponentClient({
     cookies,
   });
 
-  // const { userId } = props;
+
   const {
     data: { session },
   } = await supabase.auth.getSession();

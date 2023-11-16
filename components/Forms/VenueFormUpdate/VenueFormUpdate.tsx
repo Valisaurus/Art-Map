@@ -1,3 +1,5 @@
+"use client";
+
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import type { Venue } from "@/types/venue";

@@ -5,6 +5,62 @@ import { createClient, groq } from "next-sanity";
 import clientConfig from "./config/client-config";
 import { Exhibition } from "@/types/exhibition";
 
+export async function getVenueData(): Promise<Venue[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "venue"]{
+      _id,
+      venueName,
+      websiteUrl,
+      typeOf,
+      "address": {
+      "streetName": address.streetName,
+      "streetNo": address.streetNo,
+      "zip": address.zip,
+      "city": address.city,
+      },
+
+      "contact": {
+        "email": contact.email,
+        "phone": contact.phone,
+      },
+      "openingHours": {
+        "monday": {
+          "from": openingHours.monday.from,
+          "to": openingHours.monday.to,
+        },
+         "tuesday": {
+          "from": openingHours.tuesday.from,
+          "to": openingHours.tuesday.to,
+        },
+         "wednesday": {
+          "from": openingHours.wednesday.from,
+          "to": openingHours.wednesday.to,
+        },
+         "thursday": {
+          "from": openingHours.thursday.from,
+          "to": openingHours.thursday.to,
+        },
+         "friday": {
+          "from": openingHours.friday.from,
+          "to": openingHours.friday.to,
+        },
+         "saturday": {
+          "from": openingHours.saturday.from,
+          "to": openingHours.saturday.to,
+        },
+         "sunday": {
+          "from": openingHours.sunday.from,
+          "to": openingHours.sunday.to,
+        },
+        "openByAppointment": openingHours.openByAppointment,
+      },
+      irregularOpeningHours,
+      about,
+      }`,
+      
+  );
+}
+
 // Function that returns all venues in array
 export async function getVenues(): Promise<Venue[]> {
   return createClient(clientConfig).fetch(
