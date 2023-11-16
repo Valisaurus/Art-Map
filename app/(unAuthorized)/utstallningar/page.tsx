@@ -24,22 +24,6 @@ export default async function Exhibitions() {
         return "rgba(255, 214, 0, 0.30)"; // Default color if typeOf doesn't match any case
     }
   };
-  const getMarkerColor = (typeOf: string): string => {
-    switch (typeOf) {
-      case "gallery":
-        return "/images/map/orangeMarker.svg"; 
-      case "artistRun":
-        return "/images/map/purpleMarker.svg"; 
-      case "museum":
-        return "/images/map/redMarker.svg"; 
-      case "institution":
-        return "/images/map/greenMarker.svg"; 
-      case "popUp":
-        return "/images/map/turquoiseMarker.svg"; 
-      default:
-        return "/images/map/yellowMarker.svg"; // Default color if typeOf doesn't match any case
-    }
-  };
 
   return (
     <>
