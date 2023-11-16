@@ -1,4 +1,6 @@
+import Messages from "@/components/Messages/Messages";
 import { getExhibition } from "@/sanity/sanity.utils";
+
 
 type Props = {
   params: { utstallning: string };
@@ -7,13 +9,9 @@ type Props = {
 export default async function Exhibition({ params }: Props) {
   const slug = params.utstallning;
 
-  console.log(params); 
-  console.log(slug); 
-
   if (!slug) {
-    return <p>Slug is undefined</p>;
+    return < Messages />
   }
-
   const exhibition = await getExhibition(slug);
 
   return (

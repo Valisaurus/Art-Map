@@ -11,12 +11,12 @@ export default function Messages() {
     <>
       {error && (
         <p className="messageError">
-          {error}
+          Error: {error}
         </p>
       )}
       {message && (
         <p className="messageSuccess">
-          {message}
+         Success: {message}
         </p>
       )}
     </>
