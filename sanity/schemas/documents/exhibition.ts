@@ -60,17 +60,11 @@ export default {
           title: "Opening",
           name: "opening",
           type: "date",
-          options: {
-            dateFormat: 'DD.MM',
-          }
         },
         {
           title: "Closing",
           name: "closing",
           type: "date",
-          options: {
-            dateFormat: 'DD.MM',
-          }
         },
       ]
     },
