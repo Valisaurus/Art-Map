@@ -1,5 +1,4 @@
 // all the functions / types that we use to fetch data from Sanity
-
 import { Venue } from "@/types/venue";
 import { createClient, groq } from "next-sanity";
 import clientConfig from "./config/client-config";
@@ -56,8 +55,7 @@ export async function getVenueData(): Promise<Venue[]> {
       },
       irregularOpeningHours,
       about,
-      }`,
-      
+      }`
   );
 }
 
@@ -134,12 +132,12 @@ export async function getVenue(slug: string): Promise<Venue> {
 
 // Function that returns all exhibitions in array
 export async function getExhibitions(): Promise<Exhibition[]> {
-
-  const currentDate = new Date().toISOString().split('T')[0]; // Get the current date in 'YYYY-MM-DD' format
+  const currentDate = new Date().toISOString().split("T")[0]; // Get the current date in 'YYYY-MM-DD' format
 
   return createClient(clientConfig).fetch(
     groq`*[_type == "exhibition" && dates.closing >= $currentDate] | order(dates.opening asc){
              _id,
+             userId,
             "venue": {
               "venueName": venue->venueName
             },

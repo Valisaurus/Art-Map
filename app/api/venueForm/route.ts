@@ -1,9 +1,7 @@
 import { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { createClient } from "@sanity/client";
-import { cookies } from "next/headers";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-
+import { getUser } from "@/utils/functions";
 import { Venue } from "@/types/venue";
 import { getVenues } from "@/sanity/sanity.utils";
 
@@ -17,25 +15,14 @@ const client = createClient({
 });
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
-  // SUPABASE LOGIC
-  const supabase = createServerComponentClient({
-    cookies,
-  });
-
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  if (session) {
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-    const userId = user?.id;
+  const user = await getUser();
+  if (user) {
+    const userId = user.userId;
 
     // SANITY LOGIC
     const venues = await getVenues();
     // Check if userId matches any of the venue userIds
-    const matchingVenue = venues.find((venue) => venue.userId === userId);
+    const matchingVenue = venues.find((venue) => venue.userId === user.userId);
 
     const {
       venueName,
