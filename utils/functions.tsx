@@ -1,6 +1,4 @@
-"use server";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
+
 
 // Function to change typeOf to title instead of default value
 export const getTitleFromTypeOf = (typeOf: string) => {
@@ -59,22 +57,4 @@ export const formatDateRange = (
   return `${startFormatted} - ${endFormatted}`;
 };
 
-export const getUser = async () => {
-  const supabase = createServerComponentClient({
-    cookies,
-  });
 
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  if (session) {
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-    const userId = user?.id;
-    return { userId };
-  } else {
-    return null; // or some default user object
-  }
-};

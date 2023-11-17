@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { createClient } from "@sanity/client";
-import { getUser } from "@/utils/functions";
+import { getUser } from "@/utils/supabaseFunctions";
 import { getExhibitions } from "@/sanity/sanity.utils";
 
 // Initialize the Sanity client
