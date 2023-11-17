@@ -160,7 +160,7 @@ const MapComponent = () => {
                   const coordinates = chosenMarker.getLngLat();
                   map.flyTo({
                     center: coordinates,
-                    zoom: 15, // Adjust the zoom level as needed
+                    zoom: 18, // Adjust the zoom level as needed
                   });
                 }
               });
