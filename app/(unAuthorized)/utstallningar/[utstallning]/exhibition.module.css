@@ -5,3 +5,10 @@
     border-right: 2px solid black;
     overflow-y: scroll;
   }
+  .exhibitionWrapper {
+
+}
+
+.exhibitionTitle {
+    font-weight: bold;
+}

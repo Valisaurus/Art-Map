@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 import { getVenues } from "@/sanity/sanity.utils";
-import styles from "./platser.module.css";
+import styles from "./venues.module.css";
 import { Venue } from "@/types/venue";
 import { getColor, getTitleFromTypeOf } from "@/utils/functions";
 

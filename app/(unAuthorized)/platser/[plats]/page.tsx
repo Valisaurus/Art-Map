@@ -1,5 +1,5 @@
 import { getVenue } from "@/sanity/sanity.utils";
-import styles from "../platser.module.css";
+import styles from "./venue.module.css";
 
 type Props = {
   params: { plats: string };
