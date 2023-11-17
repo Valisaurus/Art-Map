@@ -134,8 +134,11 @@ export async function getVenue(slug: string): Promise<Venue> {
 
 // Function that returns all exhibitions in array
 export async function getExhibitions(): Promise<Exhibition[]> {
+
+  const currentDate = new Date().toISOString().split('T')[0]; // Get the current date in 'YYYY-MM-DD' format
+
   return createClient(clientConfig).fetch(
-    groq`*[_type == "exhibition"]{
+    groq`*[_type == "exhibition" && dates.closing >= $currentDate] | order(dates.opening asc){
              _id,
             "venue": {
               "venueName": venue->venueName
@@ -154,7 +157,8 @@ export async function getExhibitions(): Promise<Exhibition[]> {
               "closing": dates.closing,
             },
             exhibitionText,        
-    }`
+    }`,
+    { currentDate }
   );
 }
 

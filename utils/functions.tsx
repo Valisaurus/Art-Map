@@ -1,10 +1,10 @@
 
 export const getTitleFromTypeOf = (typeOf: string) => {
   const typeOfOptions = [
-    { title: "Gallery", value: "gallery" },
-    { title: "Artist Run", value: "artistRun" },
+    { title: "Galleri", value: "gallery" },
+    { title: "Konstnärsdrivet", value: "artistRun" },
     { title: "Museum", value: "museum" },
-    { title: "Institution", value: "institution" },
+    { title: "Konsthall", value: "institution" },
     { title: "Pop Up", value: "popUp" },
   ];
 
@@ -19,17 +19,17 @@ export const getTitleFromTypeOf = (typeOf: string) => {
 export const getColor = (typeOf: string): string => {
   switch (typeOf) {
     case "gallery":
-      return "rgba(255, 164, 28, 0.3)";
+      return "rgba(255, 164, 28, 0.5)";
     case "artistRun":
-      return "rgba(91, 114, 233, 0.3)";
+      return "rgba(91, 114, 233, 0.5)";
     case "museum":
-      return "rgba(218, 95, 95, 0.30)";
+      return "rgba(218, 95, 95, 0.5)";
     case "institution":
-      return "rgba(106, 157, 139, 0.3)";
+      return "rgba(106, 157, 139, 0.5)";
     case "popUp":
-      return "rgba(115, 247, 255, 0.30)";
+      return "rgba(115, 247, 255, 0.5)";
     default:
-      return "rgba(255, 214, 0, 0.30)"; // Default color if typeOf doesn't match any case
+      return "rgba(255, 214, 0, 0.5)"; // Default color if typeOf doesn't match any case
   }
 };
 
