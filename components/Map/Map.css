@@ -40,5 +40,8 @@
   border-radius: 50%;
   box-shadow: rgba(255, 255, 255, 0.638) 0px 1px 3px 0px,
     rgba(255, 255, 255, 0.505) 0px 0px 0px 1px;
-    opacity: 30%;
+}
+
+.marker:focus {
+  opacity: 100%;
 }

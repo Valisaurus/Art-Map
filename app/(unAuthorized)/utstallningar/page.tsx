@@ -16,18 +16,19 @@ export default async function Exhibitions() {
           {exhibitions.map((exhibition) => (
             <li key={exhibition._id}>
               <div
-                className={styles.exhibitionCard}
-                style={{ backgroundColor: getColor(exhibition.typeOf.typeOf) }}
+                className={`exhibitionCard ${styles.exhibitionCard}`}
+                id={exhibition.venue.venueName}
+                style={{
+                  backgroundColor: getColor(exhibition.typeOf.typeOf),
+                }}
               >
                 <div className={styles.topSection}>
-                  <div className={styles.title}>
-                    <Link
-                      className={styles.exhibitionTitle}
-                      href={`/utstallningar/${exhibition.slug}`}
-                    >
-                      {exhibition.title}
-                    </Link>
-                  </div>
+                  <Link
+                    className={styles.exhibitionTitle}
+                    href={`/utstallningar/${exhibition.slug}`}
+                  >
+                    <div className={styles.title}>{exhibition.title}</div>
+                  </Link>
                   <div className={styles.artistNames}>
                     <span>{exhibition.artistNames}</span>
                   </div>
@@ -47,9 +48,9 @@ export default async function Exhibitions() {
                 />
 
                 <div className={styles.topSection}>
-                  <Link className={styles.venueName} href={""}>
+                  <span className={styles.venueName}>
                     {exhibition.venue.venueName}
-                  </Link>
+                  </span>
                   <div className={styles.dates}>
                     <span>
                       {formatDateRange(
