@@ -21,6 +21,11 @@
 .exhibitionCard {
   width: 100%;
   padding: 1rem;
+  cursor: pointer;
+}
+
+.exhibitionCard:focus {
+  opacity: 1;
 }
 
 /* TOP SECTION */

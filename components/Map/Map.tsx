@@ -17,6 +17,9 @@ const client = createClient({
 const MapComponent = () => {
   const [map, setMap] = useState<mapboxgl.Map | null>(null);
   const [locations, setLocations] = useState<Location[]>([]);
+  const [clickedExhibition, setClickedExhibition] = useState<string | null>(
+    null
+  );
 
   // Initialize the Mapbox map
   useEffect(() => {
@@ -131,9 +134,12 @@ const MapComponent = () => {
             // Touch event listeners
             customMarkerElement.addEventListener(
               "touchstart",
-              handleTouchStart, {passive: true}
+              handleTouchStart,
+              { passive: true }
             );
-            customMarkerElement.addEventListener("touchend", handleTouchEnd, {passive: true});
+            customMarkerElement.addEventListener("touchend", handleTouchEnd, {
+              passive: true,
+            });
 
             const marker = new mapboxgl.Marker({ element: customMarkerElement })
               .setLngLat(location)
@@ -146,39 +152,58 @@ const MapComponent = () => {
             const exhibitionCards =
               document.querySelectorAll(".exhibitionCard");
             exhibitionCards.forEach((card) => {
-              card.addEventListener("click", () => {
-                const venueName = card.id;
+              card.addEventListener(
+                "click",
+                () => {
+                  const venueName = card.id;
 
-                // Retrieve the marker using the venueName from the Map
-                const chosenMarker = markerVenueMap.get(venueName);
+                  // Retrieve the marker using the venueName from the Map
+                  const chosenMarker = markerVenueMap.get(venueName);
 
-                if (chosenMarker) {
-                  const coordinates = chosenMarker.getLngLat();
-                  map.flyTo({
-                    center: coordinates,
-                    zoom: 18, 
-                  });
-                }
-              },{passive: true});
+                  if (chosenMarker) {
+                    const coordinates = chosenMarker.getLngLat();
+
+                    // Check if it's a different venue before zooming
+                    if (venueName !== clickedExhibition) {
+                      map.flyTo({
+                        center: coordinates,
+                        zoom: 18,
+                      });
+                      // Update the state to track the clicked venue
+                      setClickedExhibition(venueName || null);
+                    }
+                  }
+                },
+                { passive: true }
+              );
             });
             // Click event to the exhibition title in the exhibition card
             const exhibitionTitles =
               document.querySelectorAll(".exhibitionTitle");
             exhibitionTitles.forEach((title) => {
-              title.addEventListener("click", () => {
-                const venueName = title.parentElement?.id;
+              title.addEventListener(
+                "click",
+                () => {
+                  const venueName = title.parentElement?.id;
 
-                // Retrieve the marker using the venueName from the Map
-                const marker = markerVenueMap.get(venueName);
+                  // Retrieve the marker using the venueName from the Map
+                  const marker = markerVenueMap.get(venueName);
 
-                if (marker) {
-                  const coordinates = marker.getLngLat();
-                  map.flyTo({
-                    center: coordinates,
-                    zoom: 15, 
-                  });
-                }
-              },{passive: true});
+                  if (marker) {
+                    const coordinates = marker.getLngLat();
+                    // Check if it's a different venue before zooming
+                    if (venueName !== clickedExhibition) {
+                      map.flyTo({
+                        center: coordinates,
+                        zoom: 15,
+                      });
+                      // Update the state to track the clicked venue
+                      setClickedExhibition(venueName || null );
+                    }
+                  }
+                },
+                { passive: true }
+              );
             });
           }
         }
