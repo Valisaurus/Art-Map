@@ -19,10 +19,10 @@ export type Exhibition = {
   //   };
   //   alt: string;
   // };
-  openingDate: string; // Should be in ISO 8601 datetime format
+  openingDate: string; 
   dates: {
-    opening: string; // Should be in ISO 8601 date format
-    closing: string; // Should be in ISO 8601 date format
+    opening: string; 
+    closing: string; 
   };
   exhibitionText: string;
 };
