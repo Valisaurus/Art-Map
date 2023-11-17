@@ -7,14 +7,14 @@ export default {
       title: "Venue",
       name: "venue",
       type: "reference",
-      to: [{type: "venue"}],
+      to: [{ type: "venue" }],
       fields: [
         {
           title: "Venue Name",
           name: "venueName",
           type: "string",
-        }
-      ]
+        },
+      ],
     },
     {
       title: "Title",
@@ -24,8 +24,8 @@ export default {
     {
       title: "Slug",
       name: "slug",
-      type: "slug", 
-      options: { source: "title" }, 
+      type: "slug",
+      options: { source: "title" },
     },
     {
       title: "Artist Names",
@@ -47,9 +47,9 @@ export default {
       ],
     },
     {
-        title: "Opening date",
-        name: "openingDate",
-        type: "datetime"
+      title: "Opening date",
+      name: "openingDate",
+      type: "datetime",
     },
     {
       title: "Dates",
@@ -66,12 +66,17 @@ export default {
           name: "closing",
           type: "date",
         },
-      ]
+      ],
     },
     {
-        title: "Exhibition text",
-        name: "exhibitionText",
-        type: "text",
-    }
+      title: "Exhibition text",
+      name: "exhibitionText",
+      type: "text",
+    },
+    {
+      title: "User Id",
+      name: "userId",
+      type: "string",
+    },
   ],
 };

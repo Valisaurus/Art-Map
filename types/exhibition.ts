@@ -1,13 +1,13 @@
 export type Exhibition = {
   imageUrl: string;
-  _id: string; 
+  _id: string;
   _type: string;
   venue: {
     venueName: string;
   };
   typeOf: {
     typeOf: string;
-  }
+  };
   title: string;
   slug: string;
   artistNames: string;
@@ -19,10 +19,11 @@ export type Exhibition = {
   //   };
   //   alt: string;
   // };
-  openingDate: string; 
+  openingDate: string;
   dates: {
-    opening: string; 
-    closing: string; 
+    opening: string;
+    closing: string;
   };
   exhibitionText: string;
+  userId: string;
 };
