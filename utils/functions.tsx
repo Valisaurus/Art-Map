@@ -1,4 +1,4 @@
-
+// Function to change typeOf to title instead of default value
 export const getTitleFromTypeOf = (typeOf: string) => {
   const typeOfOptions = [
     { title: "Galleri", value: "gallery" },
@@ -19,17 +19,17 @@ export const getTitleFromTypeOf = (typeOf: string) => {
 export const getColor = (typeOf: string): string => {
   switch (typeOf) {
     case "gallery":
-      return "rgba(255, 164, 28, 0.5)";
+      return "rgba(255, 164, 28, 0.3)";
     case "artistRun":
-      return "rgba(91, 114, 233, 0.5)";
+      return "rgba(91, 114, 233, 0.3)";
     case "museum":
-      return "rgba(218, 95, 95, 0.5)";
+      return "rgba(218, 95, 95, 0.3)";
     case "institution":
-      return "rgba(106, 157, 139, 0.5)";
+      return "rgba(106, 157, 139, 0.3)";
     case "popUp":
-      return "rgba(115, 247, 255, 0.5)";
+      return "rgba(115, 247, 255, 0.3)";
     default:
-      return "rgba(255, 214, 0, 0.5)"; // Default color if typeOf doesn't match any case
+      return "rgba(255, 214, 0, 0.3)"; // Default color if typeOf doesn't match any case
   }
 };
 

@@ -5,16 +5,8 @@ import mapboxgl, { LngLatLike } from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Location } from "@/types/location";
 import "./Map.css";
-import { Inter} from "next/font/google";
-import VenueName from "../Forms/ApplicationForm/VenueName/VenueName";
-import { getExhibitions } from "@/sanity/sanity.utils";
-import { Exhibition } from "@/types/exhibition";
 import { getColor } from "@/utils/functions";
 
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-});
 
 const client = createClient({
   projectId: "z4x2zjsw",
@@ -23,13 +15,12 @@ const client = createClient({
   apiVersion: "2023-10-10",
 });
 
-const MapComponent = ({ getExhibitions }: { getExhibitions: Exhibition[] }) => {
+const MapComponent = () => {
   const [map, setMap] = useState<mapboxgl.Map | null>(null);
   const [locations, setLocations] = useState<Location[]>([]);
   const [clickedExhibition, setClickedExhibition] = useState<string | null>(
     null
   );
-  const clickedExhibitionLocationRef = useRef<LngLatLike | null>(null);
 
   // Initialize the Mapbox map
   useEffect(() => {
@@ -99,22 +90,11 @@ const MapComponent = ({ getExhibitions }: { getExhibitions: Exhibition[] }) => {
       });
   }, []);
 
-  // const Exhibition = ({ getExhibitions }: { getExhibitions: Exhibition[] }) => {
-  //   useEffect(() => {
-  //     getExhibitions.forEach((exhibition) => {
-  //       const exhibitionVenueName = exhibition.venue.venueName;
-  //       console.log("exibitionName:", exhibitionVenueName);
-  //     });
-  //     // Log or use the exhibition names as needed
-  //   }, [getExhibitions]);
-
-  //   // rest of your component...
-  // };
-
-
   // Add markers to the map using fetched data
   useEffect(() => {
     if (map) {
+      // Map to associate venueName with markers
+      const markerVenueMap = new Map(); 
       locations.forEach(async (locationData) => {
         if (locationData.address) {
           const location = await geocodeAddress(
@@ -137,22 +117,54 @@ const MapComponent = ({ getExhibitions }: { getExhibitions: Exhibition[] }) => {
             customMarkerElement.style.backgroundColor = getColor(
               locationData.typeOf
             );
+            // Add hover effect
+            customMarkerElement.addEventListener("mouseover", function () {
+              this.style.opacity = "1.0";
+            });
+            // Change it back to the original opacity when not hovered
+            customMarkerElement.addEventListener("mouseout", function () {
+              this.style.opacity = "0.3";
+            });
+            // Function to handle touch events (mobile)
+            const handleTouchStart = () => {
+              customMarkerElement.style.opacity = "1.0";
+            };
+            const handleTouchEnd = () => {
+              customMarkerElement.style.opacity = "0.5";
+            };
+            // Add touch event listeners
+            customMarkerElement.addEventListener(
+              "touchstart",
+              handleTouchStart
+            );
+            customMarkerElement.addEventListener("touchend", handleTouchEnd);
 
             const marker = new mapboxgl.Marker({ element: customMarkerElement })
               .setLngLat(location)
               .setPopup(popup)
               .addTo(map);
 
-            marker.getElement().addEventListener("click", () => {
-              setClickedExhibition(locationData.venueName);
-            });
+            // Store the marker with the venueName in the Map
+            markerVenueMap.set(locationData.venueName, marker);
+            // Add click event to the exhibition cards
+            const exhibitionCards =
+              document.querySelectorAll(".exhibitionCard");
+            exhibitionCards.forEach((card) => {
+              card.addEventListener("click", () => {
+                const venueName = card.id;
 
-            if (map && clickedExhibitionLocationRef.current) {
-              map.flyTo({
-                center: clickedExhibitionLocationRef.current,
-                zoom: 20,
+                // Retrieve the marker using the venueName from the Map
+                const chosenMarker = markerVenueMap.get(venueName);
+
+                if (chosenMarker) {
+                  const coordinates = chosenMarker.getLngLat();
+                  map.flyTo({
+                    center: coordinates,
+                    zoom: 15, // Adjust the zoom level as needed
+                  });
+                }
               });
-            }
+            });
           }
         }
       });
@@ -161,11 +173,7 @@ const MapComponent = ({ getExhibitions }: { getExhibitions: Exhibition[] }) => {
 
   return (
     <>
-      <div
-        className={inter.className}
-        id="map"
-        style={{ width: "100%", height: "100%" }}
-      />
+      <div id="map" style={{ width: "100%", height: "100%" }} />
     </>
   );
 };
