@@ -7,7 +7,6 @@ import { Location } from "@/types/location";
 import "./Map.css";
 import { getColor } from "@/utils/functions";
 
-
 const client = createClient({
   projectId: "z4x2zjsw",
   dataset: "production",
@@ -18,9 +17,6 @@ const client = createClient({
 const MapComponent = () => {
   const [map, setMap] = useState<mapboxgl.Map | null>(null);
   const [locations, setLocations] = useState<Location[]>([]);
-  const [clickedExhibition, setClickedExhibition] = useState<string | null>(
-    null
-  );
 
   // Initialize the Mapbox map
   useEffect(() => {
@@ -94,14 +90,14 @@ const MapComponent = () => {
   useEffect(() => {
     if (map) {
       // Map to associate venueName with markers
-      const markerVenueMap = new Map(); 
+      const markerVenueMap = new Map();
       locations.forEach(async (locationData) => {
         if (locationData.address) {
           const location = await geocodeAddress(
             `${locationData.address.streetName} ${locationData.address.streetNo}, ${locationData.address.zip} ,${locationData.address.city}, Sweden`
           );
 
-          // if statement if slug not exists
+          // If statement if slug not exists
           if (location) {
             const link = `/platser/${encodeURIComponent(
               locationData.slug?.current
@@ -111,13 +107,13 @@ const MapComponent = () => {
               `<a href="${link}">${locationData.venueName}</a>`
             );
 
-            // create custom marker element
+            // Custom marker element
             const customMarkerElement = document.createElement("div");
             customMarkerElement.className = "marker";
             customMarkerElement.style.backgroundColor = getColor(
               locationData.typeOf
             );
-            // Add hover effect
+            // Hover effect
             customMarkerElement.addEventListener("mouseover", function () {
               this.style.opacity = "1.0";
             });
@@ -132,12 +128,12 @@ const MapComponent = () => {
             const handleTouchEnd = () => {
               customMarkerElement.style.opacity = "0.5";
             };
-            // Add touch event listeners
+            // Touch event listeners
             customMarkerElement.addEventListener(
               "touchstart",
-              handleTouchStart
+              handleTouchStart, {passive: true}
             );
-            customMarkerElement.addEventListener("touchend", handleTouchEnd);
+            customMarkerElement.addEventListener("touchend", handleTouchEnd, {passive: true});
 
             const marker = new mapboxgl.Marker({ element: customMarkerElement })
               .setLngLat(location)
@@ -146,7 +142,7 @@ const MapComponent = () => {
 
             // Store the marker with the venueName in the Map
             markerVenueMap.set(locationData.venueName, marker);
-            // Add click event to the exhibition cards
+            // Click event to the exhibition cards
             const exhibitionCards =
               document.querySelectorAll(".exhibitionCard");
             exhibitionCards.forEach((card) => {
@@ -160,16 +156,35 @@ const MapComponent = () => {
                   const coordinates = chosenMarker.getLngLat();
                   map.flyTo({
                     center: coordinates,
-                    zoom: 18, // Adjust the zoom level as needed
+                    zoom: 18, 
                   });
                 }
-              });
+              },{passive: true});
+            });
+            // Click event to the exhibition title in the exhibition card
+            const exhibitionTitles =
+              document.querySelectorAll(".exhibitionTitle");
+            exhibitionTitles.forEach((title) => {
+              title.addEventListener("click", () => {
+                const venueName = title.parentElement?.id;
+
+                // Retrieve the marker using the venueName from the Map
+                const marker = markerVenueMap.get(venueName);
+
+                if (marker) {
+                  const coordinates = marker.getLngLat();
+                  map.flyTo({
+                    center: coordinates,
+                    zoom: 15, 
+                  });
+                }
+              },{passive: true});
             });
           }
         }
       });
     }
-  }, [map, locations, clickedExhibition]);
+  }, [map, locations]);
 
   return (
     <>
