@@ -23,12 +23,14 @@ export default async function Exhibitions() {
                 }}
               >
                 <div className={styles.topSection}>
+                  <div className="exhibitionTitle">
                   <Link
                     className={styles.exhibitionTitle}
                     href={`/utstallningar/${exhibition.slug}`}
                   >
                     <div className={styles.title}>{exhibition.title}</div>
                   </Link>
+                  </div>
                   <div className={styles.artistNames}>
                     <span>{exhibition.artistNames}</span>
                   </div>
