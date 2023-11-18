@@ -1,4 +1,5 @@
 .nav {
+  height: 4rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -15,4 +16,57 @@
 .list {
   display: flex;
   gap: 2rem;
+  transform: translateX(0); /* Add this line to keep the initial state visible */
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  display: none;
+  width: 2rem;
+  height: 2px;
+  background-color: black;
+  margin: 0.2rem 0;
+}
+
+.active {
+  display: flex !important; /* Override the display: none in the initial state */
+}
+
+@media (max-width: 800px) {
+
+  .bar {
+    display: flex;
+  }
+
+  .list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 3.9rem;
+    width: 100vw;
+    background-color: white;
+    border: 2px solid black;
+    width: 200px;
+    transition: transform 0.3s ease-in-out;
+    transform:  translateX(100%);
+    z-index: 1000;
+  }
+  
+
+  .list a {
+    padding: 1rem; /* Add padding to the links for better touch interaction */
+  }
+
+  .list.active {
+    transform: translateX(0);
+  }
+
+  .hamburger {
+    display: flex;
+  }
 }
