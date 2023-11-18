@@ -1,4 +1,4 @@
-
+"use client";
 import Link from "next/link";
 import { getVenues } from "@/sanity/sanity.utils";
 import styles from "./venues.module.css";
@@ -15,7 +15,19 @@ export default async function Venues() {
     <h1>Platser</h1>
       <ul className={styles.venueList}>
         {venues.map((venue) => (
-          <li key={venue._id} style={{ backgroundColor: getColor(venue.typeOf) }}>
+          <li key={venue._id}                 style={{
+            backgroundColor: getColor(venue.typeOf).original,
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.backgroundColor = getColor(
+              venue.typeOf
+            ).hover;
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.backgroundColor = getColor(
+              venue.typeOf
+            ).original;
+          }}>
             <Link href={`/platser/${venue.slug}`}>
               {venue.venueName}
             </Link>

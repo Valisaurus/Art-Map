@@ -114,4 +114,7 @@ border-bottom: none;
   border: none;
 }
 
+.contentWrapper {
+  height: 100%;
+}
 }
