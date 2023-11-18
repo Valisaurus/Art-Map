@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { getExhibitions } from "@/sanity/sanity.utils";
 import styles from "./exhibitions.module.css";
@@ -19,17 +20,27 @@ export default async function Exhibitions() {
                 className={`exhibitionCard ${styles.exhibitionCard}`}
                 id={exhibition.venue.venueName}
                 style={{
-                  backgroundColor: getColor(exhibition.typeOf.typeOf),
+                  backgroundColor: getColor(exhibition.typeOf.typeOf).original,
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.backgroundColor = getColor(
+                    exhibition.typeOf.typeOf
+                  ).hover;
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.backgroundColor = getColor(
+                    exhibition.typeOf.typeOf
+                  ).original;
                 }}
               >
                 <div className={styles.topSection}>
                   <div className="exhibitionTitle">
-                  <Link
-                    className={styles.exhibitionTitle}
-                    href={`/utstallningar/${exhibition.slug}`}
-                  >
-                    <div className={styles.title}>{exhibition.title}</div>
-                  </Link>
+                    <Link
+                      className={styles.exhibitionTitle}
+                      href={`/utstallningar/${exhibition.slug}`}
+                    >
+                      <div className={styles.title}>{exhibition.title}</div>
+                    </Link>
                   </div>
                   <div className={styles.artistNames}>
                     <span>{exhibition.artistNames}</span>

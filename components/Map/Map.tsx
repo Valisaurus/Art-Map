@@ -113,32 +113,15 @@ const MapComponent = () => {
             // Custom marker element
             const customMarkerElement = document.createElement("div");
             customMarkerElement.className = "marker";
-            customMarkerElement.style.backgroundColor = getColor(
-              locationData.typeOf
-            );
-            // Hover effect
+            const colors = getColor(locationData.typeOf);
+            customMarkerElement.style.backgroundColor = colors.original;
+
+            // Change opacity on hover
             customMarkerElement.addEventListener("mouseover", function () {
-              this.style.opacity = "1.0";
+              this.style.backgroundColor = colors.hover;
             });
-            // Change it back to the original opacity when not hovered
             customMarkerElement.addEventListener("mouseout", function () {
-              this.style.opacity = "0.3";
-            });
-            // Function to handle touch events (mobile)
-            const handleTouchStart = () => {
-              customMarkerElement.style.opacity = "1.0";
-            };
-            const handleTouchEnd = () => {
-              customMarkerElement.style.opacity = "0.5";
-            };
-            // Touch event listeners
-            customMarkerElement.addEventListener(
-              "touchstart",
-              handleTouchStart,
-              { passive: true }
-            );
-            customMarkerElement.addEventListener("touchend", handleTouchEnd, {
-              passive: true,
+              this.style.backgroundColor = colors.original;
             });
 
             const marker = new mapboxgl.Marker({ element: customMarkerElement })
@@ -198,7 +181,7 @@ const MapComponent = () => {
                         zoom: 15,
                       });
                       // Update the state to track the clicked venue
-                      setClickedExhibition(venueName || null );
+                      setClickedExhibition(venueName || null);
                     }
                   }
                 },

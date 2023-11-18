@@ -18,20 +18,20 @@ export const getTitleFromTypeOf = (typeOf: string) => {
 };
 
 // Function to determine the color based on typeOf
-export const getColor = (typeOf: string): string => {
+export const getColor = (typeOf: string): { original: string; hover: string } => {
   switch (typeOf) {
     case "gallery":
-      return "rgba(255, 164, 28, 0.3)";
+      return { original: "rgba(255, 164, 28, 0.5)", hover: "#FFA41C" };
     case "artistRun":
-      return "rgba(91, 114, 233, 0.3)";
+      return { original: "rgba(91, 114, 233, 0.5)", hover: "#5B72E9" };
     case "museum":
-      return "rgba(218, 95, 95, 0.3)";
+      return { original: "rgba(218, 95, 95, 0.5)", hover: "#DA5F5F" };
     case "institution":
-      return "rgba(106, 157, 139, 0.3)";
+      return { original: "rgba(106, 157, 139, 0.5)", hover: "#6A9D8B" };
     case "popUp":
-      return "rgba(115, 247, 255, 0.3)";
+      return { original: "rgba(115, 247, 255, 0.5)", hover: "#73F7FF" };
     default:
-      return "rgba(255, 214, 0, 0.3)"; // Default color if typeOf doesn't match any case
+      return { original: "rgba(255, 214, 0, 0.5)", hover: "#FFD600" };
   }
 };
 

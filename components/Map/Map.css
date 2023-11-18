@@ -16,8 +16,6 @@
   text-decoration: underline;
 }
 
-
-
 .mapboxgl-popup-close-button {
   margin: 0 0.5rem 0 0.5rem;
   font-size: 1.2rem;
@@ -31,17 +29,12 @@
   background-color: #1df260;
 }
 
-.marker {
-  /* background-image: url("");
-  background-size: cover; */
+.mapboxgl-marker {
   width: 2rem;
   height: 2rem;
   cursor: pointer;
   border-radius: 50%;
   box-shadow: rgba(255, 255, 255, 0.638) 0px 1px 3px 0px,
     rgba(255, 255, 255, 0.505) 0px 0px 0px 1px;
-}
-
-.marker:focus {
-  opacity: 100%;
+  transition: opacity 0.3s; /* Add a smooth transition effect */
 }
