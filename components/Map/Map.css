@@ -3,6 +3,16 @@
   font-size: 0.8rem;
 }
 
+.mapboxgl-canvas-container {
+  width: 100%;
+  height: 100%;
+}
+
+.mapboxgl-canvas {
+  width: 100%;
+  height: 100%;
+}
+
 .mapboxgl-popup-content {
   display: flex;
   padding: 1.5rem;
