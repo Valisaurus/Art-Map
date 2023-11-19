@@ -10,23 +10,50 @@ const Nav = () => {
     setIsActive(!isActive);
   };
 
+  const hideMenu = () => {
+    setIsActive(false);
+  };
+ 
+
   return (
-    <nav
-      className={`${styles.nav} ${isActive ? styles.active : ""}`} >
+    <nav className={`${styles.nav} ${isActive ? styles.active : ""}`}>
       <div className={styles.home}>
         <Link href="/">GBG ART GUIDE</Link>
       </div>
-      <div className={`${styles.hamburger} ${isActive ? styles.active : ""}`} onClick={toggleMenu}>
-        <div className={styles.bar}></div>
-        <div className={styles.bar}></div>
-        <div className={styles.bar}></div>
+      <div
+        className={`${styles.hamburger} ${isActive ? styles.active : ""}`}
+        onClick={toggleMenu}
+      >
+        {isActive ? (
+          // Render your exit or close button when the menu is active
+          <div className={styles.exitButton} onClick={hideMenu}>
+            stäng meny
+          </div>
+        ) : (
+          // Render your hamburger bars when the menu is not active
+          <>
+            meny
+          </>
+        )}
       </div>
-      <div className={`${styles.list} ${isActive ? styles.active : ""}`}>
-        <Link href="/utstallningar">Utställningar</Link>
-        <Link href="/event">Event</Link>
-        <Link href="/platser">Platser</Link>
-        <Link href="/om-sidan">Om sidan</Link>
-        <span>sv / en</span>
+      <div
+        className={`${styles.listContainer} ${isActive ? styles.active : ""}`}
+      >
+        <div className={styles.list}>
+          <Link href="/utstallningar" passHref legacyBehavior>
+            <a onClick={hideMenu}>Utställningar</a>
+          </Link>
+          <Link href="/event" passHref legacyBehavior>
+            <a onClick={hideMenu}>Event</a>
+          </Link>
+          <Link href="/platser" passHref legacyBehavior>
+            <a onClick={hideMenu}>Platser</a>
+          </Link>
+          <Link href="/om-sidan" passHref legacyBehavior>
+            <a onClick={hideMenu}>Om sidan</a>
+          </Link>
+          <span>sv / en</span>
+        </div>
       </div>
     </nav>
   );

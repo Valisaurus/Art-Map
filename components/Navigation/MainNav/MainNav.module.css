@@ -16,7 +16,6 @@
 .list {
   display: flex;
   gap: 2rem;
-  transform: translateX(0); /* Add this line to keep the initial state visible */
 }
 
 .hamburger {
@@ -39,33 +38,42 @@
 
 @media (max-width: 800px) {
 
+  .nav {
+    padding: 1rem;
+  }
+
   .bar {
     display: flex;
   }
 
-  .list {
+  .listContainer {
     display: none;
-    flex-direction: column;
-    position: absolute;
+    position: fixed;
     top: 3.9rem;
-    width: 100vw;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 3.9rem);
     background-color: white;
     border: 2px solid black;
-    width: 200px;
     transition: transform 0.3s ease-in-out;
-    transform:  translateX(100%);
     z-index: 1000;
+    transform: translateX(100%);
   }
   
-
-  .list a {
-    padding: 1rem; /* Add padding to the links for better touch interaction */
+  .list {
+    flex-direction: column;
   }
 
-  .list.active {
-    transform: translateX(0);
+  .list a, .list span {
+    padding: 1rem; 
   }
 
+  .listContainer.active {
+    /* left: 0;
+    right: 0; */
+    transform: translateX(0%);
+  }
+  
   .hamburger {
     display: flex;
   }

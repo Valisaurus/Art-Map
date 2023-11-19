@@ -17,3 +17,11 @@
     padding: 0.5rem;
     margin: 0.5rem 0rem;
 }
+
+@media only screen and (max-width: 800px) {
+    .module {
+      border-top: 2px solid black;
+      border-left: 2px solid black;
+    }
+  }
+  
