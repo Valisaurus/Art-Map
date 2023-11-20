@@ -1,9 +1,14 @@
 .module {
-  width: 100%;
+  width: 50%;
   height: 100%;
   padding: 2rem;
   border-right: 2px solid black;
   overflow-y: scroll;
+}
+
+.map {
+  width: 50%;
+  height: 100%;
 }
 
 .exhibitionList {
@@ -52,13 +57,11 @@
   margin: 0.8rem 0rem;
 }
 
-
 /* BOTTOM SECTION */
 .bottomSection {
 }
 
 @media only screen and (max-width: 1200px) {
-
   .topSection {
     flex-direction: column;
   }

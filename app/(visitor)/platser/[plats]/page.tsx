@@ -1,5 +1,6 @@
 import { getVenue } from "@/sanity/sanity.utils";
 import styles from "./venue.module.css";
+import MapComponent from "@/components/Map/Map";
 
 type Props = {
   params: { plats: string };
@@ -41,6 +42,9 @@ export default async function Venue({ params }: Props) {
         <p>{venue.irregularOpeningHours}</p>
 
         <p>{venue.about}</p>
+      </div>
+      <div className={styles.map}>
+        <MapComponent />
       </div>
     </>
   );

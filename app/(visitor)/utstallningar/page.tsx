@@ -5,6 +5,7 @@ import styles from "./exhibitions.module.css";
 import Image from "next/image";
 import { Exhibition } from "@/types/exhibition";
 import { formatDateRange, getColor } from "@/utils/functions";
+import MapComponent from "@/components/Map/Map";
 
 export default async function Exhibitions() {
   const exhibitions: Exhibition[] = await getExhibitions();
@@ -77,6 +78,9 @@ export default async function Exhibitions() {
             </li>
           ))}
         </ul>
+      </div>
+      <div className={styles.map}>
+        <MapComponent />
       </div>
     </>
   );

@@ -116,7 +116,7 @@ const MapComponent = () => {
             const colors = getColor(locationData.typeOf);
             customMarkerElement.style.backgroundColor = colors.original;
 
-            // Change opacity on hover
+            //Change opacity on hover
             customMarkerElement.addEventListener("mouseover", function () {
               this.style.backgroundColor = colors.hover;
             });
@@ -147,6 +147,7 @@ const MapComponent = () => {
                     const coordinates = chosenMarker.getLngLat();
 
                     // Check if it's a different venue before zooming
+
                     if (venueName !== clickedExhibition) {
                       map.flyTo({
                         center: coordinates,
@@ -156,7 +157,8 @@ const MapComponent = () => {
                       setClickedExhibition(venueName || null);
                     }
                   }
-                },
+                }
+
                 // { passive: true }
               );
             });
@@ -184,7 +186,7 @@ const MapComponent = () => {
                       setClickedExhibition(venueName || null);
                     }
                   }
-                },
+                }
                 // { passive: true }
               );
             });

@@ -13,7 +13,8 @@ export default function PrimaryLayout({
       <div className="pageWrapper">
         <div className="leftBox"></div>
         <div className="contentWrapper">
-          {children} <MapComponent />
+          {children}
+          {/* <MapComponent /> */}
         </div>
         <div className="rightBox"></div>
       </div>
