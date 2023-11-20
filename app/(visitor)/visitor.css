@@ -1,15 +1,10 @@
 .layoutWrapper {
     display:flex;
   }
-  .pageWrapper {
-    display: flex;
-    width: 100vw;
-    height: calc(100vh - 8rem);
-  }
+
   .contentWrapper {
     display:flex;
     width: 100%;
-    height: calc(100vh - 8rem);
     overflow-y: scroll;
   }
   .leftBox, 

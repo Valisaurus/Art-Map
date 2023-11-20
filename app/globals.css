@@ -40,13 +40,14 @@ input, textarea {
 .pageWrapper {
   display: flex;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 8rem);
 }
 .contentWrapper {
   width: 100%;
-  max-height: calc(100vh - 4rem);
-  overflow-y: scroll;
+  height: 100%;
+  /* overflow-y: scroll; */
 }
+
 .leftBox, 
 .rightBox {
 width: 4rem;
