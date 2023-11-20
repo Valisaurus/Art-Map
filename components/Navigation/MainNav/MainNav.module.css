@@ -24,14 +24,6 @@
   cursor: pointer;
 }
 
-.bar {
-  display: none;
-  width: 2rem;
-  height: 2px;
-  background-color: black;
-  margin: 0.2rem 0;
-}
-
 .active {
   display: flex !important; /* Override the display: none in the initial state */
 }
