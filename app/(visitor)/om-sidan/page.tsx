@@ -4,7 +4,7 @@ import styles from "./About.module.css";
 
 export default async function About() {
   return (
-    <div className={styles.info}>
+    <div className={styles.aboutWrapper}>
       <section className={styles.infoSection}>
         <p>
           <span>

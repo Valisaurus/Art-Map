@@ -1,4 +1,4 @@
-import "./unAuthorized.css";
+import "./visitor.css";
 import Nav from "@/components/Navigation/MainNav/MainNav";
 import MapComponent from "@/components/Map/Map";
 
