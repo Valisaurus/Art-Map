@@ -2,12 +2,13 @@ export type Exhibition = {
   imageUrl: string;
   _id: string;
   _type: string;
-  venue: {
-    venueName: string;
-  };
-  typeOf: {
-    typeOf: string;
-  };
+  // venue: {
+  //   venueName: string;
+  // };
+  // typeOf: {
+  //   typeOf: string;
+  // };
+  venue: string;
   title: string;
   slug: string;
   artistNames: string;

@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 import { createClient } from "@sanity/client";
 import { getUser } from "@/utils/supabaseFunctions";
 import { getExhibitions } from "@/sanity/sanity.utils";
+import venue from "@/sanity/schemas/documents/venue";
+import { getVenues } from "@/sanity/sanity.utils";
 
 export const dynamic = "force-dynamic";
 
@@ -21,39 +23,48 @@ export async function POST(req: NextRequest) {
 
     // SANITY LOGIC
     const exhibition = await getExhibitions();
-    // Check if userId matches any of the venue userIds
-    const matchingExhibition = exhibition.find(
-      (exhibition) => exhibition.userId === user.userId
+    const venues = await getVenues();
+    const matchVenueIdAndUserId = exhibition.find(
+      (venue) => venue._id === userId
     );
 
-    const { title, artistNames, image, openingDate, dates, exhibitionText } =
-      await req.json();
+    const venueNameObject = venues.find((venue) => venue.venueName);
 
-    try {
-      // Create a new document in Sanity
-      const exhibitionData = await client.create({
-        _type: "exhibition",
-        title,
-        artistNames,
-        image,
-        openingDate,
-        dates,
-        exhibitionText,
-        userId: userId || "",
-      });
+    const venueNameFindOnId = venues.find((venue) => venue._id === userId);
 
-      console.log("res", exhibitionData);
-    } catch (err) {
-      console.error("Error while creating document:", err);
+    const venueName = venueNameObject?.venueName;
+
+    if (venueNameFindOnId) {
+      const { title, artistNames, image, openingDate, dates, exhibitionText } =
+        await req.json();
+
+      try {
+        // Create a new document in Sanity
+        const exhibitionData = await client.create({
+          _type: "exhibition",
+          title,
+          artistNames,
+          image,
+          openingDate,
+          dates,
+          exhibitionText,
+          userId: userId || "",
+          venue: venueName,
+        });
+
+        console.log("res", exhibitionData);
+      } catch (err) {
+        console.error("Error while creating document:", err);
+        return NextResponse.json(
+          { message: "Failed to create document" },
+          { status: 500 }
+        );
+      }
+
       return NextResponse.json(
-        { message: "Failed to create document" },
-        { status: 500 }
+        { message: "Form was submitted" },
+        { status: 200 }
       );
     }
-
-    return NextResponse.json(
-      { message: "Form was submitted" },
-      { status: 200 }
-    );
   }
 }

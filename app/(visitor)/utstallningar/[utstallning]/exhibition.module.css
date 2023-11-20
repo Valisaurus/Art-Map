@@ -13,6 +13,14 @@
 
 .exhibitionTitle {
   font-weight: bold;
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.exhibitionCard {
+  width: 100%;
+  padding: 1rem;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 800px) {
