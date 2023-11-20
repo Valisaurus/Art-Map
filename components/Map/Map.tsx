@@ -29,7 +29,7 @@ const MapComponent = () => {
       style: "mapbox://styles/anbru/clnew4y6y03xm01qxft776f2b",
 
       center: [11.967017, 57.707233], // Initial map center coordinates
-      zoom: 12, // Initial zoom level
+      zoom: 12, // Initial zoom level`
     });
 
     const navigationControl = new mapboxgl.NavigationControl();
@@ -157,7 +157,7 @@ const MapComponent = () => {
                     }
                   }
                 },
-                { passive: true }
+                // { passive: true }
               );
             });
             // Click event to the exhibition title in the exhibition card
@@ -185,7 +185,7 @@ const MapComponent = () => {
                     }
                   }
                 },
-                { passive: true }
+                // { passive: true }
               );
             });
           }
@@ -196,7 +196,7 @@ const MapComponent = () => {
 
   return (
     <>
-      <div id="map" style={{ width: "100%", height: "100%" }} />
+      <div id="map" />
     </>
   );
 };

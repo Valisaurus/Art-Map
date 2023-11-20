@@ -47,7 +47,8 @@
   }
 
   .listContainer {
-    display: none;
+    display: flex;
+    justify-content: center;
     position: fixed;
     top: 3.9rem;
     left: 0;
@@ -62,12 +63,19 @@
   
   .list {
     flex-direction: column;
+    padding: 6rem 4rem 4rem 4rem;
   }
 
-  .list a, .list span {
-    padding: 1rem; 
+  .list a {
+    font-size: 1.25rem;
   }
 
+  .list span {
+    font-size: 1rem;
+    padding-top: 5rem;
+    text-align: center;
+  }
+  
   .listContainer.active {
     /* left: 0;
     right: 0; */

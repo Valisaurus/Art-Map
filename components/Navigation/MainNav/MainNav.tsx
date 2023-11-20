@@ -2,9 +2,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import styles from "./MainNav.module.css";
+import { useRouter } from "next/navigation";
 
 const Nav = () => {
   const [isActive, setIsActive] = useState(false);
+  const navigation = useRouter(); 
 
   const toggleMenu = () => {
     setIsActive(!isActive);
