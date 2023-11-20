@@ -2,11 +2,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import styles from "./MainNav.module.css";
-
+import { useRouter } from "next/navigation";
 
 const Nav = () => {
   const [isActive, setIsActive] = useState(false);
-
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsActive(!isActive);
@@ -15,11 +15,18 @@ const Nav = () => {
   const hideMenu = () => {
     setIsActive(false);
   };
- 
+
+  const handleHomeClick = () => {
+    // Navigate to the home ("/") route
+    router.push("/");
+    // Reload the page after a short delay
+
+   
+  };
 
   return (
     <nav className={`${styles.nav} ${isActive ? styles.active : ""}`}>
-      <div className={styles.home}>
+      <div className={styles.home} onClick={handleHomeClick}>
         <Link href="/">GBG ART GUIDE</Link>
       </div>
       <div
@@ -33,9 +40,7 @@ const Nav = () => {
           </div>
         ) : (
           // Render your hamburger bars when the menu is not active
-          <>
-            meny
-          </>
+          <>meny</>
         )}
       </div>
       <div

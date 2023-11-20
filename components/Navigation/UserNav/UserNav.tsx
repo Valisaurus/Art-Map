@@ -41,9 +41,13 @@ const AdminNav = () => {
         className={`${styles.listContainer} ${isActive ? styles.active : ""}`}
       >
         <div className={styles.list}>
-          <Link href="/user/about">Dina uppgifter</Link>
+          <Link href="/user/about" passHref legacyBehavior>
+            <a onClick={hideMenu}>Dina uppgifter</a>
+          </Link>
 
-          <Link href="/user/settings">Inställningar</Link>
+          <Link href="/user/settings" passHref legacyBehavior>
+            <a onClick={hideMenu}>Inställningar</a>
+          </Link>
           <LogoutButton />
           <span>sv / en</span>
         </div>
