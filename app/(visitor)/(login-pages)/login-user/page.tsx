@@ -1,10 +1,10 @@
 import Messages from "@/components/Messages/Messages";
-import styles from "./loginUser.module.css";
+import styles from "../login.module.css";
 import Link from "next/link";
 export default function LoginUser() {
   return (
     <div className={styles.module}>
-      <h1>Logga in på ditt konto</h1>
+      <h1 className={styles.heading}>Logga in på ditt konto</h1>
       <form className={styles.form} action="/auth/sign-in-user" method="post">
         <label htmlFor="email">Email</label>
         <input name="email" placeholder="  you@example.com" required />
