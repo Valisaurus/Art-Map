@@ -31,7 +31,7 @@
 
     .contentWrapper {
       flex-direction: column-reverse;
-      height: 100vh;
+      height: 100%;
     }
 
     .bottomBox {

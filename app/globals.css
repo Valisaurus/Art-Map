@@ -119,4 +119,13 @@ border-bottom: none;
   height: 100%;
 }
 
+.pageWrapper {
+  height: calc( 100vh - 4rem);
+}
+
+.bottomBox {
+  width: 0;
+  height: 0;
+  border: none;
+}
 }
