@@ -4,6 +4,8 @@ import { createClient } from "@sanity/client";
 import { getUser } from "@/utils/supabaseFunctions";
 import { getExhibitions } from "@/sanity/sanity.utils";
 
+export const dynamic = "force-dynamic";
+
 // Initialize the Sanity client
 const client = createClient({
   projectId: "z4x2zjsw",
@@ -12,7 +14,6 @@ const client = createClient({
   token: process.env.NEXT_SANITY_FORM_INSERT2_ACCESS_TOKEN,
   useCdn: false,
 });
-
 export async function POST(req: NextRequest) {
   const user = await getUser();
   if (user) {

@@ -2,6 +2,8 @@ import { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { createClient } from "@sanity/client";
 
+export const dynamic = "force-dynamic";
+
 // Initialize the Sanity client
 const client = createClient({
   projectId: "z4x2zjsw",
