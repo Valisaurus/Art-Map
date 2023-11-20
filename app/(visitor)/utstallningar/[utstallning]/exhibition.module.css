@@ -25,9 +25,17 @@
 
 @media only screen and (max-width: 800px) {
   .module {
+    width: 100%;
+    height: 50%;
     border-top: 2px solid black;
     border-left: 2px solid black;
   }
+
+  .map {
+    width: 100%;
+    height: 50%;
+  }
+  
   .bottomBox {
     width: 0;
     height: 0;
