@@ -5,7 +5,7 @@ import { getUser } from "@/utils/supabaseFunctions";
 import { getExhibitions } from "@/sanity/sanity.utils";
 import { getVenues } from "@/sanity/sanity.utils";
 
-export const dynamic = "force-dynamic";
+
 
 // Initialize the Sanity client
 const client = createClient({
