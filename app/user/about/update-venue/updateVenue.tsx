@@ -1,7 +1,8 @@
 "use client";
 
-import VenueFormUpdate from "@/components/Forms/VenueFormUpdate/VenueFormUpdate";
-import { getVenueData } from "@/sanity/sanity.utils";
+import VenueForm from "@/components/Forms/VenueForm/VenueForm";
+//import VenueFormUpdate from "@/components/Forms/VenueFormUpdate/VenueFormUpdate";
+//import { getVenueData } from "@/sanity/sanity.utils";
 import { Venue } from "@/types/venue";
 import styles from "./updateVenue.module.css";
 interface ClientSideUpdateVenueProps {
@@ -14,10 +15,10 @@ const ClientSideUpdateVenue = ({ venue }: ClientSideUpdateVenueProps) => {
       <div className={styles.container}>
         <div className={styles.form}>
           <p>
-            <i>Fyll endast i de fält du vill uppdatera</i>
+            <i>Fyll i ALLA fält för att uppdatera</i>
           </p>
 
-          <VenueFormUpdate />
+          <VenueForm />
         </div>
         <div className={styles.venueData}>
           <p>
@@ -27,7 +28,7 @@ const ClientSideUpdateVenue = ({ venue }: ClientSideUpdateVenueProps) => {
             <b>Namn på verksamheten</b>
           </p>
 
-          <h1>{venue.venueName}</h1>
+          <p>{venue.venueName}</p>
           <p>
             <b>Hemsida</b>
           </p>
