@@ -22,17 +22,20 @@ export async function POST(req: NextRequest) {
     const userId = user.userId;
 
     // SANITY LOGIC
-    const exhibition = await getExhibitions();
+    const exhibitions = await getExhibitions();
     const venues = await getVenues();
-    const matchVenueIdAndUserId = exhibition.find(
+    exhibitions.find(
       (venue) => venue._id === userId
     );
 
+    // Find VenueName on venue
     const venueNameObject = venues.find((venue) => venue.venueName);
-
     const venueNameFindOnId = venues.find((venue) => venue._id === userId);
-
     const venueName = venueNameObject?.venueName;
+
+    // Find TypeOf on venue
+    const typeOfObject = venues.find((venue) => venue.typeOf);
+    const typeOf = typeOfObject?.typeOf
 
     if (venueNameFindOnId) {
       const { title, artistNames, image, openingDate, dates, exhibitionText } =
@@ -50,6 +53,7 @@ export async function POST(req: NextRequest) {
           exhibitionText,
           userId: userId || "",
           venue: venueName,
+          typeOf: typeOf, 
         });
 
         console.log("res", exhibitionData);

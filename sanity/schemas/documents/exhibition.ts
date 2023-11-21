@@ -7,18 +7,7 @@ export default {
       title: "Venue",
       name: "venue",
       type: "string",
-
-      // to: [{ type: "venue" }],
-      // fields: [
-      //   {
-      //     title: "Venue Name",
-      //     name: "venueName",
-      //     type: "string",
-      //   },
-
-      // ],
     },
-
     {
       title: "Title",
       name: "title",
@@ -79,6 +68,11 @@ export default {
     {
       title: "User Id",
       name: "userId",
+      type: "string",
+    },
+    {
+      title: "Type of Exhibition space",
+      name: "TypeOf",
       type: "string",
     },
   ],

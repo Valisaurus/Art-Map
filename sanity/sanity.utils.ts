@@ -138,12 +138,6 @@ export async function getExhibitions(): Promise<Exhibition[]> {
     groq`*[_type == "exhibition" && dates.closing >= $currentDate] | order(dates.opening asc){
              _id,
              userId,
-            "venue": {
-              "venueName": venue->venueName
-            },
-            "typeOf": {
-              "typeOf": venue->typeOf
-            },
             title,
             "slug": slug.current,
             artistNames,
@@ -154,7 +148,9 @@ export async function getExhibitions(): Promise<Exhibition[]> {
               "opening": dates.opening,
               "closing": dates.closing,
             },
-            exhibitionText,        
+            exhibitionText,     
+            typeOf, 
+            venue,  
     }`,
     { currentDate }
   );
@@ -164,12 +160,7 @@ export async function getExhibition(slug: string): Promise<Exhibition> {
   return createClient(clientConfig).fetch(
     groq`*[_type == "exhibition" && slug.current == $slug][0]{
              _id,
-            "venue": {
-              "venueName": venue->venueName
-            },
-            "typeOf": {
-              "typeOf": venue->typeOf
-            },
+             userId,
             title,
             "slug": slug.current,
             artistNames,
@@ -180,8 +171,10 @@ export async function getExhibition(slug: string): Promise<Exhibition> {
               "opening": dates.opening,
               "closing": dates.closing,
             },
-            exhibitionText,         
-    }`,
+            exhibitionText,     
+            typeOf, 
+            venue,    
+          }`,
     { slug }
   );
 }

@@ -9,7 +9,7 @@ import MapComponent from "@/components/Map/Map";
 
 export default async function Exhibitions() {
   const exhibitions: Exhibition[] = await getExhibitions();
-
+console.log(exhibitions);
   return (
     <>
       <div className={styles.module}>
@@ -19,18 +19,18 @@ export default async function Exhibitions() {
             <li key={exhibition._id}>
               <div
                 className={`exhibitionCard ${styles.exhibitionCard}`}
-                id={exhibition.venue.venueName}
+                id={exhibition.venue}
                 style={{
-                  backgroundColor: getColor(exhibition.typeOf.typeOf).original,
+                  backgroundColor: getColor(exhibition.typeOf).original,
                 }}
                 onMouseOver={(e) => {
                   e.currentTarget.style.backgroundColor = getColor(
-                    exhibition.typeOf.typeOf
+                    exhibition.typeOf
                   ).hover;
                 }}
                 onMouseOut={(e) => {
                   e.currentTarget.style.backgroundColor = getColor(
-                    exhibition.typeOf.typeOf
+                    exhibition.typeOf
                   ).original;
                 }}
               >
@@ -63,7 +63,7 @@ export default async function Exhibitions() {
 
                 <div className={styles.topSection}>
                   <span className={styles.venueName}>
-                    {exhibition.venue.venueName}
+                    {exhibition.venue}
                   </span>
                   <div className={styles.dates}>
                     <span>
