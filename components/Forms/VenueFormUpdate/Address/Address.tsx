@@ -16,7 +16,6 @@ export default function Adress({ control, errors }: AdressProps) {
       <Controller
         name="address.streetName"
         control={control}
-        // rules={{ required: "Detta fält måste fyllas i" }}
         render={({ field }) => (
           <input
             className=""
@@ -36,7 +35,6 @@ export default function Adress({ control, errors }: AdressProps) {
       <Controller
         name="address.streetNo"
         control={control}
-        // rules={{ required: "Detta fält måste fyllas i" }}
         render={({ field }) => (
           <input
             className=""
@@ -56,7 +54,6 @@ export default function Adress({ control, errors }: AdressProps) {
       <Controller
         name="address.zip"
         control={control}
-        // rules={{ required: "Detta fält måste fyllas i" }}
         render={({ field }) => (
           <input
             className=""
@@ -74,7 +71,6 @@ export default function Adress({ control, errors }: AdressProps) {
       <Controller
         name="address.city"
         control={control}
-        // rules={{ required: "Detta fält måste fyllas i" }}
         render={({ field }) => (
           <input
             className=""

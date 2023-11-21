@@ -9,26 +9,32 @@ export default async function UpdateVenue() {
     cookies,
   });
 
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  if (session) {
+  try {
     const {
-      data: { user },
-    } = await supabase.auth.getUser();
-    const supabaseUserId = user?.id;
+      data: { session },
+    } = await supabase.auth.getSession();
 
-    const venues = await getVenueData();
+    if (session) {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      const supabaseUserId = user?.id;
 
-    // Check if any venue matches the user ID
-    const userVenue = venues.find((venue) => venue._id === supabaseUserId);
+      const venues = await getVenueData();
 
-    if (userVenue) {
-      // Render the ClientSideUpdateVenue component
-      return <ClientSideUpdateVenue venue={userVenue} />;
+      // Check if any venue matches the user ID
+      const userVenue = venues.find((venue) => venue._id === supabaseUserId);
+      console.log("uservenue", userVenue);
+
+      if (userVenue) {
+        // Render the ClientSideUpdateVenue component
+        return <ClientSideUpdateVenue venue={userVenue} />;
+      }
     }
-  } else {
-    return <p>det fanns inget sparat om din verksamhet</p>;
+  } catch (error) {
+    console.error("Error fetching data:", error);
   }
+
+  // Return the JSX element for the message
+  return <p>Det fanns inget sparat om din verksamhet</p>;
 }

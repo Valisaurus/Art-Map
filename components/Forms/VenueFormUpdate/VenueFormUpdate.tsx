@@ -8,11 +8,10 @@ import styles from "./VenueFormUpdate.module.css";
 import TypeOf from "./TypeOf/TypeOf";
 import Contact from "./Contact/Contact";
 import OpeningHours from "./OpeningHours/OpeningHours";
-import Adress from "./Address/Address";
+import Address from "./Address/Address";
 import About from "./About/About";
 import Name from "./Name/Name";
 import Url from "./Url/Url";
-
 
 export default function VenueForm() {
   const {
@@ -38,7 +37,6 @@ export default function VenueForm() {
           openByAppointment,
         },
       };
-
 
       const response = await fetch("/api/venueForm", {
         method: "POST",
@@ -76,12 +74,12 @@ export default function VenueForm() {
         {/* _____________ OPENING HOURS ____________*/}
         <OpeningHours control={control} errors={errors} />
         {/* _____________ ADDRESS ____________*/}
-        <Adress control={control} errors={errors} />
+        <Address control={control} errors={errors} />
         {/* _____________ ABOUT ____________*/}
         <About control={control} errors={errors} />
         {/* _____________ SUBMIT FORM ____________*/}
         <button type="submit" className="">
-          Publicera
+          Uppdatera
         </button>
         {error && <p className="text-red-500">{error}</p>}
       </form>
