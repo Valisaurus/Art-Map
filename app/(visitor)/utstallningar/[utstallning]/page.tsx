@@ -18,7 +18,6 @@ export default async function Exhibition({ params }: Props) {
     return <Messages />;
   }
   const exhibition = await getExhibition(slug);
-  const venue = await getVenues();
 
   const formattedText = exhibition.exhibitionText.replace(/\n/g, "<br>");
 
@@ -56,10 +55,10 @@ export default async function Exhibition({ params }: Props) {
             }}
           />
           <div className={styles.bottomSection}>
-            <Link href={`/platser/${exhibition.venueSlug}`}>
+            <Link className={styles.venueName} href={`/platser/${exhibition.venueSlug}`}>
               {exhibition.venue}
             </Link>
-            <span>
+            <span >
               {formatDateRange(
                 exhibition.dates.opening,
                 exhibition.dates.closing

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Exhibition } from "@/types/exhibition";
 import { formatDateRange, getColor } from "@/utils/functions";
 import MapComponent from "@/components/Map/Map";
+import ExitButton from "@/components/NavigationButtons/ExitButton/ExitButton";
 
 export default async function Exhibitions() {
   const exhibitions: Exhibition[] = await getExhibitions();
@@ -15,13 +16,15 @@ export default async function Exhibitions() {
       <div className={styles.module}>
         <div className={styles.navigation}>
           <h1>Utställningar</h1>
-          <button className={styles.exit}></button>
+          <Link href="/">
+            <ExitButton />
+          </Link>
         </div>
         <ul className={styles.exhibitionList}>
           {exhibitions.map((exhibition) => (
             <li key={exhibition._id}>
               <div
-                className={`exhibitionCard ${styles.exhibitionCard}`}
+                className={styles.exhibitionCard}
                 id={exhibition.venue}
                 style={{
                   backgroundColor: getColor(exhibition.typeOf).original,
@@ -52,7 +55,8 @@ export default async function Exhibitions() {
                 </div>
 
                 <Image
-                  className={styles.exhibitionImage}
+                  className={`exhibitionImage ${styles.exhibitionImage}`}
+                  id={exhibition.venue}
                   src={exhibition.imageUrl}
                   alt={`${exhibition.title}`}
                   sizes="100%"

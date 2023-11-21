@@ -5,6 +5,7 @@ import styles from "./venues.module.css";
 import { Venue } from "@/types/venue";
 import { getColor, getTitleFromTypeOf } from "@/utils/functions";
 import MapComponent from "@/components/Map/Map";
+import ExitButton from "@/components/NavigationButtons/ExitButton/ExitButton";
 
 export default async function Venues() {
   const venues: Venue[] = await getVenues();
@@ -12,10 +13,17 @@ export default async function Venues() {
   return (
     <>
       <div className={styles.module}>
-        <h1>Platser</h1>
+        <div className={styles.navigation}>
+          <h1>Platser</h1>
+          <Link href="/">
+            <ExitButton />
+          </Link>
+        </div>
         <ul className={styles.venueList}>
           {venues.map((venue) => (
             <li
+              id={venue.venueName}
+              className="venueListItem"
               key={venue._id}
               style={{
                 backgroundColor: getColor(venue.typeOf).original,
@@ -31,8 +39,15 @@ export default async function Venues() {
                 ).original;
               }}
             >
-              <Link href={`/platser/${venue.slug}`}>{venue.venueName}</Link>
-              <span>{getTitleFromTypeOf(venue.typeOf)}</span>
+              <Link
+                className={styles.venueName}
+                href={`/platser/${venue.slug}`}
+              >
+                {venue.venueName}
+              </Link>
+              <span className={styles.typeOf}>
+                {getTitleFromTypeOf(venue.typeOf)}
+              </span>
             </li>
           ))}
         </ul>
