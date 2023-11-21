@@ -9,11 +9,14 @@ import MapComponent from "@/components/Map/Map";
 
 export default async function Exhibitions() {
   const exhibitions: Exhibition[] = await getExhibitions();
-console.log(exhibitions);
+
   return (
     <>
       <div className={styles.module}>
-        <h1>Utställningar</h1>
+        <div className={styles.navigation}>
+          <h1>Utställningar</h1>
+          <button className={styles.exit}></button>
+        </div>
         <ul className={styles.exhibitionList}>
           {exhibitions.map((exhibition) => (
             <li key={exhibition._id}>
@@ -61,10 +64,13 @@ console.log(exhibitions);
                   }}
                 />
 
-                <div className={styles.topSection}>
-                  <span className={styles.venueName}>
+                <div className={styles.bottomSection}>
+                  <Link
+                    className={styles.venueName}
+                    href={`/platser/${exhibition.venueSlug}`}
+                  >
                     {exhibition.venue}
-                  </span>
+                  </Link>
                   <div className={styles.dates}>
                     <span>
                       {formatDateRange(

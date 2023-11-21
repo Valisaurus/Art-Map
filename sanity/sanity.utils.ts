@@ -150,7 +150,8 @@ export async function getExhibitions(): Promise<Exhibition[]> {
             },
             exhibitionText,     
             typeOf, 
-            venue,  
+            venue, 
+            venueSlug, 
     }`,
     { currentDate }
   );
@@ -174,6 +175,7 @@ export async function getExhibition(slug: string): Promise<Exhibition> {
             exhibitionText,     
             typeOf, 
             venue,    
+            venueSlug
           }`,
     { slug }
   );

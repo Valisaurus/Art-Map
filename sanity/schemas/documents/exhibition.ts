@@ -75,5 +75,10 @@ export default {
       name: "typeOf",
       type: "string",
     },
+    {
+      title: "Venue Slug",
+      name: "venueSlug",
+      type: "string",
+    },
   ],
 };
