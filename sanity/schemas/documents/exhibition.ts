@@ -72,7 +72,7 @@ export default {
     },
     {
       title: "Type of Exhibition space",
-      name: "TypeOf",
+      name: "typeOf",
       type: "string",
     },
   ],

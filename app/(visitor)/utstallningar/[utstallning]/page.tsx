@@ -24,7 +24,7 @@ export default async function Exhibition({ params }: Props) {
         <div
           className={styles.exhibitionWrapper}
           style={{
-            backgroundColor: getColor(exhibition.typeOf.typeOf).original,
+            backgroundColor: getColor(exhibition.typeOf).original,
           }}
         >
           <Image
