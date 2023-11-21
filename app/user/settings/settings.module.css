@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+}
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.links a:hover {
+  color: rgb(96, 91, 94);
+  text-decoration: underline;
+}

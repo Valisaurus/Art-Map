@@ -16,25 +16,45 @@ const ClientSideUpdateVenue = ({ venue }: ClientSideUpdateVenueProps) => {
           <p>
             <i>Fyll endast i de fält du vill uppdatera</i>
           </p>
+
           <VenueFormUpdate />
         </div>
         <div className={styles.venueData}>
           <p>
-            <b>Här är din tidigare skickade data</b>
+            <i>Här är din tidigare skickade data</i>
           </p>
-          <h1>{venue.venueName}</h1>
-          <p>{venue.websiteUrl}</p>
-          <p>{venue.about}</p>
-          <p>{venue.typeOf}</p>
+          <p>
+            <b>Namn på verksamheten</b>
+          </p>
 
+          <h1>{venue.venueName}</h1>
+          <p>
+            <b>Hemsida</b>
+          </p>
+          <p>{venue.websiteUrl}</p>
+          <p>
+            <b>Typ av verksamhet</b>
+          </p>
+          <p>{venue.typeOf}</p>
+          <p>
+            <b>Address</b>
+          </p>
           <p>{venue.address.streetName}</p>
           <p>{venue.address.streetNo}</p>
           <p>{venue.address.zip}</p>
           <p>{venue.address.city}</p>
-
+          <p>
+            <b>Email</b>
+          </p>
           <p>{venue.contact.email}</p>
+          <p>
+            <b>Telefonnumer</b>
+          </p>
           <p>{venue.contact.phone}</p>
 
+          <p>
+            <b>Öppettider</b>
+          </p>
           <p>{venue.openingHours.monday?.from}</p>
           <p>{venue.openingHours.monday?.to}</p>
           <p>{venue.openingHours.tuesday?.from}</p>
@@ -49,6 +69,10 @@ const ClientSideUpdateVenue = ({ venue }: ClientSideUpdateVenueProps) => {
           <p>{venue.openingHours.openByAppointment}</p>
 
           <p>{venue.irregularOpeningHours}</p>
+          <p>
+            <b>Om verksamheten</b>
+          </p>
+          <p>{venue.about}</p>
         </div>
       </div>
     </>

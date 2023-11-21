@@ -13,10 +13,10 @@ export default function VenueAbout() {
         <br />
         Här fyller du i uppgifter om din verksamhet.
         <div className={styles.links}>
-          <Link href="/user/about/create-venue">Lägg till Galleri</Link>
-          <Link href="/user/about/update-venue">Uppdatera Galleri </Link>
-          <Link href="/user/about/exhibitions">Dina Utställningar</Link>
-          <Link href="/user/about/event">Dina Event</Link>
+          <Link href="/user/about/create-venue">Lägg till verksamhet</Link>
+          <Link href="/user/about/update-venue">Uppdatera verksamhet</Link>
+          <Link href="/user/about/exhibitions">Dina utställningar</Link>
+          <Link href="/user/about/event">Dina event</Link>
         </div>
       </div>
     </>
