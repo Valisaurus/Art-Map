@@ -22,4 +22,5 @@ export type Exhibition = {
       exhibitionText: string;
       userId: string;
       typeOf: string;
+      venueSlug: string;
 };
