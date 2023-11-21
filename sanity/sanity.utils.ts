@@ -167,6 +167,9 @@ export async function getExhibition(slug: string): Promise<Exhibition> {
             "venue": {
               "venueName": venue->venueName
             },
+            "typeOf": {
+              "typeOf": venue->typeOf
+            },
             title,
             "slug": slug.current,
             artistNames,

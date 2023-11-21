@@ -6,16 +6,19 @@ export default {
     {
       title: "Venue",
       name: "venue",
-      type: "reference",
-      to: [{ type: "venue" }],
-      fields: [
-        {
-          title: "Venue Name",
-          name: "venueName",
-          type: "string",
-        },
-      ],
+      type: "string",
+
+      // to: [{ type: "venue" }],
+      // fields: [
+      //   {
+      //     title: "Venue Name",
+      //     name: "venueName",
+      //     type: "string",
+      //   },
+
+      // ],
     },
+
     {
       title: "Title",
       name: "title",
