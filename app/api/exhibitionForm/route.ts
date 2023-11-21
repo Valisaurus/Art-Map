@@ -59,6 +59,10 @@ export async function POST(req: NextRequest) {
           venueSlug: venueSlug
         });
         console.log(exhibitionData);
+        return NextResponse.json(
+          { message: "Form was submitted" },
+          { status: 200 }
+        );
       } catch (err) {
         console.error("Error while creating document:", err);
         return NextResponse.json(
@@ -66,11 +70,12 @@ export async function POST(req: NextRequest) {
           { status: 500 }
         );
       }
-
-      return NextResponse.json(
-        { message: "Form was submitted" },
-        { status: 200 }
-      );
     }
   }
+
+  // Default response if conditions are not met
+  return NextResponse.json(
+    { message: "Invalid request or user not found" },
+    { status: 400 }
+  );
 }

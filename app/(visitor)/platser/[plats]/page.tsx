@@ -48,62 +48,72 @@ export default async function Venue({ params }: Props) {
             <ExitButton />
           </Link>
         </div>
-        <div
-          className={styles.venueWrapper}
-          style={{
-            backgroundColor: getColor(venue.typeOf).original,
-          }}
-        >
+        <div className={styles.venueWrapper}>
           <h1 className={styles.heading}>{venue.venueName}</h1>
-          <span className={styles.website}>{venue.websiteUrl}</span>
-          {/* Om */}
-          <p dangerouslySetInnerHTML={{ __html: formattedText }}></p>
+          <Link href={venue.websiteUrl} className={styles.website}>
+            {venue.websiteUrl}
+          </Link>
+          <div className={styles.contentWrapper}>
+            <div className={styles.aboutSection}>
+              <p dangerouslySetInnerHTML={{ __html: formattedText }}></p>
+            </div>
 
-          {/* Adress */}
-          <section className={styles.adressSection}>
-            <p>{venue.address.streetName}</p>
-            <p>{venue.address.streetNo}</p>
-            <p>{venue.address.zip}</p>
-            <p>{venue.address.city}</p>
-          </section>
+            <div
+              className={styles.infoWrapper}
+              style={{
+                backgroundColor: getColor(venue.typeOf).original,
+              }}
+            >
+              <section className={styles.openingHoursSection}>
+                <h2>Öppettider</h2>
+                {/* mapping through exhibition openingHours to display closed if values are null and to show no days if OpenByAppointment is true */}
+                {venue.openingHours.openByAppointment ? (
+                  <p>Endast förbokade besök</p>
+                ) : (
+                  orderedDays.map((day) => {
+                    const hours =
+                      venue.openingHours[
+                        day as keyof typeof venue.openingHours
+                      ];
 
-          {/* Kontakt */}
-          <section className={styles.contactSection}>
-            <p>{venue.contact.email}</p>
-            <p>{venue.contact.phone}</p>
-          </section>
-          {/* Öppettider */}
-          <section className={styles.openingHoursSection}>
-            {/* mapping through exhibition openingHours to display closed if values are null and to show no days if OpenByAppointment is true */}
-            {venue.openingHours.openByAppointment ? (
-              <p>Open by appointment only</p>
-            ) : (
-              orderedDays.map((day) => {
-                const hours = venue.openingHours[day as keyof typeof venue.openingHours];
-
-                return (
-                  <div key={day} className={styles.openingHours}>
-                    <p className={styles.day}>{dayNameMap[day]}</p>
-                    {hours &&
-                    typeof hours === "object" &&
-                    hours.from !== null ? (
-                      <>
-                        <span>{hours.from}</span> - <span>{hours.to}</span>
-                      </>
-                    ) : (
-                      <span className={styles.closed}> stängt </span>
-                    )}
-                  </div>
-                );
-              })
-            )}
-            <p>{venue.irregularOpeningHours}</p>
-          </section>
+                    return (
+                      <div key={day} className={styles.openingHours}>
+                        <span className={styles.day}>{dayNameMap[day]}</span>
+                        {hours &&
+                        typeof hours === "object" &&
+                        hours.from !== null ? (
+                          <>
+                            <span className={styles.hours}>{hours.from} -
+                            {hours.to}</span>
+                          </>
+                        ) : (
+                          <span className={styles.closed}> Stängt </span>
+                        )}
+                      </div>
+                    );
+                  })
+                )}
+                <p>{venue.irregularOpeningHours}</p>
+              </section>
+              <div className={styles.addressAndContact}>
+                <section className={styles.addressSection}>
+                  <h2>Adress</h2>
+                  <span>
+                    {venue.address.streetName} {venue.address.streetNo}
+                  </span>
+                  <span>{venue.address.zip}</span>
+                  <span>{venue.address.city}</span>
+                </section>
+                <section className={styles.contactSection}>
+                  <h2>Kontakt</h2>
+                  <span>{venue.contact.email}</span>
+                  <span>{venue.contact.phone}</span>
+                </section>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
   );
-};
-
-
-
+}

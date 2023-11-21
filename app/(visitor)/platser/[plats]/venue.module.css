@@ -6,6 +6,7 @@
   overflow-y: scroll;
 }
 
+/* NAVIGATION */
 .navigation {
   width: 100%;
   display: flex;
@@ -25,12 +26,79 @@
   border-bottom: 2px solid black;
 }
 
+/* VENUE */
+.venueWrapper {
+  width: 100%;
+  margin-top: 4rem;
+  margin-left: 2rem;
+}
+
 .heading {
-  
+  font-weight: bold;
+}
+
+.website {
+  font-size: 0.8rem;
+}
+
+.website:hover {
+  border-bottom: 2px solid black;
+}
+
+.contentWrapper {
+  display: flex;
+  gap: 4rem;
+}
+
+.infoWrapper {
+  display: flex;
+  gap: 2rem;
+  padding: 0rem 2rem 2rem 2rem;
+}
+
+.aboutSection {
+  max-width: 30rem;
+  margin-top: 2rem;
+}
+
+.addressSection {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.contactSection {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.openingHoursSection {
+  margin-top: 2rem;
+}
+
+.openingHoursSection h2,
+.contactSection h2,
+.addressSection h2 {
+  margin-bottom: 0.5rem;
+}
+
+.openingHoursSection span,
+.contactSection span,
+.addressSection span {
+  text-transform: uppercase;
+  font-size: 0.8rem;
 }
 
 .openingHours {
   display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.hours {
+  display: flex;
+
 }
 
 @media only screen and (max-width: 800px) {
@@ -48,5 +116,15 @@
     width: 0;
     height: 0;
     border: none;
+  }
+
+  .venueWrapper {
+    margin-top: 4rem;
+    margin-left: 1rem;
+  }
+
+  .contentWrapper, .infoWrapper {
+    flex-direction: column;
+    gap: 2rem;
   }
 }
