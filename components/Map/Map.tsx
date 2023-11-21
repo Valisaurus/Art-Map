@@ -27,7 +27,6 @@ const MapComponent = () => {
     const newMap = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/anbru/clnew4y6y03xm01qxft776f2b",
-
       center: [11.967017, 57.707233], // Initial map center coordinates
       zoom: 12, // Initial zoom level`
     });
@@ -146,8 +145,6 @@ const MapComponent = () => {
                   if (chosenMarker) {
                     const coordinates = chosenMarker.getLngLat();
 
-                    // Check if it's a different venue before zooming
-
                     if (venueName !== clickedExhibition) {
                       map.flyTo({
                         center: coordinates,
@@ -158,38 +155,35 @@ const MapComponent = () => {
                     }
                   }
                 }
-
-                // { passive: true }
               );
             });
-            // Click event to the exhibition title in the exhibition card
-            const exhibitionTitles =
-              document.querySelectorAll(".exhibitionTitle");
-            exhibitionTitles.forEach((title) => {
-              title.addEventListener(
-                "click",
-                () => {
-                  const venueName = title.parentElement?.id;
+            // Click event to the exhibition title in the exhibition card - removed until we solve reset of mapview on back-button:
+            
+            // const exhibitionTitles =
+            //   document.querySelectorAll(".exhibitionTitle");
+            // exhibitionTitles.forEach((title) => {
+            //   title.addEventListener(
+            //     "click",
+            //     () => {
+            //       const venueName = title.parentElement?.id;
+            //       // Retrieve the marker using the venueName from the Map
+            //       const marker = markerVenueMap.get(venueName);
 
-                  // Retrieve the marker using the venueName from the Map
-                  const marker = markerVenueMap.get(venueName);
-
-                  if (marker) {
-                    const coordinates = marker.getLngLat();
-                    // Check if it's a different venue before zooming
-                    if (venueName !== clickedExhibition) {
-                      map.flyTo({
-                        center: coordinates,
-                        zoom: 15,
-                      });
-                      // Update the state to track the clicked venue
-                      setClickedExhibition(venueName || null);
-                    }
-                  }
-                }
-                // { passive: true }
-              );
-            });
+            //       if (marker) {
+            //         const coordinates = marker.getLngLat();
+            //         // Check if it's a different venue before zooming
+            //         if (venueName !== clickedExhibition) {
+            //           map.flyTo({
+            //             center: coordinates,
+            //             zoom: 15,
+            //           });
+            //           // Update the state to track the clicked venue
+            //           setClickedExhibition(venueName || null);
+            //         }
+            //       }
+            //     }
+            //   );
+            // });
           }
         }
       });
