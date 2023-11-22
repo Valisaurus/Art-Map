@@ -59,7 +59,10 @@ const Nav = () => {
           <Link href="/om-sidan" passHref legacyBehavior>
             <a onClick={hideMenu}>Om sidan</a>
           </Link>
-          <span>sv / en</span>
+          <div>
+            <span className={styles.lang}>sv</span> /
+            <span className={styles.lang}>en</span>
+          </div>
         </div>
       </div>
     </nav>

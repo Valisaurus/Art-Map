@@ -7,10 +7,11 @@ export default function LoginUser() {
       <h1 className={styles.heading}>Logga in på ditt konto</h1>
       <form className={styles.form} action="/auth/sign-in-user" method="post">
         <label htmlFor="email">Email</label>
-        <input name="email" placeholder="  you@example.com" required />
+        <input name="email" id="email" placeholder="  you@example.com" required />
         <label htmlFor="password">Lösenord</label>
         <input
           type="password"
+          id="password"
           name="password"
           placeholder="  ••••••••"
           required

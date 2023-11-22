@@ -140,10 +140,10 @@ export default {
       name: "about",
       type: "text",
     },
-    {
-      title: "User Id",
-      name: "userId",
-      type: "string",
-    },
+    // {
+    //   title: "User Id",
+    //   name: "userId",
+    //   type: "string",
+    // },
   ],
 };

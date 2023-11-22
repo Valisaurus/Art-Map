@@ -17,6 +17,15 @@
   gap: 2rem;
 }
 
+.list a:hover
+ {
+  border-bottom: 2px solid black;
+}
+
+.lang:hover {
+  border-bottom: 2px solid black;
+}
+
 .user {
   display: flex;
   font-size: 0.8rem; 
