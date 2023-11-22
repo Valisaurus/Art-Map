@@ -6,7 +6,7 @@ import styles from "./settings.module.css";
 export default function ClientSideSettings() {
   return (
     <div className={styles.settingsContainer}>
-      <h1>KONTOINSTÄLLNINGAR</h1>
+      <h1>Kontoinställningar</h1>
       <div className={styles.list}>
         <ul>
           <li className="globalButton">

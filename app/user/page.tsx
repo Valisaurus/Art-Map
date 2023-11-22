@@ -3,7 +3,7 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { getVenues } from "@/sanity/sanity.utils";
-import venue from "@/sanity/schemas/documents/venue";
+import styles from "./dashboard.module.css";
 
 export const dynamic = "force-dynamic";
 
@@ -16,6 +16,9 @@ export default async function DashboardPage() {
     data: { session },
   } = await supabase.auth.getSession();
 
+  // Different welcoming message depending on user
+  let welcomeMessage = "";
+
   if (session) {
     const {
       data: { user },
@@ -27,14 +30,14 @@ export default async function DashboardPage() {
 
     if (matchingVenue) {
       const venueName = matchingVenue.venueName;
-      return (
-        <div>
-          <p>Välkommen {venueName}!</p>
-          <ClientSideDashboard />
-        </div>
-      );
+      welcomeMessage = `Välkommen ${venueName}!`;
+    } else {
+      welcomeMessage = "Välkommen!";
     }
+
+    return <ClientSideDashboard welcomeMessage={welcomeMessage} />;
   }
+
   if (!session) {
     redirect("/");
   }
