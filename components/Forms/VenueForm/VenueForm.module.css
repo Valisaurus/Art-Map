@@ -123,9 +123,3 @@ font-size: 0.8rem;
 
 
 
-/* ERROR HANDLING */
-.errorMessage {
-  color: orangered; 
-  font-size: 0.75rem; 
-  margin-top: 0.5rem; 
-}

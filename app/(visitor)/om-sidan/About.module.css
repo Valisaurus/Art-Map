@@ -4,13 +4,61 @@
   padding: 4rem;
 }
 
-.infoSection {
-  margin-bottom: 4rem;
+.infoAndContact {
+  display: flex;
+  gap: 4rem;
 }
 
-.registerSection
- {
-margin-top: 1.25rem;
+/* INFO SECTION */
+.infoSection {
+  margin-bottom: 4rem;
+  max-width: 35rem;
+  margin-right: 4rem;
+}
+.heading {
+  display: inline;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.paragraphOne {
+  display: inline;
+}
+.paragraphTwo {
+  margin-top: 1rem;
+}
+
+/* CONTACT */
+.contact {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 2rem;
+  max-width: 35rem;
+}
+
+.contact h2 {
+  margin-bottom: 1rem;
+}
+
+.contact span {
+  margin-bottom: 0.5rem;
+}
+
+.contact span {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+
+/* LOGIN / REGISTER */
+.loginSection {
+  margin-top: 4rem;
+}
+.registerSection {
+  margin-top: 1.25rem;
+}
+.link {
+  margin-left: 0.5rem;
 }
 
 @media only screen and (max-width: 800px) {
@@ -18,8 +66,12 @@ margin-top: 1.25rem;
     border-left: 2px solid black;
   }
   .bottomBox {
-      width: 0;
-      height: 0;
-      border: none;
-    }
+    width: 0;
+    height: 0;
+    border: none;
+  }
+
+  .infoAndContact {
+    flex-direction: column;
+  }
 }
