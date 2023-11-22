@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { createClient } from "@sanity/client";
 import { getExhibitions } from "@/sanity/sanity.utils";
+
 export const dynamic = "force-dynamic";
 
 // Initialize the Sanity client
@@ -9,48 +10,45 @@ const client = createClient({
   projectId: "z4x2zjsw",
   dataset: "production",
   apiVersion: "2023-10-10",
-  token: process.env.SANITY_API_TOKEN,
+  token: process.env.NEXT_SANITY_FORM_INSERT2_ACCESS_TOKEN,
   useCdn: false,
 });
 
-export async function POST(req: NextRequest) {
+export async function Delete(req: NextRequest) {
   try {
     const exhibitions = await getExhibitions();
-    const documentIdToDelete = exhibitions?.find(
-      (exhibition) => exhibition._id === exhibition._id
+
+    // Assuming you have a condition to filter exhibitions to delete
+    const documentIdsToDelete = exhibitions?.filter(
+      (exhibition) => exhibition._id
     );
 
-    const exhibitionIdToDelete = documentIdToDelete;
-    if (exhibitions && exhibitions.length > 0) {
-      const deleteMutation = `*[_id == $exhibitionIdToDelete] | delete`;
-
-      await client
-        .transaction()
-        .delete(exhibitionIdToDelete)
-        .commit()
-        .then((response) => {
-          console.log("Document deleted successfully:", response);
-        })
-        .catch((error) => {
-          console.error("Error deleting document:", error);
-        });
-
+    if (!documentIdsToDelete || documentIdsToDelete.length === 0) {
+      console.error("No matching exhibitions found to delete");
       return NextResponse.json(
-        { message: "Exhibition was deleted" },
-        { status: 200 }
-      );
-    } else {
-      console.error("No exhibitions found to delete");
-      return NextResponse.json(
-        { message: "No exhibitions found to delete" },
+        { message: "No matching exhibitions found to delete" },
         { status: 404 }
       );
     }
-  } catch (err) {
-    console.error("Error while deleting document:", err);
+
+    // Use Promise.all to delete multiple documents concurrently
+    await Promise.all(
+      documentIdsToDelete.map(async (document) => {
+        await client.transaction().delete(document._id).commit();
+      })
+    );
+
     return NextResponse.json(
-      { message: "Failed to delete document" },
+      { message: "Exhibitions were deleted" },
+      { status: 200 }
+    );
+  } catch (err) {
+    console.error("Error while deleting documents:", err);
+    return NextResponse.json(
+      { message: "Failed to delete documents" },
       { status: 500 }
     );
   }
 }
+
+export default Delete;
