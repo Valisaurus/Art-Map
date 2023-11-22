@@ -50,6 +50,7 @@ export default function ExhibitionForm() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <Title control={control} errors={errors} />
         <Artists control={control} errors={errors} />
+        <div className={styles.fakeImage}></div>
         <Dates control={control} errors={errors} />
         <ExhibitionText control={control} errors={errors} />
         {/* <Image control={control} errors={errors} /> */}

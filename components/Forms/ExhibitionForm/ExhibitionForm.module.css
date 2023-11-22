@@ -1,0 +1,5 @@
+.fakeImage {
+    border: 1px solid black;
+    max-width: 40rem;
+    max-height: 20rem;
+}

@@ -2,7 +2,7 @@ import styles from "./changePassword.module.css";
 
 export default function ChangePassword() {
   return (
-    <div className={styles.contentWrapper}>
+    <div className={styles.passwordChangeWrapper}>
       <div className={styles.centerContainer}>
         <h1>Byt lösenord</h1>
         <form

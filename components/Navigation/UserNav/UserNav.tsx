@@ -42,11 +42,11 @@ const AdminNav = () => {
       >
         <div className={styles.list}>
           <Link href="/user/about" passHref legacyBehavior>
-            <a onClick={hideMenu}>Dina uppgifter</a>
+            <a onClick={hideMenu}>Din profil</a>
           </Link>
 
           <Link href="/user/settings" passHref legacyBehavior>
-            <a onClick={hideMenu}>Inställningar</a>
+            <a onClick={hideMenu}>hantera konto</a>
           </Link>
           <LogoutButton />
           <div>
