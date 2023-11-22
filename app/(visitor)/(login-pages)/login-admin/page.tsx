@@ -17,7 +17,7 @@ export default async function LoginAdmin() {
           placeholder="  ••••••••"
           required
         />
-        <button className={styles.loginButton}>Logga in</button>
+        <button className="globalButton">Logga in</button>
         <Link href="/send-reset-password-req-email">
           <button className={styles.passwordReset}>Glömt lösenord?</button>
         </Link>
