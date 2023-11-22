@@ -51,24 +51,23 @@ const ClientSideExhibitions = ({
             <i>Här är din tidigare skickade data</i>
           </p>
           <p>
-            <b>Namn på verksamheten</b>
+            <b>Namn på utställning</b>
           </p>
           <p>{exhibition.title}</p>
           <p>
-            <b>Hemsida</b>
+            <b>Konstnärer</b>
           </p>
           <p>{exhibition.artistNames}</p>
           <p>
-            <b>Typ av verksamhet</b>
-          </p>
-          <p>{exhibition.openingDate}</p>
-          <p>
-            <b>Address</b>
+            <b>Öppettider</b>
           </p>
           <p>{exhibition.dates.opening}</p>
           <p>{exhibition.dates.closing}</p>
+          <p>
+            <b>Utställningstext</b>
+          </p>
           <p>{exhibition.exhibitionText}</p>
-          <p>{exhibition.typeOf}</p>
+
           <form
             // action="/api/deleteExihibition"
             // method="POST"

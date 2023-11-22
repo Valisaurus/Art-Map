@@ -5,8 +5,6 @@ import { getUser } from "@/utils/supabaseFunctions";
 import { getExhibitions } from "@/sanity/sanity.utils";
 import { getVenues } from "@/sanity/sanity.utils";
 
-
-
 // Initialize the Sanity client
 const client = createClient({
   projectId: "z4x2zjsw",
@@ -21,31 +19,21 @@ export async function POST(req: NextRequest) {
     const userId = user.userId;
 
     // SANITY LOGIC
-    const exhibitions = await getExhibitions();
+
     const venues = await getVenues();
-    exhibitions.find((venue) => venue._id === userId);
+    const matchingExhibition = venues.find((venue) => venue._id === userId);
 
-    // Find VenueName and slug on venue
-    const venueNameObject = venues.find((venue) => venue.venueName);
-    const venueName = venueNameObject?.venueName;
-
-    // Find TypeOf on venue
-    const typeOfObject = venues.find((venue) => venue.typeOf);
-    const typeOf = typeOfObject?.typeOf;
-
-    // Find venue slug
-    const slugObject = venues.find((venue) => venue.slug);
-    const venueSlug = slugObject?.slug;
-
-    // Match userId with venueName
-    const venueNameFindOnId = venues.find((venue) => venue._id === userId);
-    if (venueNameFindOnId) {
+    // Check if a matching venue is found
+    if (matchingExhibition) {
       const { title, artistNames, image, openingDate, dates, exhibitionText } =
         await req.json();
 
       try {
+        // Extract venue name from the matching venue
+        const venueName = matchingExhibition.venueName;
+
         // Create a new document in Sanity
-        const exhibitionData = await client.create({
+        await client.create({
           _type: "exhibition",
           title,
           artistNames,
@@ -54,11 +42,11 @@ export async function POST(req: NextRequest) {
           dates,
           exhibitionText,
           userId: userId || "",
-          venue: venueName,
-          typeOf: typeOf,
-          venueSlug: venueSlug
+          venue: venueName, // Use the extracted venue name
+          typeOf: matchingExhibition.typeOf,
+          venueSlug: matchingExhibition.slug,
         });
-        console.log(exhibitionData);
+
         return NextResponse.json(
           { message: "Form was submitted" },
           { status: 200 }
