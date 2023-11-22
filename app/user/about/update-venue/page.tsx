@@ -1,7 +1,7 @@
 import { getVenueData } from "@/sanity/sanity.utils";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-
+import { Venue } from "@/types/venue";
 import ClientSideUpdateVenue from "./updateVenue";
 
 export default async function UpdateVenue() {
@@ -24,17 +24,14 @@ export default async function UpdateVenue() {
 
       // Check if any venue matches the user ID
       const userVenue = venues.find((venue) => venue._id === supabaseUserId);
-      console.log("uservenue", userVenue);
 
-      if (userVenue) {
-        // Render the ClientSideUpdateVenue component
-        return <ClientSideUpdateVenue venue={userVenue} />;
-      }
+      // Render the ClientSideUpdateVenue component with the user venue or message
+      return <ClientSideUpdateVenue venue={userVenue} message={!userVenue ? "Det fanns inget sparat om din verksamhet" : undefined} />;
     }
   } catch (error) {
     console.error("Error fetching data:", error);
   }
 
-  // Return the JSX element for the message
-  return <p>Det fanns inget sparat om din verksamhet</p>;
+  // Return the JSX element for the message if there's an error or no session
+  return <ClientSideUpdateVenue venue={undefined}message="Det fanns inget sparat om din verksamhet" />;
 }
