@@ -32,17 +32,12 @@ export default async function ExhibitionsPage() {
         (exhibition) => exhibition.userId === supabaseUserId
       );
 
-      console.log("userExhibition", userExhibitions);
-
-      if (userExhibitions) {
-        // Render the ClientSideUpdateVenue component
-        return <ClientSideExhibitions exhibitions={userExhibitions} />;
+        return <ClientSideExhibitions exhibitions={userExhibitions} message={!userExhibitions ? "Det fanns inga sparade utställningar" : undefined}/>;
       }
-    }
+    
   } catch (error) {
     console.error("Error fetching data:", error);
   }
 
-  // Return the JSX element for the message
-  return <p>Du har inga sparade utsällningar</p>;
+  return <ClientSideExhibitions exhibitions={undefined}  message="Det fanns inget sparat om din verksamhet." />;
 }

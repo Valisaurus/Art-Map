@@ -29,6 +29,7 @@ h3 {
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 0.5rem;
+  letter-spacing: 1px;
 }
 
 label {
@@ -47,6 +48,7 @@ input {
 
 textarea {
   width: 100%;
+  max-width: 40rem;
   height: 100%;
 }
 
