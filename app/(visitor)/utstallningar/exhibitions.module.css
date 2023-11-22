@@ -35,7 +35,8 @@
 }
 
 /* TOP SECTION */
-.topSection, .bottomSection {
+.topSection,
+.bottomSection {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -61,7 +62,6 @@
 .exhibitionImage {
   margin: 0.8rem 0rem;
 }
-
 
 @media only screen and (max-width: 1200px) {
   .topSection {
@@ -102,8 +102,8 @@
     border: none;
   }
 
-  .venueName, 
-  .dates  {
+  .venueName,
+  .dates {
     font-size: 0.8rem;
   }
 }
