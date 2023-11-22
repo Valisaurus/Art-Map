@@ -11,18 +11,18 @@ interface aboutProps {
 export default function About({ control, errors }: aboutProps) {
   return (
     <section className={styles.aboutSection}>
-      <h2>Om verksamheten</h2>
+      <h3>Om verksamheten</h3>
       <label hidden>Om verksamheten</label>
       <Controller
         name="about"
         control={control}
         rules={{ required: "Detta fält måste fyllas i" }}
         render={({ field }) => (
-          <textarea {...field} value={field.value || ""} />
+          <textarea {...field} value={field.value || ""}  />
         )}
       />
       {errors.about && (
-        <p className={styles.errorMessage}>{errors.about.message}</p>
+        <p className="errorMessageForm">{errors.about.message}</p>
       )}
     </section>
   );
