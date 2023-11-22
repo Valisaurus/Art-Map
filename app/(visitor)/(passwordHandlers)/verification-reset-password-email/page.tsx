@@ -1,7 +1,12 @@
+import styles from "../passWordHandlers.module.css";
+
 export default function VerificationPage() {
   return (
-    <div>
-      <p> Klicka på länken i mailen för att återsälla ditt lösenord</p>
+    <div className={styles.contentWrapper}>
+    <div className={styles.centerContainer}>
+    <h1>Kolla din inkorg!</h1>
+      <p> Vi har skickat ett mail med en länk som omdirigerar dig till en sida för att återställa ditt lösenord.</p>
+    </div>
     </div>
   );
 }
