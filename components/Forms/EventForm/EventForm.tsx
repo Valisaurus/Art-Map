@@ -47,7 +47,7 @@ export default function EventForm() {
         <button type="submit" className="">
           Skicka Ansökan
         </button>
-        {error && <p className="text-red-500">{error}</p>}
+        {error && <p className="errorMessageForm">{error}</p>}
       </form>
     </div>
   );

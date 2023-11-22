@@ -30,7 +30,7 @@ export default function Dates({ control, errors }: dateProps) {
           )}
         />
         {errors.dates?.opening && (
-          <p className="text-red-500">
+          <p className="errorMessageForm">
             {errors.dates?.opening.message}
           </p>
         )}
@@ -48,7 +48,7 @@ export default function Dates({ control, errors }: dateProps) {
           )}
         />
         {errors.dates?.closing && (
-          <p className="text-red-500">
+          <p className="errorMessageForm">
             {errors.dates?.closing.message}
           </p>
         )}

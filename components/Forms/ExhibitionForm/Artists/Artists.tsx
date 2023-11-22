@@ -23,7 +23,7 @@ export default function Artists({ control, errors }: artistsProps) {
         )}
       />
       {errors.artistNames && (
-        <p className={styles.errorMessage}>{errors.artistNames.message}</p>
+        <p className="errorMessageForm">{errors.artistNames.message}</p>
       )}
     </section>
   );

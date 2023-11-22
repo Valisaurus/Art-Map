@@ -27,7 +27,7 @@ export default function Adress({ control, errors }: AdressProps) {
         )}
       />
       {errors.address?.streetName && (
-        <p className={styles.errorMessage}>
+        <p className="errorMessageForm">
           {errors.address?.streetName.message}
         </p>
       )}
@@ -47,7 +47,7 @@ export default function Adress({ control, errors }: AdressProps) {
         )}
       />
       {errors.address?.streetNo && (
-        <p className={styles.errorMessage}>
+        <p className="errorMessageForm">
           {errors.address?.streetNo.message}
         </p>
       )}
@@ -67,7 +67,7 @@ export default function Adress({ control, errors }: AdressProps) {
         )}
       />
       {errors.address?.zip && (
-        <p className={styles.errorMessage}>{errors.address?.zip.message}</p>
+        <p className="errorMessageForm">{errors.address?.zip.message}</p>
       )}
 
       <label>Stad</label>
@@ -85,7 +85,7 @@ export default function Adress({ control, errors }: AdressProps) {
         )}
       />
       {errors.address?.city && (
-        <p className={styles.errorMessage}>{errors.address?.city.message}</p>
+        <p className="errorMessageForm">{errors.address?.city.message}</p>
       )}
     </section>
   );

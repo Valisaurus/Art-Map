@@ -22,7 +22,7 @@ export default function ExhibitionText({ control, errors }: exhibitionTextProps)
         )}
       />
       {errors.exhibitionText && (
-        <p className={styles.errorMessage}>{errors.exhibitionText.message}</p>
+        <p className="errorMessageForm">{errors.exhibitionText.message}</p>
       )}
     </section>
   );

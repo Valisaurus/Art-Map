@@ -78,7 +78,7 @@ export default function TypeOf({ control, errors }: TypeOfProps) {
         )}
       />
       {errors.typeOf && (
-        <p className={styles.errorMessage}>{errors.typeOf.message}</p>
+        <p className="errorMessageForm">{errors.typeOf.message}</p>
       )}
     </section>
   );
