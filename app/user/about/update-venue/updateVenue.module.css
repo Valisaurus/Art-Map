@@ -15,10 +15,13 @@
   gap: 6rem;
 }
 
+.message {
+  margin-bottom: 2rem;
+}
+
 .venueDataHeading {
 font-size: 1rem;
 font-weight: 500;
-margin-bottom: 2rem;
 text-align: center;
 }
 
@@ -30,6 +33,7 @@ text-align: center;
   height: 100%;
   background-color: rgb(197, 226, 251);
   padding: 2rem 2rem 8rem 2rem;
+  margin-bottom: 6rem;
 }
 
 .venueData span {
@@ -42,6 +46,10 @@ text-align: center;
 }
 
 @media only screen and (max-width: 800px) {
+
+  .updateContainer {
+    padding: 1rem;
+  }
 
   .contentWrapper {
     flex-direction: column;

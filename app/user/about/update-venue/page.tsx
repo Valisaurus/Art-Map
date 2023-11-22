@@ -32,5 +32,5 @@ export default async function UpdateVenue() {
     console.error("Error fetching data:", error);
   }
   
-  return <ClientSideUpdateVenue venue={undefined} message="Det fanns inget sparat om din verksamhet." />;
+  return <ClientSideUpdateVenue venue={undefined} message="Det fanns inget sparat om din verksamhet. Fyll i dina uppgifter för att kunna publicera utställningar på sidan." />;
 }

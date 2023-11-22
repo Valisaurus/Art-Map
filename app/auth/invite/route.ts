@@ -13,6 +13,7 @@ export async function POST(request: NextRequest) {
   const supabase = createRouteHandlerClient({ cookies });
 
   // const { data, error } = await supabase.auth.admin.inviteUserByEmail(email);
+
   try {
     const { error } = await supabase.auth.signInWithOtp({
       email: email,

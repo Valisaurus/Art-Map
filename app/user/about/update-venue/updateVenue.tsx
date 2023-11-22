@@ -15,8 +15,7 @@ const ClientSideUpdateVenue = ({
   return (
     <>
       <div className={styles.updateContainer}>
-        <h1>Uppdatera din information</h1>
-        <span className={styles.message}>{message}</span>
+        <h1>Uppdatera din profil</h1>
         <div className={styles.contentWrapper}>
           <div className={styles.formWrapper}>
             <VenueForm />
@@ -24,6 +23,7 @@ const ClientSideUpdateVenue = ({
 
           <div className={styles.venueData}>
             <h2 className={styles.venueDataHeading}>Din information</h2>
+            <p className={styles.message}>{message}</p>
             <div>
               <h3>Namn på verksamheten</h3>
               <p>{venue?.venueName}</p>
@@ -55,38 +55,38 @@ const ClientSideUpdateVenue = ({
               <div>
                 <h3>Öppettider</h3>
                 <span className={styles.day}>måndag</span>
-                <span>från {venue?.openingHours.monday?.from}</span>
-                <span>till {venue?.openingHours.monday?.to}</span>
+                <span>från {venue?.openingHours.monday?.from} </span>
+                <span>till {venue?.openingHours.monday?.to} </span>
               </div>
               <div>
                 <span className={styles.day}>tisdag</span>
-                <span>från {venue?.openingHours.tuesday?.from}</span>
-                <span>till {venue?.openingHours.tuesday?.to}</span>
+                <span>från {venue?.openingHours.tuesday?.from} </span>
+                <span>till {venue?.openingHours.tuesday?.to} </span>
               </div>
               <div>
                 <span className={styles.day}>onsdag</span>
-                <span>från {venue?.openingHours.wednesday?.from}</span>
-                <span>till {venue?.openingHours.wednesday?.to}</span>
+                <span>från {venue?.openingHours.wednesday?.from} </span>
+                <span>till {venue?.openingHours.wednesday?.to} </span>
               </div>
               <div>
                 <span className={styles.day}>torsdag</span>
-                <span>från {venue?.openingHours.thursday?.from}</span>
-                <span>till {venue?.openingHours.thursday?.to}</span>
+                <span>från {venue?.openingHours.thursday?.from} </span>
+                <span>till {venue?.openingHours.thursday?.to} </span>
               </div>
               <div>
                 <span className={styles.day}>fredag</span>
-                <span>från {venue?.openingHours.friday?.from}</span>
-                <span>till {venue?.openingHours.friday?.to}</span>
+                <span>från {venue?.openingHours.friday?.from} </span>
+                <span>till {venue?.openingHours.friday?.to} </span>
               </div>
               <div>
                 <span className={styles.day}>lördag</span>
-                <span>från {venue?.openingHours.saturday?.from}</span>
-                <span>till {venue?.openingHours.saturday?.to}</span>
+                <span>från {venue?.openingHours.saturday?.from} </span>
+                <span>till {venue?.openingHours.saturday?.to} </span>
               </div>
               <div>
                 <span className={styles.day}>söndag</span>
-                <span>från {venue?.openingHours.sunday?.from}</span>
-                <span>till {venue?.openingHours.sunday?.to}</span>
+                <span>från {venue?.openingHours.sunday?.from} </span>
+                <span>till {venue?.openingHours.sunday?.to} </span>
               </div>
             </div>
             <div>

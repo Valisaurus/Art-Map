@@ -11,10 +11,7 @@ export default function VenueAbout() {
         <div className={styles.links}>
           <ul>
             <li className="globalButton">
-              <Link href="/user/about/create-venue">Lägg till info om din organisation</Link>
-            </li>
-            <li className="globalButton">
-              <Link href="/user/about/update-venue">Uppdatera info</Link>
+              <Link href="/user/about/update-venue">Uppdatera din profil</Link>
             </li>
             <li className="globalButton">
               <Link href="/user/about/exhibitions">Dina utställningar</Link>

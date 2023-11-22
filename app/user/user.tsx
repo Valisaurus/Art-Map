@@ -7,7 +7,7 @@ interface ClientSideDashboardProps {
 
 export default function ClientSideDashboard({ welcomeMessage}: ClientSideDashboardProps) {
   return (
-    <>
+
       <div className={styles.introContainer}>
       <h1>{welcomeMessage}</h1>
         <p>
@@ -16,6 +16,6 @@ export default function ClientSideDashboard({ welcomeMessage}: ClientSideDashboa
           m.m. Kika gärna runt!
        </p>
       </div>
-    </>
+
   );
 }

@@ -14,37 +14,13 @@ const ClientSideExhibitions = ({
   exhibitions,
   message,
 }: ClientSideUpdateExihibitionProps) => {
-  const [deleteError, setDeleteError] = useState<string | null>(null);
-
-  const handleDelete = async (exhibitionId: string) => {
-    try {
-      const response = await fetch("/api/deleteExihibition", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ exhibitionId }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to delete exhibition");
-      }
-
-      // Handle success, e.g., refresh the exhibition list
-      console.log("Exhibition deleted successfully");
-      setDeleteError(null);
-    } catch (error) {
-      console.error("Error deleting exhibition:", error);
-      setDeleteError("Failed to delete exhibition");
-    }
-  };
 
   return (
     <div className={styles.exhibitionContainer}>
       <h1>Dina utställningar</h1>
       <span className={styles.message}>{message}</span>
-      <ExhibitionForm />
 
+      <ExhibitionForm />
       {exhibitions?.map((exhibition) => (
         <div key={exhibition._id}>
           <p>
@@ -67,22 +43,8 @@ const ClientSideExhibitions = ({
             <b>Utställningstext</b>
           </p>
           <p>{exhibition.exhibitionText}</p>
-
-          <form
-            // action="/api/deleteExihibition"
-            // method="POST"
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleDelete(exhibition._id);
-            }}
-          >
-            {/* Hidden input to store the exhibition ID */}
-            <input type="hidden" name="exhibitionId" value={exhibition._id} />
-            <button type="submit">Radera</button>
-          </form>
         </div>
       ))}
-      {deleteError && <p style={{ color: "red" }}>{deleteError}</p>}
     </div>
   );
 };
