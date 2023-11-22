@@ -62,7 +62,7 @@ export async function getVenueData(): Promise<Venue[]> {
 // Function that returns all venues in array
 export async function getVenues(): Promise<Venue[]> {
   return createClient(clientConfig).fetch(
-    groq`*[_type == "venue"]{
+    groq`*[_type == "venue"] |order(venueName asc){
              _id,
             venueName,
             "slug": slug.current,
