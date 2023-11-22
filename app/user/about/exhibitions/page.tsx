@@ -32,12 +32,14 @@ export default async function ExhibitionsPage() {
         (exhibition) => exhibition.userId === supabaseUserId
       );
 
-        return <ClientSideExhibitions exhibitions={userExhibitions} message={!userExhibitions ? "Det fanns inga sparade utställningar" : undefined}/>;
+      const noExhibitionsMessage = "Det fanns inga sparade utställningar";
+
+        return <ClientSideExhibitions exhibitions={userExhibitions} message={!userExhibitions.length ? noExhibitionsMessage : undefined}/>;
       }
     
   } catch (error) {
     console.error("Error fetching data:", error);
   }
 
-  return <ClientSideExhibitions exhibitions={undefined}  message="Det fanns inget sparat om din verksamhet." />;
+  return <ClientSideExhibitions exhibitions={undefined}  message="Det fanns inga sparade utställningar." />;
 }

@@ -3,13 +3,16 @@ export const dynamic = "auto";
 import ExhibitionForm from "@/components/Forms/ExhibitionForm/ExhibitionForm";
 import { Exhibition } from "@/types/exhibition";
 import { useState } from "react";
+import styles from "./exhibition.module.css";
 
 interface ClientSideUpdateExihibitionProps {
   exhibitions: Exhibition[] | undefined;
+  message?: string;
 }
 
 const ClientSideExhibitions = ({
   exhibitions,
+  message,
 }: ClientSideUpdateExihibitionProps) => {
   const [deleteError, setDeleteError] = useState<string | null>(null);
 
@@ -37,15 +40,12 @@ const ClientSideExhibitions = ({
   };
 
   return (
-    <>
-      <div>
-        Hej!
-        <br />
-        Här fyller du i era kommande utställningar.
-      </div>
+    <div className={styles.exhibitionContainer}>
+      <h1>Dina utställningar</h1>
+      <span className={styles.message}>{message}</span>
       <ExhibitionForm />
 
-      {exhibitions.map((exhibition) => (
+      {exhibitions?.map((exhibition) => (
         <div key={exhibition._id}>
           <p>
             <i>Här är din tidigare skickade data</i>
@@ -83,7 +83,7 @@ const ClientSideExhibitions = ({
         </div>
       ))}
       {deleteError && <p style={{ color: "red" }}>{deleteError}</p>}
-    </>
+    </div>
   );
 };
 
