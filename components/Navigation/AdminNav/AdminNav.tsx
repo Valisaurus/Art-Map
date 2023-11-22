@@ -51,7 +51,10 @@ const AdminNav = () => {
             <a onClick={hideMenu}>Inställningar</a>
           </Link>
           <LogoutButton />
-          <span>sv / en</span>
+          <div>
+            <span className={styles.lang}>sv</span> /
+            <span className={styles.lang}>en</span>
+          </div>
         </div>
       </div>
     </nav>
