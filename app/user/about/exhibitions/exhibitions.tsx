@@ -43,6 +43,9 @@ const ClientSideExhibitions = ({
           <p>{exhibition.dates.closing}</p>
           <p>{exhibition.exhibitionText}</p>
           <p>{exhibition.typeOf}</p>
+          <form action="./api/deleteExhibition" method="POST">
+            <button>Radera</button>
+          </form>
         </div>
       ))}
     </>
