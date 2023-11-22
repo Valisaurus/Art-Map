@@ -17,10 +17,9 @@ const client = createClient({
 const MapComponent = () => {
   const [map, setMap] = useState<mapboxgl.Map | null>(null);
   const [locations, setLocations] = useState<Location[]>([]);
-  const [clickedExhibition, setClickedExhibition] = useState<string | null>(
+  const [clickedLocation, setClickedLocation] = useState<string | null>(
     null
   );
-
   // Initialize the Mapbox map
   useEffect(() => {
     mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || "";
@@ -130,14 +129,15 @@ const MapComponent = () => {
 
             // Store the marker with the venueName in the Map
             markerVenueMap.set(locationData.venueName, marker);
-            // Click event to the exhibition cards
+            
+            // Click event to the exhibition cards - changed to click on image
             const exhibitionCards =
-              document.querySelectorAll(".exhibitionCard");
-            exhibitionCards.forEach((card) => {
-              card.addEventListener(
+              document.querySelectorAll(".exhibitionImage");
+            exhibitionCards.forEach((image) => {
+              image.addEventListener(
                 "click",
                 () => {
-                  const venueName = card.id;
+                  const venueName = image.id;
 
                   // Retrieve the marker using the venueName from the Map
                   const chosenMarker = markerVenueMap.get(venueName);
@@ -145,13 +145,13 @@ const MapComponent = () => {
                   if (chosenMarker) {
                     const coordinates = chosenMarker.getLngLat();
 
-                    if (venueName !== clickedExhibition) {
+                    if (venueName !== clickedLocation) {
                       map.flyTo({
                         center: coordinates,
                         zoom: 18,
                       });
                       // Update the state to track the clicked venue
-                      setClickedExhibition(venueName || null);
+                      setClickedLocation(venueName || null);
                     }
                   }
                 }
@@ -159,6 +159,32 @@ const MapComponent = () => {
             });
             // Click event to the exhibition title in the exhibition card - removed until we solve reset of mapview on back-button:
             
+            const venueListItems =
+              document.querySelectorAll(".venueListItem");
+              venueListItems.forEach((item) => {
+              item.addEventListener(
+                "click",
+                () => {
+                  const venueName = item.id;
+                  // Retrieve the marker using the venueName from the Map
+                  const marker = markerVenueMap.get(venueName);
+
+                  if (marker) {
+                    const coordinates = marker.getLngLat();
+                    // Check if it's a different venue before zooming
+                    if (venueName !== clickedLocation) {
+                      map.flyTo({
+                        center: coordinates,
+                        zoom: 15,
+                      });
+                      // Update the state to track the clicked venue
+                      setClickedLocation(venueName || null);
+                    }
+                  }
+                }
+              );
+            });
+
             // const exhibitionTitles =
             //   document.querySelectorAll(".exhibitionTitle");
             // exhibitionTitles.forEach((title) => {

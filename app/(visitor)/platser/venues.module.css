@@ -5,10 +5,14 @@
   border-right: 2px solid black;
   overflow-y: scroll;
 }
-
 .map {
   width: 50%;
   height: 100%;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
 }
 
 .venueList {
@@ -24,6 +28,14 @@
   margin: 0.5rem 0rem;
 }
 
+.venueName {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.typeOf {
+  text-transform: uppercase;
+}
 @media only screen and (max-width: 800px) {
   .module {
     width: 100%;
@@ -41,5 +53,10 @@
     width: 0;
     height: 0;
     border: none;
+  }
+
+  .venueName,
+  .typeOf {
+    font-size: 0.8rem;
   }
 }
