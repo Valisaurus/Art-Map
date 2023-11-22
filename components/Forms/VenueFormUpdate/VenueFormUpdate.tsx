@@ -78,7 +78,7 @@ export default function VenueForm() {
         {/* _____________ ABOUT ____________*/}
         <About control={control} errors={errors} />
         {/* _____________ SUBMIT FORM ____________*/}
-        <button type="submit" className="">
+        <button type="submit" className="globalButton">
           Uppdatera
         </button>
         {error && <p className="text-red-500">{error}</p>}

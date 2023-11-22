@@ -36,14 +36,16 @@
   gap: 1rem;
 }
 
-.radioList input[type="radio"] {
+.radioList input[type="radio"],
+.day input[type="checkbox"] {
   appearance: none;
   border: 1px solid black;
   width: 1rem;
   height: 1rem;
 }
 
-.radioList > label > svg {
+.radioList > label > svg,
+.day > label > svg {
   display: inline-block;
   padding: 0;
   height: 2rem;
@@ -51,7 +53,8 @@
   background: none;
 }
 
-.radioList input[type="radio"]:checked::before {
+.radioList input[type="radio"]:checked::before,
+.day input[type="checkbox"]:checked::before {
   content: "";
   display: block;
   width: 100%;

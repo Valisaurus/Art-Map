@@ -47,6 +47,7 @@ input {
 
 textarea {
   width: 100%;
+  max-width: 40rem;
   height: 100%;
 }
 

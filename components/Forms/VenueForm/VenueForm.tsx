@@ -38,7 +38,6 @@ export default function VenueForm() {
         },
       };
 
-
       const response = await fetch("/api/venueForm", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -64,22 +63,14 @@ export default function VenueForm() {
   return (
     <div className={styles.formWrapper}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {/* _____________ NAME ____________*/}
         <Name control={control} errors={errors} />
-        {/* _____________ WEBSITE ____________*/}
         <Url control={control} errors={errors} />
-        {/* _____________ TYPE OF ____________*/}
         <TypeOf control={control} errors={errors} />
-        {/* _____________ CONTACT ____________*/}
         <Contact control={control} errors={errors} />
-        {/* _____________ OPENING HOURS ____________*/}
         <OpeningHours control={control} errors={errors} />
-        {/* _____________ ADDRESS ____________*/}
         <Adress control={control} errors={errors} />
-        {/* _____________ ABOUT ____________*/}
         <About control={control} errors={errors} />
-        {/* _____________ SUBMIT FORM ____________*/}
-        <button type="submit" className="">
+        <button type="submit" className="globalButton">
           Publicera
         </button>
         {error && <p>{error}</p>}
