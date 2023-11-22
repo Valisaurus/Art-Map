@@ -1,0 +1,36 @@
+
+.nameUrlContact {
+    display: flex;
+    gap: 4rem;
+}
+
+.nameSection {
+    margin-bottom: 1rem;
+}
+
+.urlSection,
+.aboutSection {
+  margin-bottom: 2rem;
+}
+
+.aboutSection {
+max-width: 40rem;
+height: 20rem;
+}
+
+.applicationContact {
+    max-width: 20rem;
+}
+.labelInput {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+@media only screen and (max-width: 800px) {
+  .nameUrlContact {
+    flex-direction: column-reverse;
+    gap: 2rem;
+  }
+}

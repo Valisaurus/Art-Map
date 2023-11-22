@@ -2,6 +2,16 @@
   width: 100%;
   height: 100%;
   padding: 4rem;
+  overflow-y: scroll;
+}
+
+.infoSection {
+  max-width: 35rem;
+  margin-bottom: 4rem;
+}
+
+.formSection {
+  width: 100%;
 }
 
 

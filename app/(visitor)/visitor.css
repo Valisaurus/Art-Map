@@ -6,6 +6,7 @@
     display:flex;
     width: 100%;
   }
+
   .leftBox, 
   .rightBox {
   width: 4rem;

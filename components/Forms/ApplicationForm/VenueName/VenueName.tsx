@@ -11,7 +11,7 @@ interface venueNameProps {
 export default function VenueName({ control, errors }: venueNameProps) {
   return (
     <section className={styles.nameSection}>
-      <h2>Namn på verksamhet</h2>
+      <h3>Namn på verksamhet</h3>
       <label hidden>Namn på verksamhet</label>
       <Controller
         name="venueName"
@@ -27,7 +27,7 @@ export default function VenueName({ control, errors }: venueNameProps) {
         )}
       />
       {errors.venueName && (
-        <p className={styles.errorMessage}>{errors.venueName.message}</p>
+        <p className="errorMessageForm">{errors.venueName.message}</p>
       )}
     </section>
   );

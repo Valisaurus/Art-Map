@@ -11,7 +11,7 @@ interface urlProps {
 export default function Url({ control, errors }: urlProps) {
   return (
     <section className={styles.urlSection}>
-      <h2>Hemsida</h2>
+      <h3>Hemsida</h3>
       <label hidden>Hemsida</label>
       <Controller
         name="websiteUrl"
@@ -27,7 +27,7 @@ export default function Url({ control, errors }: urlProps) {
         )}
       />
       {errors.websiteUrl && (
-        <p className={styles.errorMessage}>{errors.websiteUrl.message}</p>
+        <p className="errorMessageForm">{errors.websiteUrl.message}</p>
       )}
     </section>
   );

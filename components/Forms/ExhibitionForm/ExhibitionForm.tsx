@@ -54,10 +54,10 @@ export default function ExhibitionForm() {
         <ExhibitionText control={control} errors={errors} />
         {/* <Image control={control} errors={errors} /> */}
 
-        <button type="submit" className="">
+        <button type="submit" className="globalButton">
           Publicera utställning
         </button>
-        {error && <p className="text-red-500">{error}</p>}
+        {error && <p className="errorMessageForm">{error}</p>}
       </form>
     </div>
   );

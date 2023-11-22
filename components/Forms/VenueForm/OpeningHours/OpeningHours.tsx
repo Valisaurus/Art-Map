@@ -31,7 +31,7 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           )}
         />
         {errors.openingHours?.monday?.from && (
-          <p className="text-red-500">
+          <p className="errorMessageForm">
             {errors.openingHours?.monday?.from.message}
           </p>
         )}
@@ -49,7 +49,7 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           )}
         />
         {errors.openingHours?.monday?.to && (
-          <p className="text-red-500">
+          <p className="errorMessageForm">
             {errors.openingHours?.monday?.to.message}
           </p>
         )}
@@ -70,7 +70,7 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           )}
         />
         {errors.openingHours?.tuesday?.from && (
-          <p className="text-red-500">
+          <p className="errorMessageForm">
             {errors.openingHours?.tuesday?.from.message}
           </p>
         )}
@@ -88,7 +88,7 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           )}
         />
         {errors.openingHours?.tuesday?.to && (
-          <p className="text-red-500">
+          <p className="errorMessageForm">
             {errors.openingHours?.tuesday?.to.message}
           </p>
         )}
@@ -109,7 +109,7 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           )}
         />
         {errors.openingHours?.wednesday?.from && (
-          <p className="text-red-500">
+          <p className="errorMessageForm">
             {errors.openingHours?.wednesday?.from.message}
           </p>
         )}
@@ -127,7 +127,7 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           )}
         />
         {errors.openingHours?.wednesday?.to && (
-          <p className="text-red-500">
+          <p className="errorMessageForm">
             {errors.openingHours?.wednesday?.to.message}
           </p>
         )}
@@ -148,7 +148,7 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           )}
         />
         {errors.openingHours?.thursday?.from && (
-          <p className="text-red-500">
+          <p className="errorMessageForm">
             {errors.openingHours?.thursday?.from.message}
           </p>
         )}
@@ -166,7 +166,7 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           )}
         />
         {errors.openingHours?.thursday?.to && (
-          <p className="text-red-500">
+          <p className="errorMessageForm">
             {errors.openingHours?.thursday?.to.message}
           </p>
         )}
@@ -187,7 +187,7 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           )}
         />
         {errors.openingHours?.friday?.from && (
-          <p className="text-red-500">
+          <p className="errorMessageForm">
             {errors.openingHours?.friday?.from.message}
           </p>
         )}
@@ -205,7 +205,7 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           )}
         />
         {errors.openingHours?.friday?.to && (
-          <p className="text-red-500">
+          <p className="errorMessageForm">
             {errors.openingHours?.friday?.to.message}
           </p>
         )}
@@ -226,7 +226,7 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           )}
         />
         {errors.openingHours?.saturday?.from && (
-          <p className="text-red-500">
+          <p className="errorMessageForm">
             {errors.openingHours?.saturday?.from.message}
           </p>
         )}
@@ -244,7 +244,7 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           )}
         />
         {errors.openingHours?.saturday?.to && (
-          <p className="text-red-500">
+          <p className="errorMessageForm">
             {errors.openingHours?.saturday?.to.message}
           </p>
         )}
@@ -265,7 +265,7 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           )}
         />
         {errors.openingHours?.sunday?.from && (
-          <p className="text-red-500">
+          <p className="errorMessageForm">
             {errors.openingHours?.sunday?.from.message}
           </p>
         )}
@@ -283,7 +283,7 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           )}
         />
         {errors.openingHours?.sunday?.to && (
-          <p className="text-red-500">
+          <p className="errorMessageForm">
             {errors.openingHours?.sunday.to.message}
           </p>
         )}
@@ -305,7 +305,7 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           )}
         />
         {errors.openingHours?.openByAppointment && (
-          <p className="text-red-500">
+          <p className="errorMessageForm">
             {errors.openingHours?.openByAppointment?.message}
           </p>
         )}
@@ -325,7 +325,7 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           )}
         />
         {errors.irregularOpeningHours && (
-          <p className="text-red-500">
+          <p className="errorMessageForm">
             {errors.irregularOpeningHours?.message}
           </p>
         )}

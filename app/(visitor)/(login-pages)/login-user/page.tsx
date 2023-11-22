@@ -15,7 +15,7 @@ export default function LoginUser() {
           placeholder="  ••••••••"
           required
         />
-        <button className={styles.loginButton}>Logga in</button>
+        <button className="globalButton">Logga in</button>
         <Messages />
       </form>
       <Link href="/send-reset-password-req-email">

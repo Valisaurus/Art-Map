@@ -82,7 +82,7 @@ export default function VenueForm() {
         <button type="submit" className="">
           Publicera
         </button>
-        {error && <p className="text-red-500">{error}</p>}
+        {error && <p>{error}</p>}
       </form>
     </div>
   );

@@ -22,7 +22,7 @@ export default function Title({ control, errors }: titleProps) {
         )}
       />
       {errors.title && (
-        <p className={styles.errorMessage}>{errors.title.message}</p>
+        <p className="errorMessageForm">{errors.title.message}</p>
       )}
     </section>
   );

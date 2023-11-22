@@ -46,19 +46,24 @@ export default function ApplicationForm() {
   return (
     <div className={styles.formWrapper}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {/* _____________ NAME ____________*/}
-        <VenueName control={control} errors={errors} />
-        {/* _____________ WEBSITE ____________*/}
-        <Url control={control} errors={errors} />
-        {/* _____________ ABOUT ____________*/}
-        <About control={control} errors={errors} />
-        {/* _____________ CONTACT ____________*/}
-        <ContactPerson control={control} errors={errors} />
-
-        <button type="submit" className="">
+        <div className={styles.applicationAboutForm}>
+          <div className={styles.nameUrlContact}>
+            <div>
+            <VenueName control={control} errors={errors} />
+            <Url control={control} errors={errors} />
+            </div>
+            <div className={styles.applicationContact}>
+              <ContactPerson control={control} errors={errors} />
+            </div>
+          </div>
+          <div >
+            <About control={control} errors={errors} />
+            </div>
+        </div>
+        <button type="submit" className="globalButton">
           Skicka Ansökan
         </button>
-        {error && <p className="text-red-500">{error}</p>}
+        {error && <p>{error}</p>}
       </form>
     </div>
   );

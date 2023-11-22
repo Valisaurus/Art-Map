@@ -23,12 +23,6 @@
     margin-bottom: 1.5rem;
   }
   
-  .loginButton {
-    text-transform: uppercase;
-    font-weight: bold;
-    height: 2.5rem;
-    width: fit-content;
-  }
   
   .passwordReset {
     text-transform: uppercase;

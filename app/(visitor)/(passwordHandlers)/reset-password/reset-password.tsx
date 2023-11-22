@@ -1,29 +1,26 @@
 "use client";
-import styles from "./resetPassword.module.css"; 
+import styles from "../passWordHandlers.module.css";
 import { useSearchParams } from "next/navigation";
 
 const ClientSideResetPassword = () => {
   const codeFetch = useSearchParams().get("code");
   const code = codeFetch !== null ? codeFetch : "";
   return (
-    <div>
-      <div className={`${styles.container} ${styles.flex} ${styles.justifyCenter} ${styles.itemsCenter} ${styles.fullHeight}`}>
-        <div className={`${styles.flex} ${styles.justifyCenter} ${styles.itemsCenter} ${styles.border} ${styles.borderSolid} ${styles.borderColor} ${styles.textColors} ${styles.width} ${styles.height} ${styles.padding}`}>
-          <form
-            action="/auth/reset-pw"
-            method="POST"
-            className={`${styles.flex} ${styles.flexCol} ${styles.gap}`}
-          >
-            <input type="hidden" name="code" value={code} />
-            <label htmlFor="password">Skriv in ditt nya lösenord:</label>
-            <div className={`${styles.inputContainer}`}>
-              <input type="password" name="password" className={`${styles.input}`}/>
-            </div>
-            <button className={`${styles.button}`}>
-              Uppdatera
-            </button>
-          </form>
-        </div>
+    <div className={styles.contentWrapper}>
+      <div className={styles.centerContainer}>
+        <h1>NYTT LÖSENORD</h1>
+        <p>
+          Skriv in ditt nya lösenord så omdirigeras du till sidan för att logga
+          in på nytt.
+        </p>
+        <form action="/auth/reset-pw" method="POST" className={styles.form}>
+          <input type="hidden" name="code" value={code} />
+          <label htmlFor="password">Skriv in ditt nya lösenord:</label>
+          <div>
+            <input type="password" name="password" />
+          </div>
+          <button className="globalButton">Uppdatera</button>
+        </form>
       </div>
     </div>
   );

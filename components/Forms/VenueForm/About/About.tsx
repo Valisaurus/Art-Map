@@ -22,7 +22,7 @@ export default function About({ control, errors }: aboutProps) {
         )}
       />
       {errors.about && (
-        <p className={styles.errorMessage}>{errors.about.message}</p>
+        <p className="errorMessageForm">{errors.about.message}</p>
       )}
     </section>
   );

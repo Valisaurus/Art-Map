@@ -11,64 +11,72 @@ interface ContactProps {
 export default function ContactPerson({ control, errors }: ContactProps) {
   return (
     <section className={styles.contactSection}>
-      <h2>Kontaktperson</h2>
-
-   
-      <label>Namn</label>
-      <Controller
-        name="contactPerson.name"
-        control={control}
-        rules={{ required: "Detta fält måste fyllas i" }}
-        render={({ field }) => (
-          <input
-            className=""
-            placeholder=""
-            {...field}
-            value={field.value || ""}
-          />
+      <h3>Kontaktperson</h3>
+      <div className={styles.labelInput}>
+        <label>Namn</label>
+        <Controller
+          name="contactPerson.name"
+          control={control}
+          rules={{ required: "Detta fält måste fyllas i" }}
+          render={({ field }) => (
+            <input
+              className=""
+              placeholder=""
+              {...field}
+              value={field.value || ""}
+            />
+          )}
+        />
+        {errors.contactPerson?.name && (
+          <p className="errorMessageForm">
+            {errors.contactPerson.name.message}
+          </p>
         )}
-      />
-      {errors.contactPerson?.name && (
-        <p className={styles.errorMessage}>{errors.contactPerson.name.message}</p>
-      )}
-
-      <label>Email</label>
-      <Controller
-        name="contactPerson.email"
-        control={control}
-        rules={{ required: "Detta fält måste fyllas i" }}
-        render={({ field }) => (
-          <input
-            type="email"
-            className=""
-            placeholder=""
-            {...field}
-            value={field.value || ""}
-          />
+      </div>
+      <div className={styles.labelInput}>
+        <label>Email</label>
+        <Controller
+          name="contactPerson.email"
+          control={control}
+          rules={{ required: "Detta fält måste fyllas i" }}
+          render={({ field }) => (
+            <input
+              type="email"
+              className=""
+              placeholder=""
+              {...field}
+              value={field.value || ""}
+            />
+          )}
+        />
+        {errors.contactPerson?.email && (
+          <p className="errorMessageForm">
+            {errors.contactPerson?.email.message}
+          </p>
         )}
-      />
-      {errors.contactPerson?.email && (
-        <p className={styles.errorMessage}>{errors.contactPerson?.email.message}</p>
-      )}
-
-      <label>Telefon</label>
-      <Controller
-        name="contactPerson.phone"
-        control={control}
-        // rules={{ required: "Detta fält måste fyllas i" }}
-        render={({ field }) => (
-          <input
-            type="tel"
-            className=""
-            placeholder=""
-            {...field}
-            value={field.value || ""}
-          />
+      </div>
+      <div className={styles.labelInput}>
+        <label>Telefon</label>
+        <Controller
+          name="contactPerson.phone"
+          control={control}
+          // rules={{ required: "Detta fält måste fyllas i" }}
+          render={({ field }) => (
+            <input
+              type="tel"
+              className=""
+              placeholder=""
+              {...field}
+              value={field.value || ""}
+            />
+          )}
+        />
+        {errors.contactPerson?.phone && (
+          <p className="errorMessageForm">
+            {errors.contactPerson?.phone.message}
+          </p>
         )}
-      />
-      {errors.contactPerson?.phone && (
-        <p className={styles.errorMessage}>{errors.contactPerson?.phone.message}</p>
-      )}
+      </div>
     </section>
   );
 }
