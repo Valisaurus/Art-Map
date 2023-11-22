@@ -1,3 +1,8 @@
 .logoutButton {
     text-transform: uppercase;
 }
+
+.logoutButton:hover
+ {
+  border-bottom: 2px solid black;
+}
