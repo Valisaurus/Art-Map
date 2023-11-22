@@ -61,7 +61,6 @@ export default function VenueForm() {
   };
 
   return (
-    <div className={styles.formWrapper}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Name control={control} errors={errors} />
         <Url control={control} errors={errors} />
@@ -74,7 +73,7 @@ export default function VenueForm() {
           Publicera
         </button>
         {error && <p>{error}</p>}
-      </form>
-    </div>
+    </form>
+ 
   );
 }

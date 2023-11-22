@@ -20,6 +20,10 @@
   flex-direction: column;
 }
 
+.typeOfHeading {
+  margin-bottom: 1rem;
+}
+
 .typeOfSection .radioList {
   display: flex;
   flex-direction: column;
@@ -61,6 +65,10 @@
 .contactSection {
   display: flex;
   flex-direction: column;
+}
+
+.contactHeading {
+  margin-bottom: 1rem;
 }
 
 .contactSection input {

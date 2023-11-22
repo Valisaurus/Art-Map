@@ -11,7 +11,7 @@ interface ContactProps {
 export default function Contact({ control, errors }: ContactProps) {
   return (
     <section className={styles.contactSection}>
-      <h2>KONTAKTUPPGIFTER</h2>
+      <h2 className={styles.contactHeading}>KONTAKTUPPGIFTER</h2>
       <label>Email</label>
       <Controller
         name="contact.email"

@@ -1,14 +1,25 @@
-.container {
-  display: flex;
-  flex-direction: row;
-  gap: 1 rem;
-  padding-top: 1rem;
+.updateContainer {
+  width: 100%;
+  height: 100%;
+  padding: 4rem;
+  overflow-y: scroll;
 }
 
-.form {
+.formWrapper {
+  margin-top: 4rem;
   width: 50%;
-  height: 100%;
-  padding: 1rem;
+}
+
+.contentWrapper {
+  display: flex;
+  gap: 6rem;
+}
+
+.venueDataHeading {
+font-size: 1rem;
+font-weight: 500;
+margin-bottom: 2rem;
+text-align: center;
 }
 
 .venueData {
@@ -17,7 +28,32 @@
   gap: 1rem;
   width: 50%;
   height: 100%;
-  border: 2px solid black;
-  border-radius: 0.5rem;
-  padding: 2rem;
+  background-color: rgb(197, 226, 251);
+  padding: 2rem 2rem 8rem 2rem;
+}
+
+.venueData span {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.day {
+  display: block;
+}
+
+@media only screen and (max-width: 800px) {
+
+  .contentWrapper {
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .formWrapper {
+    margin-top: 4rem;
+    width: 100%;
+  }
+
+  .venueData {
+    width: 100%;
+  }
 }

@@ -5,7 +5,7 @@ import { Exhibition } from "@/types/exhibition";
 import { useState } from "react";
 
 interface ClientSideUpdateExihibitionProps {
-  exhibitions: Exhibition[];
+  exhibitions: Exhibition[] | undefined;
 }
 
 const ClientSideExhibitions = ({

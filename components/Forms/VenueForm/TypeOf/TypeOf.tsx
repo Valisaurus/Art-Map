@@ -11,7 +11,7 @@ interface TypeOfProps {
 export default function TypeOf({ control, errors }: TypeOfProps) {
   return (
     <section className={styles.typeOfSection}>
-      <h2>Typ av verksamhet</h2>
+      <h2 className={styles.typeOfHeading}>Typ av verksamhet</h2>
       <label hidden>Typ av verksamhet</label>
       <Controller
         name="typeOf"

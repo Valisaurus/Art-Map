@@ -8,68 +8,101 @@ interface ClientSideUpdateVenueProps {
   message?: string;
 }
 
-const ClientSideUpdateVenue = ({ venue, message }: ClientSideUpdateVenueProps) => {
+const ClientSideUpdateVenue = ({
+  venue,
+  message,
+}: ClientSideUpdateVenueProps) => {
   return (
     <>
-      <div className={styles.container}>
-        <div className={styles.form}>
-          
-          <VenueForm />
-        </div>
-        <div className={styles.venueData}>
-          <p>
-            <i>Här är din tidigare skickade data</i>
-          </p>
-          <p>
-            <b>Namn på verksamheten</b>
-          </p>
+      <div className={styles.updateContainer}>
+        <h1>Uppdatera din information</h1>
+        <span className={styles.message}>{message}</span>
+        <div className={styles.contentWrapper}>
+          <div className={styles.formWrapper}>
+            <VenueForm />
+          </div>
 
-          <p>{venue?.venueName}</p>
-          <p>
-            <b>Hemsida</b>
-          </p>
-          <p>{venue?.websiteUrl}</p>
-          <p>
-            <b>Typ av verksamhet</b>
-          </p>
-          <p>{venue?.typeOf}</p>
-          <p>
-            <b>Address</b>
-          </p>
-          <p>{venue?.address.streetName}</p>
-          <p>{venue?.address.streetNo}</p>
-          <p>{venue?.address.zip}</p>
-          <p>{venue?.address.city}</p>
-          <p>
-            <b>Email</b>
-          </p>
-          <p>{venue?.contact.email}</p>
-          <p>
-            <b>Telefonnumer</b>
-          </p>
-          <p>{venue?.contact.phone}</p>
+          <div className={styles.venueData}>
+            <h2 className={styles.venueDataHeading}>Din information</h2>
+            <div>
+              <h3>Namn på verksamheten</h3>
+              <p>{venue?.venueName}</p>
+            </div>
+            <div>
+              <h3>Hemsida</h3>
+              <p>{venue?.websiteUrl}</p>
+            </div>
+            <div>
+              <h3>Typ av verksamhet</h3>
+              <p>{venue?.typeOf}</p>
+            </div>
+            <div>
+              <h3>Address</h3>
+              <p>{venue?.address.streetName}</p>
+              <p>{venue?.address.streetNo}</p>
+              <p>{venue?.address.zip}</p>
+              <p>{venue?.address.city}</p>
+            </div>
+            <div>
+              <h3>Email</h3>
+              <p>{venue?.contact.email}</p>
+            </div>
+            <div>
+              <h3>Telefonnumer</h3>
+              <p>{venue?.contact.phone}</p>
+            </div>
+            <div>
+              <div>
+                <h3>Öppettider</h3>
+                <span className={styles.day}>måndag</span>
+                <span>från {venue?.openingHours.monday?.from}</span>
+                <span>till {venue?.openingHours.monday?.to}</span>
+              </div>
+              <div>
+                <span className={styles.day}>tisdag</span>
+                <span>från {venue?.openingHours.tuesday?.from}</span>
+                <span>till {venue?.openingHours.tuesday?.to}</span>
+              </div>
+              <div>
+                <span className={styles.day}>onsdag</span>
+                <span>från {venue?.openingHours.wednesday?.from}</span>
+                <span>till {venue?.openingHours.wednesday?.to}</span>
+              </div>
+              <div>
+                <span className={styles.day}>torsdag</span>
+                <span>från {venue?.openingHours.thursday?.from}</span>
+                <span>till {venue?.openingHours.thursday?.to}</span>
+              </div>
+              <div>
+                <span className={styles.day}>fredag</span>
+                <span>från {venue?.openingHours.friday?.from}</span>
+                <span>till {venue?.openingHours.friday?.to}</span>
+              </div>
+              <div>
+                <span className={styles.day}>lördag</span>
+                <span>från {venue?.openingHours.saturday?.from}</span>
+                <span>till {venue?.openingHours.saturday?.to}</span>
+              </div>
+              <div>
+                <span className={styles.day}>söndag</span>
+                <span>från {venue?.openingHours.sunday?.from}</span>
+                <span>till {venue?.openingHours.sunday?.to}</span>
+              </div>
+            </div>
+            <div>
+              <h3>Endast förbokade visningar?</h3>
+              <p>{venue?.openingHours.openByAppointment}</p>
+            </div>
+            <div>
+              <h3>Oregelbundna öppettider</h3>
+              <p>{venue?.irregularOpeningHours}</p>
+            </div>
 
-          <p>
-            <b>Öppettider</b>
-          </p>
-          <p>{venue?.openingHours.monday?.from}</p>
-          <p>{venue?.openingHours.monday?.to}</p>
-          <p>{venue?.openingHours.tuesday?.from}</p>
-          <p>{venue?.openingHours.tuesday?.to}</p>
-          <p>{venue?.openingHours.tuesday?.from}</p>
-          <p>{venue?.openingHours.wednesday?.to}</p>
-          <p>{venue?.openingHours.thursday?.from}</p>
-          <p>{venue?.openingHours.friday?.to}</p>
-          <p>{venue?.openingHours.saturday?.from}</p>
-          <p>{venue?.openingHours.sunday?.to}</p>
-
-          <p>{venue?.openingHours.openByAppointment}</p>
-
-          <p>{venue?.irregularOpeningHours}</p>
-          <p>
-            <b>Om verksamheten</b>
-          </p>
-          <p>{venue?.about}</p>
+            <div>
+              <h3>Om verksamheten</h3>
+              <p>{venue?.about}</p>
+            </div>
+          </div>
         </div>
       </div>
     </>

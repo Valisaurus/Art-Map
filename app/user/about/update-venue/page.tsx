@@ -31,7 +31,6 @@ export default async function UpdateVenue() {
   } catch (error) {
     console.error("Error fetching data:", error);
   }
-
-  // Return the JSX element for the message if there's an error or no session
-  return <ClientSideUpdateVenue venue={undefined}message="Det fanns inget sparat om din verksamhet" />;
+  
+  return <ClientSideUpdateVenue venue={undefined} message="Det fanns inget sparat om din verksamhet." />;
 }
