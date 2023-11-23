@@ -27,8 +27,11 @@
 .topSection {
   display: flex;
   justify-content: space-between;
-  max-width: 110ch;
   gap: 1rem;
+}
+
+.artistNames {
+  text-align: end;
 }
 .exhibitionImage {
 }
@@ -64,6 +67,10 @@
   border-bottom: 2px solid black;
 }
 
+.exhibitionText {
+  width: 50%;
+}
+
 @media only screen and (max-width: 800px) {
   .module {
     width: 100%;
@@ -81,6 +88,10 @@
   .dates {
     font-size: 0.8rem;
   }
+
+  .exhibitionText {
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 1200px) {
@@ -89,7 +100,7 @@
     gap: 0rem;
   }
 
-  .artistNames span {
+  .artistNames {
     text-align: start;
   }
 
@@ -116,8 +127,20 @@
     border: none;
   }
 
+  .exhibitionTitle {
+    padding: 0;
+  }
+
+  .artistNames {
+    padding-bottom: 0.5rem;
+  }
+
   .venueName,
-  .dates {
+  .dates span {
     font-size: 0.8rem;
+  }
+
+  .dates {
+    white-space: nowrap;
   }
 }

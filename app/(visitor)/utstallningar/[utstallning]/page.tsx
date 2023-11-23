@@ -40,7 +40,7 @@ export default async function Exhibition({ params }: Props) {
         >
           <div className={styles.topSection}>
             <h1 className={styles.exhibitionTitle}>{exhibition.title}</h1>
-            <span>{exhibition.artistNames}</span>
+            <span className={styles.artistNames}>{exhibition.artistNames}</span>
           </div>
           <Image
             className={styles.exhibitionImage}
@@ -58,7 +58,7 @@ export default async function Exhibition({ params }: Props) {
             <Link className={styles.venueName} href={`/platser/${exhibition.venueSlug}`}>
               {exhibition.venue}
             </Link>
-            <span >
+            <span className={styles.dates} >
               {formatDateRange(
                 exhibition.dates.opening,
                 exhibition.dates.closing
@@ -67,7 +67,7 @@ export default async function Exhibition({ params }: Props) {
           </div>
         </div>
 
-        <p dangerouslySetInnerHTML={{ __html: formattedText }}></p>
+        <p className={styles.exhibitionText} dangerouslySetInnerHTML={{ __html: formattedText }}></p>
       </div>
     </>
   );
