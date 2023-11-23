@@ -1,6 +1,6 @@
 import Messages from "./messages";
 import styles from "./inviteForm.module.css";
-
+// moved form
 export default function InviteForm() {
   return (
     <div className={styles.formWrapper}>
