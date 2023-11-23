@@ -41,14 +41,12 @@ const AdminNav = () => {
         className={`${styles.listContainer} ${isActive ? styles.active : ""}`}
       >
         <div className={styles.list}>
-          <Link href="/admin/invite-user" passHref legacyBehavior>
-            <a onClick={hideMenu}>hantera användare</a>
-          </Link>
+
           <Link href="/admin/sanity-studio/desk" passHref legacyBehavior>
             <a onClick={hideMenu}>Sanity Studio</a>
           </Link>
           <Link href="admin/settings" passHref legacyBehavior>
-            <a onClick={hideMenu}>Inställningar</a>
+            <a onClick={hideMenu}>Hantera konto</a>
           </Link>
           <LogoutButton />
           <div>

@@ -1,6 +1,70 @@
 .exhibitionContainer {
-    width: 100%;
-    height: 100%;
-    padding: 4rem;
-    overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+  padding: 4rem;
+  overflow-y: scroll;
+}
+
+.exhibitionWrapper {
+  width: 100%;
+  display: flex;
+  gap: 6rem;
+}
+
+.formWrapper {
+  width: 50%;
+}
+
+.exhibitionData {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  background-color: rgb(237, 251, 197);
+  padding: 2rem 2rem 8rem 2rem;
+  margin-bottom: 6rem;
+}
+
+.exhibitionData h3 {
+  margin-top: 1rem;
+}
+
+
+.exhibitionDataHeading {
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+
+.exhibitionData span {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.exhibitionSection {
+  margin-bottom: 1rem;
+}
+
+
+@media only screen and (max-width: 800px) {
+
+  .exhibitionContainer {
+    padding: 1rem;
   }
+
+  .exhibitionWrapper {
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .formWrapper {
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .exhibitionData {
+    width: 100%;
+  }
+}

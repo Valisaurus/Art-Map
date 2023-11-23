@@ -1,5 +1,57 @@
-.fakeImage {
-    border: 1px solid black;
-    max-width: 40rem;
-    max-height: 20rem;
+.formWrapper {
+    margin-top: 4rem;
 }
+
+.nameSection,
+.artistSection
+ {
+    margin-bottom: 1rem;
+}
+
+.artistSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.artists {
+    display: flex;
+}
+
+.fakeImage {
+    display:flex;
+    border: 1px solid black;
+    width: 30rem;
+    height: 20rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.fakeButton {
+    background-color: black;
+    width: fit-content;
+    height: auto;
+    padding: 0.5rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: white;
+    margin: 1rem 1rem 2rem 0rem;
+}
+
+.day h3 {
+    margin-top: 1rem;
+}
+
+.textSection {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    height: 20rem;
+}
+
+@media only screen and (max-width: 800px) {
+
+.fakeImage {
+    width: 20rem;
+    height: 10rem;
+}
+  }

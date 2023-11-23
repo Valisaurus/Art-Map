@@ -1,0 +1,23 @@
+.adminContainer {
+    width: 100%;
+    height: 100%;
+    padding: 4rem;
+  }
+  
+  .list {
+    margin-top: 4rem;
+  }
+
+  .listItem {
+    margin-top: 1rem;
+  }
+
+  .inviteContainer {
+    max-width: 30rem;
+    height: 100%;
+    margin: 4rem;
+  }
+
+  .inviteContainer input {
+    margin-top: 2rem;
+  }
