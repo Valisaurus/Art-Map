@@ -50,10 +50,13 @@ export default function ExhibitionForm() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <Title control={control} errors={errors} />
         <Artists control={control} errors={errors} />
-        <div className={styles.fakeImage}></div>
+        <div className={styles.fakeImage}>
+          <span className={styles.fakeImageText}>BILD</span>
+        </div>
+        <button className={styles.fakeButton}>Ladda upp bild</button>
         <Dates control={control} errors={errors} />
         <ExhibitionText control={control} errors={errors} />
-        {/* <Image control={control} errors={errors} /> */}
+     
 
         <button type="submit" className="globalButton">
           Publicera utställning

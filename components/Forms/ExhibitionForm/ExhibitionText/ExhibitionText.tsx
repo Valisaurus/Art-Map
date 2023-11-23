@@ -10,7 +10,7 @@ interface exhibitionTextProps {
 
 export default function ExhibitionText({ control, errors }: exhibitionTextProps) {
   return (
-    <section className={styles.nameSection}>
+    <section className={styles.textSection}>
       <h2>Utställningstext</h2>
       <label hidden>Utställningstext</label>
       <Controller

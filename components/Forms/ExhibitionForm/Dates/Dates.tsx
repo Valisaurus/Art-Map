@@ -15,7 +15,7 @@ export default function Dates({ control, errors }: dateProps) {
         <h2>Datum för utställning</h2>
       </div>
       <div className={styles.day}>
-        <h3>Startdatum (vernissage)</h3>
+        <h3>Startdatum</h3>
         <label hidden>Start</label>
         <Controller
           name="dates.opening"
@@ -34,7 +34,8 @@ export default function Dates({ control, errors }: dateProps) {
             {errors.dates?.opening.message}
           </p>
         )}
-        <label>Slutdatum</label>
+        <h3>Slutdatum</h3>
+        <label hidden>Slutdatum</label>
         <Controller
           name="dates.closing"
           control={control}

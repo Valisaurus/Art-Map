@@ -10,7 +10,7 @@ interface artistsProps {
 
 export default function Artists({ control, errors }: artistsProps) {
   return (
-    <section className={styles.nameSection}>
+    <section className={styles.artistSection}>
       <h2>Konstnär / konstnärer</h2>
       <small>Separera med komma, avsluta med & </small>
       <label hidden>Konstnär / konstnärer</label>
