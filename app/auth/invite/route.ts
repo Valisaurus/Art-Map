@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     const { error } = await supabase.auth.signInWithOtp({
       email: email,
       options: {
-        emailRedirectTo: `${requestUrl.origin}/reset-password`,
+        emailRedirectTo: `${requestUrl.origin}/send-reset-password-req-email`,
       },
     });
   } catch (err) {
