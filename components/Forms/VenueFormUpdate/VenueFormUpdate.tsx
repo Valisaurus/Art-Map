@@ -4,7 +4,6 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import type { Venue } from "@/types/venue";
 import styles from "./VenueFormUpdate.module.css";
-
 import TypeOf from "./TypeOf/TypeOf";
 import Contact from "./Contact/Contact";
 import OpeningHours from "./OpeningHours/OpeningHours";
@@ -12,6 +11,8 @@ import Address from "./Address/Address";
 import About from "./About/About";
 import Name from "./Name/Name";
 import Url from "./Url/Url";
+
+// This form is exactly as the other venueform, but missing fill-in-requirements to be able to choose which fields to fill out and update. In the end we didn't manage to get it to work correctly so we use the other form both to update and to change in the venue document.
 
 export default function VenueForm() {
   const {

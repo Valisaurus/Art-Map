@@ -2,10 +2,12 @@ import { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { createClient } from "@sanity/client";
 import { getUser } from "@/utils/supabaseFunctions";
-import { getExhibitions } from "@/sanity/sanity.utils";
 import { getVenues } from "@/sanity/sanity.utils";
 
-// Initialize the Sanity client
+// FIX: Missing verification on client-side if form is submitted
+
+// DISCLAIMER: Since we couldn't use sanitys fantastic built in funcitons for referencing between documents (venue - exhibition - event), due to sending in data on frontend via forms,  we had to build our own functions for that - hence messy code.
+
 const client = createClient({
   projectId: "z4x2zjsw",
   dataset: "production",
@@ -18,12 +20,11 @@ export async function POST(req: NextRequest) {
   if (user) {
     const userId = user.userId;
 
-    // SANITY LOGIC
-
+    // get venues saved in Sanity - match the _id with userId from Supabase
     const venues = await getVenues();
     const matchingExhibition = venues.find((venue) => venue._id === userId);
 
-    // Check if a matching venue is found
+    // Check if a matching venue is found 
     if (matchingExhibition) {
       const { title, artistNames, image, openingDate, dates, exhibitionText } =
         await req.json();

@@ -2,6 +2,8 @@
 import VenueForm from "@/components/Forms/VenueForm/VenueForm";
 import styles from "./createVenue.module.css";
 
+// FIX: verfification and error messages on client side 
+
 export default async function CreateVenue() {
   return (
     <div className={styles.contentWrapper}>

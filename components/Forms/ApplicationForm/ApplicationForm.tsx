@@ -28,16 +28,16 @@ export default function ApplicationForm() {
       });
 
       if (response.ok) {
-        // FIXA:MESSAGE
+        // FIX:MESSAGE
         console.log("Form data submitted successfully");
         reset();
       } else {
-        // FIXA: ERROR MESSAGE
+        // FIX: ERROR MESSAGE
         console.error("Failed to submit form data");
         setError("Failed to submit form data");
       }
     } catch (err) {
-      // FIXA: ERROR MESSAGE
+      // FIX: ERROR MESSAGE
       console.error("Error while submitting the form:", err);
       setError("Failed to submit form data");
     }

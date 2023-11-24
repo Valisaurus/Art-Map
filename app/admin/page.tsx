@@ -6,7 +6,6 @@ import { cookies } from "next/headers";
 export const dynamic = "force-dynamic";
 
 export default async function AdminStartPage() {
-  // Create a Supabase client configured to use cookies
   const supabase = createServerComponentClient({ cookies });
   const {
     data: { session },

@@ -9,6 +9,9 @@ import ExhibitionText from "./ExhibitionText/ExhibitionText";
 import Title from "./Title/Title";
 //import Image from "./Image/Image";
 
+
+// FIX: Didn't manage to upload image from client side to Sanity :´( Therefore only a visual representaion of image upload. The image is now uploaded from sanity studio by admin - not ideal.
+
 export default function ExhibitionForm() {
   const {
     control,
@@ -30,16 +33,16 @@ export default function ExhibitionForm() {
       });
 
       if (response.ok) {
-        // FIXA:MESSAGE
+        // FIX:MESSAGE
         console.log("Form data submitted successfully");
         reset();
       } else {
-        // FIXA: ERROR MESSAGE
+        // FIX: ERROR MESSAGE
         console.error("Failed to submit form data");
         setError("Failed to submit form data");
       }
     } catch (err) {
-      // FIXA: ERROR MESSAGE
+      // FIX: ERROR MESSAGE
       console.error("Error while submitting the form:", err);
       setError("Failed to submit form data");
     }

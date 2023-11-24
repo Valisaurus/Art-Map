@@ -22,6 +22,8 @@ export default async function UpdateVenue() {
 
       const venues = await getVenueData();
 
+       // FIX: not a clean solution with message
+
       // Check if any venue matches the user ID
       const userVenue = venues.find((venue) => venue._id === supabaseUserId);
 

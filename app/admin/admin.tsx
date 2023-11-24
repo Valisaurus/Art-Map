@@ -2,7 +2,7 @@
 import styles from "./admin.module.css";
 import Link from "next/link";
 
-// import styles from "./admin.module.css";
+// FIX: Missing function to delete user
 
 export default function ClientSideAdmin() {
   return (

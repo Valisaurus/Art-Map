@@ -4,7 +4,6 @@ import { createClient } from "@sanity/client";
 
 export const dynamic = "force-dynamic";
 
-// Initialize the Sanity client
 const client = createClient({
   projectId: "z4x2zjsw",
   dataset: "production",
@@ -12,6 +11,8 @@ const client = createClient({
   token: process.env.NEXT_SANITY_FORM_INSERT2_ACCESS_TOKEN,
   useCdn: false,
 });
+
+// FIX: Missing verification on client-side if form is submitted
 
 export async function POST(req: NextRequest) {
   const { venueName, websiteUrl, about, contactPerson } = await req.json();

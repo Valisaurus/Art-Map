@@ -99,6 +99,7 @@ const MapComponent = () => {
           );
 
           // If statement if slug not exists
+          // associate slug with location (venue)
           if (location) {
             const link = `/platser/${encodeURIComponent(
               locationData.slug?.current
@@ -122,6 +123,7 @@ const MapComponent = () => {
               this.style.backgroundColor = colors.original;
             });
 
+            // Place marker on map with pop-up
             const marker = new mapboxgl.Marker({ element: customMarkerElement })
               .setLngLat(location)
               .setPopup(popup)
@@ -130,7 +132,7 @@ const MapComponent = () => {
             // Store the marker with the venueName in the Map
             markerVenueMap.set(locationData.venueName, marker);
             
-            // Click event to the exhibition cards - changed to click on image
+            // Click event to the exhibition cards - changed to click on image instead of whole card
             const exhibitionCards =
               document.querySelectorAll(".exhibitionImage");
             exhibitionCards.forEach((image) => {
@@ -145,6 +147,7 @@ const MapComponent = () => {
                   if (chosenMarker) {
                     const coordinates = chosenMarker.getLngLat();
 
+                    // Zoom in on clicked venue
                     if (venueName !== clickedLocation) {
                       map.flyTo({
                         center: coordinates,
@@ -157,8 +160,7 @@ const MapComponent = () => {
                 }
               );
             });
-            // Click event to the exhibition title in the exhibition card - removed until we solve reset of mapview on back-button:
-            
+                      
             const venueListItems =
               document.querySelectorAll(".venueListItem");
               venueListItems.forEach((item) => {
@@ -184,7 +186,8 @@ const MapComponent = () => {
                 }
               );
             });
-
+  // Click event to the exhibition title in the exhibition card - removed until we solve reset of mapview on back-button:
+  
             // const exhibitionTitles =
             //   document.querySelectorAll(".exhibitionTitle");
             // exhibitionTitles.forEach((title) => {

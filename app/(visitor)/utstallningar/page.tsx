@@ -29,16 +29,6 @@ export default async function Exhibitions() {
                 style={{
                   backgroundColor: getColor(exhibition.typeOf).original,
                 }}
-                // onMouseOver={(e) => {
-                //   e.currentTarget.style.backgroundColor = getColor(
-                //     exhibition.typeOf
-                //   ).hover;
-                // }}
-                // onMouseOut={(e) => {
-                //   e.currentTarget.style.backgroundColor = getColor(
-                //     exhibition.typeOf
-                //   ).original;
-                // }}
               >
                 <div className={styles.topSection}>
                   <div className="exhibitionTitle">

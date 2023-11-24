@@ -2,12 +2,13 @@ import { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { createClient } from "@sanity/client";
 import { getUser } from "@/utils/supabaseFunctions";
-import { Venue } from "@/types/venue";
 import { getVenues } from "@/sanity/sanity.utils";
-
 export const dynamic = "force-dynamic"; 
 
-// Initialize the Sanity client
+//FIX: Missing verification on client-side if form is submitted
+
+// DISCLAIMER: Since we couldn't use sanitys fantastic built in funcitons for referencing between documents (venue - exhibition - event), due to sending in data on frontend via forms,  we had to build our own functions for that - hence messy code.
+
 const client = createClient({
   projectId: "z4x2zjsw",
   dataset: "production",
@@ -20,8 +21,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const user = await getUser();
   if (user) {
     const userId = user.userId;
-
-    // SANITY LOGIC
     const venues = await getVenues();
     // Check if userId matches any of the venue userIds
     const matchingVenue = venues.find((venue) => venue.userId === user.userId);
@@ -68,8 +67,10 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         userId: userId || "",
         websiteUrl,
       };
-      console.log(matchingVenue);
-      console.log(userId);
+
+      // FIX: Patch doesn't work correctly, it erases information in objects that isn't filled out.
+
+
       // Check if userId matches any of the venue userIds
       if (matchingVenue) {
         // If a document with the userId exists, patch it with the new venue data

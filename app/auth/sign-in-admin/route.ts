@@ -1,9 +1,11 @@
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
-
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
+
+
+// FIX: verfification and error messages on client side
 
 export async function POST(request: Request) {
   const requestUrl = new URL(request.url);
@@ -23,7 +25,6 @@ export async function POST(request: Request) {
     .select("*")
     .eq("admin_email", email);
 
-  //console.log("THIS IS ADMIN", admin);
 
   if (adminNotFound) {
     return NextResponse.redirect(
@@ -44,21 +45,18 @@ export async function POST(request: Request) {
       return NextResponse.redirect(
         `${requestUrl.origin}/login-admin?error=Could not authenticate user`,
         {
-          // a 301 status is required to redirect from a POST to a GET route
           status: 301,
         }
       );
     }
 
     return NextResponse.redirect(`${requestUrl.origin}/admin`, {
-      // a 301 status is required to redirect from a POST to a GET route
       status: 301,
     });
   } else {
     return NextResponse.redirect(
       `${requestUrl.origin}/login-admin?error=Admin access denied`,
       {
-        // a 301 status is required to redirect from a POST to a GET route
         status: 301,
       }
     );

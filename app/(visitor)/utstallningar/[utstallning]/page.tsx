@@ -19,6 +19,7 @@ export default async function Exhibition({ params }: Props) {
   }
   const exhibition = await getExhibition(slug);
 
+  // Since we couldn't use sanitys built in block text we made this function to at least have line breaks.
   const formattedText = exhibition.exhibitionText.replace(/\n/g, "<br>");
 
   return (

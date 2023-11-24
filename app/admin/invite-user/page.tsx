@@ -1,8 +1,9 @@
 "use client";
 import InviteForm from "@/components/Forms/InviteForm/InviteForm";
 import styles from "../admin.module.css";
-
 export const dynamic = "force-dynamic";
+
+// FIX: Missing a verification for sent email
 
 export default function InvitePage() {
   return (

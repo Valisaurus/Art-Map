@@ -32,6 +32,8 @@ export default async function ExhibitionsPage() {
         (exhibition) => exhibition.userId === supabaseUserId
       );
 
+      // FIX: not a clean solution with message
+
       const noExhibitionsMessage = "Det fanns inga sparade utställningar";
 
         return <ClientSideExhibitions exhibitions={userExhibitions} message={!userExhibitions.length ? noExhibitionsMessage : undefined}/>;

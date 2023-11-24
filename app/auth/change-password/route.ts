@@ -35,7 +35,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // Check if the user is an admin
+    // Check if the user is an admin-user
     const { data: admin } = await supabase
       .from("admin")
       .select("*")

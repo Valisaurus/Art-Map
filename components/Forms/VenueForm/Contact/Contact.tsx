@@ -8,6 +8,7 @@ interface ContactProps {
   errors: FieldErrors<Venue>;
 }
 
+
 export default function Contact({ control, errors }: ContactProps) {
   return (
     <section className={styles.contactSection}>
@@ -34,8 +35,7 @@ export default function Contact({ control, errors }: ContactProps) {
       <label>Telefon</label>
       <Controller
         name="contact.phone"
-        control={control}
-        // rules={{ required: "Detta fält måste fyllas i" }}
+        control={control} 
         render={({ field }) => (
           <input
             type="tel"

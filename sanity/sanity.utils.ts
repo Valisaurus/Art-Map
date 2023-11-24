@@ -130,7 +130,7 @@ export async function getVenue(slug: string): Promise<Venue> {
   );
 }
 
-// Function that returns all exhibitions in array
+// Function that returns all exhibitions in array based on opening date, ignore passed dates
 export async function getExhibitions(): Promise<Exhibition[]> {
   const currentDate = new Date().toISOString().split("T")[0]; // Get the current date in 'YYYY-MM-DD' format
 

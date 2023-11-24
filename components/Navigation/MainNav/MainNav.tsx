@@ -17,11 +17,7 @@ const Nav = () => {
   };
 
   const handleHomeClick = () => {
-    // Navigate to the home ("/") route
-    router.push("/");
-    // Reload the page after a short delay
-
-   
+    router.push("/");   
   };
 
   return (
@@ -34,12 +30,10 @@ const Nav = () => {
         onClick={toggleMenu}
       >
         {isActive ? (
-          // Render your exit or close button when the menu is active
           <div className={styles.exitButton} onClick={hideMenu}>
             stäng meny
           </div>
         ) : (
-          // Render your hamburger bars when the menu is not active
           <>meny</>
         )}
       </div>

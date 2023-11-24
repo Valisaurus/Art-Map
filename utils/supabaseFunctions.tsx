@@ -2,6 +2,8 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
+// Function to retrieve session to see if user is logged in
+
 export const getUser = async () => {
     const supabase = createServerComponentClient({
       cookies,
@@ -18,7 +20,7 @@ export const getUser = async () => {
       const userId = user?.id;
       return { userId };
     } else {
-      return null; // or some default user object
+      return null;
     }
   };
 

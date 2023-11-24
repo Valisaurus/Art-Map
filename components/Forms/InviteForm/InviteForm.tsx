@@ -1,6 +1,7 @@
 import Messages from "./messages";
 import styles from "../../inviteForm.module.css";
-// moved form
+// moved form css elsewhere because vercel wouldn't find it...
+
 export default function InviteForm() {
   return (
     <div className={styles.formWrapper}>

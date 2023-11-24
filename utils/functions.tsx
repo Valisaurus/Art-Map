@@ -1,5 +1,4 @@
 
-
 // Function to change typeOf to title instead of default value
 export const getTitleFromTypeOf = (typeOf: string) => {
   const typeOfOptions = [

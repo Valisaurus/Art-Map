@@ -23,7 +23,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           control={control}
           render={({ field }) => (
             <input
-              className=""
               placeholder="00:00"
               {...field}
               value={field.value || ""}
@@ -41,7 +40,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           control={control}
           render={({ field }) => (
             <input
-              className=""
               placeholder="00:00"
               {...field}
               value={field.value || ""}
@@ -62,7 +60,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           control={control}
           render={({ field }) => (
             <input
-              className=""
               placeholder="00:00"
               {...field}
               value={field.value || ""}
@@ -80,7 +77,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           control={control}
           render={({ field }) => (
             <input
-              className=""
               placeholder="00:00"
               {...field}
               value={field.value || ""}
@@ -101,7 +97,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           control={control}
           render={({ field }) => (
             <input
-              className=""
               placeholder="00:00"
               {...field}
               value={field.value || ""}
@@ -119,7 +114,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           control={control}
           render={({ field }) => (
             <input
-              className=""
               placeholder="00:00"
               {...field}
               value={field.value || ""}
@@ -140,7 +134,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           control={control}
           render={({ field }) => (
             <input
-              className=""
               placeholder="00:00"
               {...field}
               value={field.value || ""}
@@ -158,7 +151,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           control={control}
           render={({ field }) => (
             <input
-              className=""
               placeholder="00:00"
               {...field}
               value={field.value || ""}
@@ -179,7 +171,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           control={control}
           render={({ field }) => (
             <input
-              className=""
               placeholder="00:00"
               {...field}
               value={field.value || ""}
@@ -197,7 +188,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           control={control}
           render={({ field }) => (
             <input
-              className=""
               placeholder="00:00"
               {...field}
               value={field.value || ""}
@@ -218,7 +208,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           control={control}
           render={({ field }) => (
             <input
-              className=""
               placeholder="00:00"
               {...field}
               value={field.value || ""}
@@ -236,7 +225,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           control={control}
           render={({ field }) => (
             <input
-              className=""
               placeholder="00:00"
               {...field}
               value={field.value || ""}
@@ -257,7 +245,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           control={control}
           render={({ field }) => (
             <input
-              className=""
               placeholder="00:00"
               {...field}
               value={field.value || ""}
@@ -275,7 +262,6 @@ export default function OpeningHours({ control, errors }: OpeningHoursProps) {
           control={control}
           render={({ field }) => (
             <input
-              className=""
               placeholder="00:00"
               {...field}
               value={field.value || ""}

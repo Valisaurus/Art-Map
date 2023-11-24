@@ -28,12 +28,10 @@ const AdminNav = () => {
         onClick={toggleMenu}
       >
         {isActive ? (
-          // Render your exit or close button when the menu is active
           <div className={styles.exitButton} onClick={hideMenu}>
             stäng meny
           </div>
         ) : (
-          // Render your hamburger bars when the menu is not active
           <>meny</>
         )}
       </div>
