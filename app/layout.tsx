@@ -2,7 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 export const metadata = {
-  title: "GBG ART MAP",
+  title: "GBG ART GUIDE",
   description: "Art guide for Gothenburg city",
 };
 
